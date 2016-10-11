@@ -1,5 +1,7 @@
 <?php
 
+    include ("clase_administrador.php");
+
     public class Administrador_proceso{
 
         public function Administrador_proceso(){
