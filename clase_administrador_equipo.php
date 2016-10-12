@@ -1,18 +1,20 @@
 <?php
 
-    public class Administrador_equipo{
+  include("clase_administrador.php")
 
-        public function Administrador_equipo(){
+  public class Administrador_equipo extends Administrador{
 
-        }
+    public function Administrador_equipo(){
 
-        public function agregar_componente($id_componente){
-
-        }
-
-        public function quitar_componente($id_componente){
-          
-        }
     }
+
+    public function agregar_componente($id_componente){
+
+    }
+
+    public function quitar_componente($id_componente){
+
+    }
+  }
 
 ?>
