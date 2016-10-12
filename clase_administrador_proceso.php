@@ -1,29 +1,29 @@
 <?php
 
-    include ("clase_administrador.php");
+  include("clase_administrador.php");
 
-    public class Administrador_proceso{
+  public class Administrador_proceso extends Administrador{
 
-        public function Administrador_proceso(){
-
-        }
-
-        public function iniciar_proceso($id_proceso){
-
-        }
-
-        public function finalizar_proceso($id_proceso){
-
-        }
-
-        public function agregar_equipo($id_equipo){
-
-        }
-
-        public function quitar_equipo($id_equipo){
-
-        }
+    public function Administrador_proceso(){
 
     }
+
+    public function iniciar_proceso($id_proceso){
+
+    }
+
+    public function finalizar_proceso($id_proceso){
+
+    }
+
+    public function agregar_equipo($id_equipo){
+
+    }
+
+    public function quitar_equipo($id_equipo){
+
+    }
+
+  }
 
 ?>

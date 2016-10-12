@@ -1,17 +1,17 @@
 <?php
 
-    public class Manejador_peticiones{
+  public class Manejador_peticiones{
 
-        private $request;
+    private $request;
 
-        public function Manejador_peticiones(){
-
-        }
-
-        public function manejar_peticion(){
-
-        }
+    public function Manejador_peticiones(){
 
     }
+
+    public function manejar_peticion(){
+
+    }
+
+  }
 
 ?>
