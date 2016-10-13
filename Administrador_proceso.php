@@ -1,6 +1,6 @@
 <?php
 
-  include( "clase_administrador.php" );
+  include( "Administrador.php" );
 
   class Administrador_proceso extends Administrador{
 

@@ -1,6 +1,6 @@
 <?php
 
-  include( "clase_equipo.php" );
+  include( "Equipo.php" );
 
   class Proceso{
 

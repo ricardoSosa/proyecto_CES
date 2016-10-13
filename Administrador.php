@@ -1,6 +1,6 @@
 <?php
 
-  include( "clase_manejador_bd.php" );
+  include( "Manejador_bd.php" );
 
   abstract class Administrador{
 
