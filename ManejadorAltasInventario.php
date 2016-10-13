@@ -12,7 +12,7 @@ class ManejadorAltasInventario {
 
   }
 
-  public function entender_tipo_alta( $tipoAlta, $datosAlta ) {
+  public function entenderTipoAlta( $tipoAlta, $datosAlta ) {
     switch ( $tipoAlta ) {
       case 'componente':
         $this->administradorAlta = new AdministradorComponentes();

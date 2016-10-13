@@ -8,6 +8,10 @@
 
     }
 
+    public function añadirElemento( $datosElemento ) {
+      
+    }
+
   }
 
 ?>
