@@ -4,11 +4,13 @@
 
     private $conexion;
 
+
     public function Manejador_base_datos(){
 
       $this->realizar_conexion();
 
     }
+
 
     public function realizar_conexion(){
 
@@ -21,51 +23,66 @@
 
     }
 
+
     public function insertar($datos){
+
+      $consulta = null;
+      $datos_elemento = null;
 
       //Se evalúa si la inserción es de un proceso, equipo o componente.
 
-      /*switch($datos['tipo_insercion']){
+      switch($datos['tipo_elemento']){
 
         case 'Proceso':
-          $consulta = "INSERT INTO TABLA_PROCESO (id, nombre, descripcion)
-            VALUES (
-              $datos['id'],
-              $datos['nombre'],
-              $datos['descripcion'] )";
+          $consulta = "INSERT INTO procesos (id, nombre, descripcion)
+            VALUES (:id, :nombre, :descripcion)";
+          $datos_elemento = array(
+            ':id' => $datos['id'],
+            ':nombre' => $datos['nombre'],
+            ':descripcion' => $datos['descripcion'] );
           break;
 
         case 'Equipo':
-          $consulta = "INSERT INTO TABLA_EQUIPO (id, nombre, descripcion, ubicacion)
-            VALUES (
-              $datos['id'],
-              $datos['nombre'],
-              $datos['descripcion'],
-              $datos['ubicacion'] )";
+          $consulta = "INSERT INTO equipos (id, nombre, descripcion, ubicacion)
+            VALUES (:id, :nombre, :descripcion, :ubicacion)";
+          $datos_elemento = array(
+            ':id' => $datos['id'],
+            ':nombre' => $datos['nombre'],
+            ':descripcion' => $datos['descripcion'],
+            ':ubicacion' => $datos['ubicacion'] );
           break;
 
         case 'Componente':
-          $consulta = "INSERT INTO TABLA_COMPONENTE (id, nombre, descripcion, tiempo_vida_max)
-            VALUES (
-              $datos['id'],
-              $datos['nombre'],
-              $datos['descripcion']
-              $datos['tiempo_vida_max'] )";
+          $consulta = "INSERT INTO componentes (id, nombre, descripcion, tiempo_vida_max)
+            VALUES (:id, :nombre, :descripcion, :tiempo_vida_max)";
+          $datos_elemento = array(
+            ':id' => $datos['id'],
+            ':nombre' => $datos['nombre'],
+            ':descripcion' => $datos['descripcion'],
+            ':tiempo_vida_max' => $datos['tiempo_vida_max'] );
           break;
 
-      }*/
+      }
+
+      $resultado = $this->conexion->prepare($consulta);
+      $resultado->execute($datos_elemento);
 
     }
+
 
     public function eliminar($datos){
 
     }
 
+
     public function modificar($datos){
 
     }
 
+
     public function realizar_consulta($datos){
+
+      $consulta = null;
 
       //Se selecciona la consulta de acuerdo a lo que requiera el usuario.
 
@@ -85,17 +102,17 @@
 
         case 'proceso_especifico':
           $consulta = "SELECT descripcion, duracion FROM procesos WHERE
-            id = $datos[id]";
+            id = " . $datos['id'] . ")";
           break;
 
         case 'equipo_especifico':
           $consulta = "SELECT descripcion, ubicacion FROM equipos WHERE
-            id = $datos[id]";
+            id = " . $datos['id'] . ")";
           break;
 
         case 'componente_especifico':
           $consulta = "SELECT descripcion, tiempo_vida_max FROM componentes WHERE
-           id = $datos[id]";
+           id = " . $datos['id'] . ")";
           break;
 
       }
