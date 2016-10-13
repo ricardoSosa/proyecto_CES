@@ -1,8 +1,8 @@
 <?php
 
-  include( "clase_administrador.php" );
+  include( "Administrador.php" );
 
-  public class Administrador_proceso extends Administrador {
+  class Administrador_proceso extends Administrador {
 
     public function Administrador_proceso() {
 
@@ -20,7 +20,7 @@
 
     }
 
-    public function quitar_equipo( id_equipo ) {
+    public function quitar_equipo( $id_equipo ) {
 
     }
 

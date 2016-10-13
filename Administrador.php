@@ -1,8 +1,8 @@
 <?php
 
-  include( "clase_manejador_bd.php" );
+  include( "Manejador_bd.php" );
 
-  public abstract class Administrador {
+  abstract class Administrador {
 
     private $manejador_bd;
 
@@ -12,7 +12,9 @@
 
     }
 
-    public abstract function añadirElemento( $datosElemento );
+    public function añadirElemento( $datos_elemento ) {
+      $this-$manejador_bd->insertar( $datos_elemento );
+    }
 
     public function eliminar( $id ) {
 

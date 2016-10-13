@@ -1,8 +1,8 @@
 <?php
 
-  include( "clase_administrador.php" )
+  include( "Administrador.php" );
 
-  public class Administrador_equipo extends Administrador {
+  class Administrador_equipo extends Administrador {
 
     public function Administrador_equipo() {
 
@@ -15,6 +15,7 @@
     public function quitar_componente( $id_componente ) {
 
     }
+
   }
 
 ?>

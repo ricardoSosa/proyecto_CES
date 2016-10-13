@@ -5,37 +5,42 @@
     private $id;
     private $nombre;
     private $descripcion;
-    private $tiempoVidaMax;
-    private $tiempoVidaActual;
-    private $porcentajeUso;
+    private $tiempo_vida_max;
+    private $tiempo_vida_actual;
+    private $porcentaje_uso;
 
-    public __construct( $datosComponente ) {
-      $this->$id = $datosComponente[ 'id' ];
-      $this->$nombre = $datosComponente[ 'nombre' ];
-      $this->$descripcion = $datosComponente[ 'descripcion' ];
-      $this->$tiempoVidaMax = $datosComponente[ 'tiempoVidaMax' ];
-      $this->$tiempoVidaActual = $datosComponente[ 'tiempoVidaActual' ];
-      $this->$porcentajeUso[ 'porcentajeUso' ];
+    public __construct( $datos_componente ) {
+      $this->$id = $datos_componente[ 'id' ];
+      $this->$nombre = $datos_componente[ 'nombre' ];
+      $this->$descripcion = $datos_componente[ 'descripcion' ];
+      $this->$tiempo_vida_max = $datos_componente[ 'tiempo_vida_max' ];
+      $this->$tiempo_vida_actual = $datos_componente[ 'tiempo_vida_actual' ];
+      $this->$porcentaje_uso[ 'porcentaje_uso' ];
     }
 
-    public function obtenerId() {
-      return $this->$id;
+
+    public function obtener_id() {
+      return $this->id;
     }
 
-    public function obtenerDescripcion() {
-      return $this->$descripcion;
+    public function obtener_nombre() {
+      return $this->nombre;
     }
 
-    public function obtenerTiempoVidaMax() {
-      return $this->$tiempoVidaMax;
+    public function obtener_descripcion() {
+      return $this->descripcion;
     }
 
-    public function obtenerTiempoVidaActual() {
-      return $this->$tiempoVidaActual;
+    public function obtener_tiempo_vida_max() {
+      return $this->tiempo_vida_max;
     }
 
-    public function obtenerPorcentajeUso() {
-      return $this->$porcentajeUso;
+    public function obtener_tiempo_vida_actual() {
+      return $this->tiempo_vida_actual;
+    }
+
+    public function obtener_porcentaje_uso() {
+      return $this->porcentaje_uso;
     }
 
   }
