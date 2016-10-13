@@ -64,6 +64,8 @@
 
       }
 
+      //Se prepara la consulta y se realiza la inserción.
+
       $resultado = $this->conexion->prepare($consulta);
       $resultado->execute($datos_elemento);
 
