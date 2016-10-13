@@ -1,6 +1,6 @@
 <?php
 
-  include("clase_equipo.php");
+  include( "clase_equipo.php" );
 
   class Proceso{
 
@@ -26,8 +26,8 @@
       return $this->descripcion;
     }
 
-    public function obtener_equipo($id_equipo){
-      return $this->equipos['id_equipo'];
+    public function obtener_equipo( $id_equipo ){
+      return $this->equipos[ 'id_equipo' ];
     }
 
     public function obtener_duracion_estimada(){

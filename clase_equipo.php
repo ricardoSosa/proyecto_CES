@@ -1,6 +1,6 @@
 <?php
 
-  include("clase_componente.php");
+  include( "clase_componente.php" );
 
   class Equipo{
 
@@ -31,8 +31,8 @@
       return $this->ubicacion;
     }
 
-    public function obtener_componente($id_componente){
-      return $this->componentes['id_componente'];
+    public function obtener_componente( $id_componente ){
+      return $this->componentes[ 'id_componente' ];
     }
 
     public function obtener_porcentaje_uso(){

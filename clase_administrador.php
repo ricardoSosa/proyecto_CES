@@ -1,6 +1,6 @@
 <?php
 
-  include("clase_manejador_bd.php");
+  include( "clase_manejador_bd.php" );
 
   abstract class Administrador{
 
@@ -12,21 +12,21 @@
 
     }
 
-    public function agregarNuevo($datos){
+    public function agregarNuevo( $datos ){
 
-      $this->manejador_bd->insertar($datos);
-
-    }
-
-    public function eliminar($id){
+      $this->manejador_bd->insertar( $datos );
 
     }
 
-    public function modificar($id, $datos){
+    public function eliminar( $id ){
 
     }
 
-    public function leer_datos($datos){
+    public function modificar( $id, $datos ){
+
+    }
+
+    public function leer_datos( $datos ){
 
     }
 
