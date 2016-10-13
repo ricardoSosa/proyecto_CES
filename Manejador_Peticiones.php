@@ -1,8 +1,8 @@
 <?php
 
-  class Manejador_peticiones {
+  public class Manejador_peticiones {
 
-    private $peticion;
+    private $request;
 
     public function Manejador_peticiones() {
 

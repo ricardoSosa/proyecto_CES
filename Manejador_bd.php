@@ -1,18 +1,18 @@
 <?php
 
-  class Manejador_base_datos{
+  class Manejador_base_datos {
 
     private $conexion;
-    
 
-    public function Manejador_base_datos(){
+
+    public function Manejador_base_datos() {
 
       $this->realizar_conexion();
 
     }
 
 
-    public function realizar_conexion(){
+    public function realizar_conexion() {
 
       //Datos requeridos para la conexión.
 
@@ -32,14 +32,14 @@
     }
 
 
-    public function insertar( $datos ){
+    public function insertar( $datos ) {
 
       $consulta = null;
       $datos_elemento = null;
 
       //Se evalúa si la inserción es de un proceso, equipo o componente.
 
-      switch( $datos[ 'tipo_elemento' ] ){
+      switch( $datos[ 'tipo_elemento' ] ) {
 
         case 'Proceso':
           $consulta = "INSERT INTO procesos ( id, nombre, descripcion )
@@ -80,23 +80,23 @@
     }
 
 
-    public function eliminar( $datos ){
+    public function eliminar( $datos ) {
 
     }
 
 
-    public function modificar( $datos ){
+    public function modificar( $datos ) {
 
     }
 
 
-    public function realizar_consulta( $datos ){
+    public function realizar_consulta( $datos ) {
 
       $consulta = null;
 
       //Se selecciona la consulta de acuerdo a lo que requiera el usuario.
 
-      switch( $datos[ 'tipo_consulta' ] ){
+      switch( $datos[ 'tipo_consulta' ] ) {
 
         case 'lista_procesos':
           $consulta = "SELECT * FROM procesos";

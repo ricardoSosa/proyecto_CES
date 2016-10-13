@@ -2,35 +2,35 @@
 
   include( "Manejador_bd.php" );
 
-  abstract class Administrador{
+  abstract class Administrador {
 
     private $manejador_bd;
 
-    public function Administrador(){
+    public function Administrador() {
 
       $this->manejador_bd = new Manejador_base_datos();
 
     }
 
-    public function agregarNuevo( $datos ){
+    public function agregarNuevo( $datos ) {
 
       $this->manejador_bd->insertar( $datos );
 
     }
 
-    public function eliminar( $id ){
+    public function eliminar( $id ) {
 
     }
 
-    public function modificar( $id, $datos ){
+    public function modificar( $id, $datos ) {
 
     }
 
-    public function leer_datos( $datos ){
+    public function leer_datos( $datos ) {
 
     }
 
-    public function generar_historial(){
+    public function generar_historial() {
 
     }
 

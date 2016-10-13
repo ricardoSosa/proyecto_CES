@@ -2,9 +2,9 @@
 
   include( "Administrador.php" );
 
-  class Administrador_componente extends Administrador{
+  class Administrador_componente extends Administrador {
 
-    public function Administrador_componente(){
+    public function Administrador_componente() {
 
     }
 
