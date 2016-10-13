@@ -14,7 +14,7 @@
 
     public function agregarNuevo($datos){
 
-      $this->manejador_bd->insertar();
+      $this->manejador_bd->insertar($datos);
 
     }
 

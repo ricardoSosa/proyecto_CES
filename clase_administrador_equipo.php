@@ -1,6 +1,6 @@
 <?php
 
-  include("clase_administrador.php")
+  include("clase_administrador.php");
 
   class Administrador_equipo extends Administrador{
 
@@ -15,6 +15,7 @@
     public function quitar_componente($id_componente){
 
     }
+
   }
 
 ?>

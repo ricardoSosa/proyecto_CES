@@ -2,7 +2,7 @@
 
   class Manejador_peticiones{
 
-    private $request;
+    private $peticion;
 
     public function Manejador_peticiones(){
 

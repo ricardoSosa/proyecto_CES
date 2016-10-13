@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
   class Simulador_procesos{
+=======
+  public class Simulador_procesos{
+>>>>>>> manejador
 
     private $procesos;
 
