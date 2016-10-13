@@ -1,36 +1,41 @@
 <?php
 
-  public class Componente {
+  class Componente {
 
     private $id;
     private $nombre;
     private $descripcion;
-    private $tiempo_vida_max;
-    private $tiempo_vida_actual;
-    private $porcentaje_uso;
+    private $tiempoVidaMax;
+    private $tiempoVidaActual;
+    private $porcentajeUso;
 
-    public function Componente() {
-
+    public __construct( $datosComponente ) {
+      $this->$id = $datosComponente[ 'id' ];
+      $this->$nombre = $datosComponente[ 'nombre' ];
+      $this->$descripcion = $datosComponente[ 'descripcion' ];
+      $this->$tiempoVidaMax = $datosComponente[ 'tiempoVidaMax' ];
+      $this->$tiempoVidaActual = $datosComponente[ 'tiempoVidaActual' ];
+      $this->$porcentajeUso[ 'porcentajeUso' ];
     }
 
-    public function obtener_id() {
-
+    public function obtenerId() {
+      return $this->$id;
     }
 
-    public function obtener_descripcion() {
-
+    public function obtenerDescripcion() {
+      return $this->$descripcion;
     }
 
-    public function obtener_tiempo_vida_max() {
-
+    public function obtenerTiempoVidaMax() {
+      return $this->$tiempoVidaMax;
     }
 
-    public function obtener_tiempo_vida_actual() {
-
+    public function obtenerTiempoVidaActual() {
+      return $this->$tiempoVidaActual;
     }
 
-    public function obtener_porcentaje_uso() {
-
+    public function obtenerPorcentajeUso() {
+      return $this->$porcentajeUso;
     }
 
   }

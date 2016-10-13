@@ -1,30 +1,30 @@
 <?php
 
-  public class Proceso {
+  class Proceso {
 
     private $id;
     private $nombre;
     private $descripcion;
     private $equipos;
-    private $duracion_estimada;
+    private $duracionEstimada;
 
     public function Proceso() {
 
     }
 
-    public function obtener_id() {
+    public function obtenerId() {
 
     }
 
-    public function obtener_nombre() {
+    public function obtenerNombre() {
 
     }
 
-    public function obtener_descripcion() {
+    public function obtenerDescripcion() {
 
     }
 
-    public function obtener_equipo( $id_equipo ) {
+    public function obtenerEquipo( $idEquipo ) {
 
     }
 
