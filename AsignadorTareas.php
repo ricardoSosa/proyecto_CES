@@ -4,11 +4,10 @@
   require 'ManejadorCambiosInventario.php';
   require 'ManejadorBajasInventario.php';
 
-  public class AsignadorTareas {
+  class AsignadorTareas {
 
     private $tarea;
     private $datosTarea;
-    private $administradorTarea;
 
     public __construct( $tarea, $datosTarea ) {
       $this->tarea = $tarea;
@@ -18,18 +17,18 @@
     public function asignarTarea() {
       switch ( $this->$tarea ) {
         case 'añadir':
-          $this->$administradorTarea = new ManejadorAltasInventario();
-          $this->$administradorTarea->entenderTipoAlta( $this->$datosTarea );
+          $manejadorTarea = new ManejadorAltasInventario();
+          $manejadorTarea->entenderTipoAlta( $this->$datosTarea );
         break;
 
         case 'modificar':
-          $this->$administradorTarea = new ManejadorCambiosInventario();
-          $this->$administradorTarea->entenderTipoCambio( $this->$datosTarea );
+          $manejadorTarea = new ManejadorCambiosInventario();
+          $manejadorTarea->entenderTipoCambio( $this->$datosTarea );
         break;
 
         case 'eliminar':
-          $this->$administradorTarea = new ManejadorBajasInventario();
-          $this->$administradorTarea->entenderTipoBaja( $this->$datosTarea );
+          $manejadorTarea = new ManejadorBajasInventario();
+          $manejadorTarea->entenderTipoBaja( $this->$datosTarea );
         break;
 
         case 'generar reporte':

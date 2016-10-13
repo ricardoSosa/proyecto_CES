@@ -1,10 +1,10 @@
 <?php
 
-  include( "clase_administrador.php" )
+  require 'Administrador.php';
 
-  public class Administrador_componente extends Administrador {
+  class AdministradorComponente extends Administrador {
 
-    public function Administrador_componente() {
+    public __construct() {
 
     }
 

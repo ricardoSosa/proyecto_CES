@@ -12,9 +12,7 @@
 
     }
 
-    public function añadirElemento( $datosElemento ) {
-      
-    }
+    public abstract function añadirElemento( $datosElemento );
 
     public function eliminar( $id ) {
 
