@@ -1,6 +1,6 @@
 <?php
 
-  public class Manejador_peticiones{
+  class Manejador_peticiones{
 
     private $request;
 

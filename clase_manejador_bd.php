@@ -10,7 +10,7 @@
 
     }
 
-    public function realizar_conexion(){
+    private function realizar_conexion(){
 
       $base_datos = 'mysql:host = localhost; dbname = ';
       $usuario = 'root';

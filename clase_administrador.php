@@ -2,7 +2,7 @@
 
   include("clase_manejador_bd.php");
 
-  public abstract class Administrador{
+  abstract class Administrador{
 
     private $manejador_bd;
 

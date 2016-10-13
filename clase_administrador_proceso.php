@@ -2,7 +2,7 @@
 
   include("clase_administrador.php");
 
-  public class Administrador_proceso extends Administrador{
+  class Administrador_proceso extends Administrador{
 
     public function Administrador_proceso(){
 
