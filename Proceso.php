@@ -1,37 +1,24 @@
 <?php
 
-<<<<<<< HEAD
-=======
-  include( "Equipo.php" );
+  include "Equipo.php";
 
->>>>>>> 7b856c010ab40608596c1d50212d9de84570a1b5
   class Proceso {
 
     private $id;
     private $nombre;
     private $descripcion;
     private $equipos;
-    private $duracionEstimada;
+    private $duracion_estimada;
 
-    public function Proceso() {
-
+    public __contruct( $datos_proceso ) {
+      $this->$id = $datos_proceso[ 'id' ];
+      $this->nombre = $datos_proceso[ 'nombre' ];
+      $this->$descripcion = $datos_proceso[ 'descripcion' ];
+      $this->$equipos = $datos_proceso[ 'equipos' ];
+      $this->$duracion_estimada = $datos[ 'duracion_estimada' ];
     }
 
-<<<<<<< HEAD
-    public function obtenerId() {
 
-    }
-
-    public function obtenerNombre() {
-
-    }
-
-    public function obtenerDescripcion() {
-
-    }
-
-    public function obtenerEquipo( $idEquipo ) {
-=======
     public function obtener_id() {
       return $this->id;
     }
@@ -47,7 +34,6 @@
     public function obtener_equipo( $id_equipo ) {
       return $this->equipos[ 'id_equipo' ];
     }
->>>>>>> 7b856c010ab40608596c1d50212d9de84570a1b5
 
     public function obtener_duracion_estimada() {
       return $this->duracion_estimada;
