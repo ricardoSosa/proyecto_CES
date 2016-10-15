@@ -4,7 +4,7 @@
 
   class Administrador_equipo extends Administrador {
 
-    public function Administrador_equipo() {
+    function __construct() {
 
     }
 

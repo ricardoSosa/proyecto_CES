@@ -18,7 +18,9 @@
 
     }
 
-    public function eliminar( $id ) {
+    public function eliminar( $datos ) {
+
+      $this->manejador_bd->eliminar( $datos );
 
     }
 

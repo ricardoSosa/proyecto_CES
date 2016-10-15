@@ -5,7 +5,7 @@
     private $conexion;
 
 
-    public function Manejador_base_datos() {
+    function __construct() {
 
       $this->realizar_conexion();
 
@@ -32,45 +32,68 @@
     }
 
 
-    public function insertar( $datos ) {
+    public function insertar( $nombre_tabla, $datos ) {
 
       $consulta = null;
       $datos_elemento = null;
 
-      //Se evalúa si la inserción es de un proceso, equipo o componente.
+      //Se evalúa qué tipo de elemento se quiere insertar.
 
-      switch( $datos[ 'tipo_elemento' ] ) {
+        switch( $datos[ 'tipo_insercion' ] ) {
 
-        case 'Proceso':
-          $consulta = "INSERT INTO procesos ( id, nombre, descripcion )
-            VALUES ( :id, :nombre, :descripcion )";
-          $datos_elemento = array(
-            ':id' => $datos[ 'id' ],
-            ':nombre' => $datos[ 'nombre' ],
-            ':descripcion' => $datos[ 'descripcion' ] );
-          break;
+          case 'Proceso':
+            $consulta = "INSERT INTO
+              procesos ( id, nombre, descripcion ) VALUES
+              ( :id, :nombre, :descripcion )";
+            $datos_elemento = array(
+              ':id' => $datos[ 'id' ],
+              ':nombre' => $datos[ 'nombre' ],
+              ':descripcion' => $datos[ 'descripcion' ] );
+            break;
 
-        case 'Equipo':
-          $consulta = "INSERT INTO equipos ( id, nombre, descripcion, ubicacion )
-            VALUES ( :id, :nombre, :descripcion, :ubicacion )";
-          $datos_elemento = array(
-            ':id' => $datos[ 'id' ],
-            ':nombre' => $datos[ 'nombre' ],
-            ':descripcion' => $datos[ 'descripcion' ],
-            ':ubicacion' => $datos[ 'ubicacion' ] );
-          break;
+          case 'Equipo':
+            $consulta = "INSERT INTO
+              equipos ( id, nombre, descripcion, ubicacion ) VALUES
+              ( :id, :nombre, :descripcion, :ubicacion )";
+            $datos_elemento = array(
+              ':id' => $datos[ 'id' ],
+              ':nombre' => $datos[ 'nombre' ],
+              ':descripcion' => $datos[ 'descripcion' ],
+              ':ubicacion' => $datos[ 'ubicacion' ] );
+            break;
 
-        case 'Componente':
-          $consulta = "INSERT INTO componentes ( id, nombre, descripcion, tiempo_vida_max )
-            VALUES ( :id, :nombre, :descripcion, :tiempo_vida_max )";
-          $datos_elemento = array(
-            ':id' => $datos[ 'id' ],
-            ':nombre' => $datos[ 'nombre' ],
-            ':descripcion' => $datos[ 'descripcion' ],
-            ':tiempo_vida_max' => $datos[ 'tiempo_vida_max' ] );
-          break;
+          case 'Componente':
+            $consulta = "INSERT INTO
+              componentes ( id, nombre, descripcion, tiempo_vida_max ) VALUES
+              ( :id, :nombre, :descripcion, :tiempo_vida_max )";
+            $datos_elemento = array(
+              ':id' => $datos[ 'id' ],
+              ':nombre' => $datos[ 'nombre' ],
+              ':descripcion' => $datos[ 'descripcion' ],
+              ':tiempo_vida_max' => $datos[ 'tiempo_vida_max' ] );
+            break;
 
-      }
+          case 'Porcentaje_equipo':
+            $consulta = "INSERT INTO
+              porcentajes_equipos ( id_proceso, id_equipo, porcentaje_uso) VALUES
+              ( :id_proceso, :id_equipo, :porcentaje_uso )";
+            $datos_elemento = array(
+              ':id_proceso' => $datos[ 'id_proceso' ],
+              ':id_equipo' => $datos[ 'id_equipo' ],
+              ':porcentaje_uso' => $datos[ 'porcentaje_uso' ] );
+            break;
+
+          case 'Porcentaje_componente':
+            $consulta = "INSERT INTO
+              porcentajes_componentes ( id_equipo, id_comp, porcentaje_uso ) VALUES
+              ( :id_equipo, :id_comp, :porcentaje_uso )";
+            $datos_elemento = array(
+              ':id_equipo' => $datos[ 'id_equipo' ],
+              ':id_comp' => $datos[ 'id_comp' ],
+              ':porcentaje_uso' => $datos[ 'porcentaje_uso' ] );
+            break;
+
+        }
 
       //Se prepara la consulta y se realiza la inserción.
 
@@ -80,50 +103,43 @@
     }
 
 
-    public function eliminar( $datos ) {
+    public function eliminar( $nombre_tabla, $id ) {
+
+      $consulta = "DELETE FROM $nombre_tabla WHERE id = :id";
+      $datos_elemento = array( 'id' => $id );
+
+      $resultado = $this->conexion->prepare( $consulta );
+      $resultado->execute( $datos_elemento );
 
     }
 
 
-    public function modificar( $datos ) {
+    public function modificar( $nombre_tabla, $datos ) {
+
+      $consulta = "UPDATE $nombre_tabla SET :atrib_cambiar = :dato_nuevo WHERE
+        id = :id";
+      $datos_elemento = array(
+        ':atrib_cambiar' => $datos[ 'atrib_cambiar' ],
+        ':dato_nuevo' => $datos[ 'dato_nuevo' ],
+        ':id' => $datos[ 'id' ] );
+
+      //Se ejecuta la modificación.
+
+      $resultado = $this->conexion->prepare( $consulta );
+      $resultado->execute( $datos_elemento );
 
     }
 
 
-    public function realizar_consulta( $datos ) {
+    public function realizar_consulta( $nombre_tabla, $id ) {
 
-      $consulta = null;
+      if( $datos['elemento_consulta'] == 'lista' ) {
 
-      //Se selecciona la consulta de acuerdo a lo que requiera el usuario.
+        $consulta = "SELECT * FROM $nombre_tabla";
 
-      switch( $datos[ 'tipo_consulta' ] ) {
+      } else if ( $datos['elemento_consulta'] == 'especifico' ) {
 
-        case 'lista_procesos':
-          $consulta = "SELECT * FROM procesos";
-          break;
-
-        case 'lista_equipos':
-          $consulta = "SELECT * FROM equipos";
-          break;
-
-        case 'lista_componentes':
-          $consulta = "SELECT * FROM componentes";
-          break;
-
-        case 'proceso_especifico':
-          $consulta = "SELECT descripcion, duracion FROM procesos WHERE
-            id = " . $datos[ 'id' ] . ")";
-          break;
-
-        case 'equipo_especifico':
-          $consulta = "SELECT descripcion, ubicacion FROM equipos WHERE
-            id = " . $datos[ 'id' ] . ")";
-          break;
-
-        case 'componente_especifico':
-          $consulta = "SELECT descripcion, tiempo_vida_max FROM componentes WHERE
-           id = " . $datos[ 'id' ] . ")";
-          break;
+        $consulta = "SELECT * FROM $nombre_tabla WHERE id = $id";
 
       }
 

@@ -11,7 +11,7 @@
     private $componentes;
     private $porcentaje_uso;
 
-    public function Equipo() {
+    function __construct() {
 
     }
 

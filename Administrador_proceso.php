@@ -16,11 +16,11 @@
 
     }
 
-    public function agregar_equipo( $id_equipo ) {
+    public function agregar_equipo( $datos ) {
 
     }
 
-    public function quitar_equipo( $id_equipo ) {
+    public function quitar_equipo( $datos ) {
 
     }
 

@@ -10,7 +10,7 @@
     private $equipos;
     private $duracion_estimada;
 
-    public function Proceso() {
+    function __construct() {
 
     }
 

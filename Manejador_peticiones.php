@@ -4,7 +4,7 @@
 
     private $peticion;
 
-    public function Manejador_peticiones() {
+    function __construct() {
 
     }
 

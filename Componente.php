@@ -9,7 +9,7 @@
     private $tiempo_vida_actual;
     private $porcentaje_uso;
 
-    public function Componente() {
+    function __construct() {
 
     }
 

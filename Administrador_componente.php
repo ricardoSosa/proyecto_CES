@@ -4,7 +4,7 @@
 
   class Administrador_componente extends Administrador {
 
-    public function Administrador_componente() {
+    function __construct() {
 
     }
 

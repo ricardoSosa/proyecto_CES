@@ -4,7 +4,7 @@
 
     private $procesos;
 
-    public function Simulador_procesos() {
+    function __construct() {
 
     }
 
