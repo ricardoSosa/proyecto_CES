@@ -12,7 +12,7 @@
     }
 
 
-    public function realizar_conexion() {
+    private function realizar_conexion() {
 
       //Datos requeridos para la conexión.
 

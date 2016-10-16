@@ -6,16 +6,14 @@
 
     private $manejador_bd;
 
-    public function Administrador() {
+    public __construct() {
 
       $this->manejador_bd = new Manejador_base_datos();
 
     }
 
-    public function agregarNuevo( $datos ) {
-
-      $this->manejador_bd->insertar( $datos );
-
+    public function añadirElemento( $datos_elemento ) {
+      $this-$manejador_bd->insertar( $datos_elemento );
     }
 
     public function eliminar( $datos ) {

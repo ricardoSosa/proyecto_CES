@@ -4,7 +4,7 @@
 
   class Administrador_proceso extends Administrador {
 
-    public function Administrador_proceso() {
+    function __construct() {
 
     }
 

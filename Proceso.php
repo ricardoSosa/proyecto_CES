@@ -1,6 +1,6 @@
 <?php
 
-  include( "Equipo.php" );
+  include "Equipo.php";
 
   class Proceso {
 
@@ -10,9 +10,14 @@
     private $equipos;
     private $duracion_estimada;
 
-    function __construct() {
-
+    function __contruct( $datos_proceso ) {
+      $this->$id = $datos_proceso[ 'id' ];
+      $this->nombre = $datos_proceso[ 'nombre' ];
+      $this->$descripcion = $datos_proceso[ 'descripcion' ];
+      $this->$equipos = $datos_proceso[ 'equipos' ];
+      $this->$duracion_estimada = $datos[ 'duracion_estimada' ];
     }
+
 
     public function obtener_id() {
       return $this->id;
