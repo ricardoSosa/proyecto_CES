@@ -7,38 +7,39 @@
     private $tarea;
     private $datos_tarea;
     private $administrador;
+    private $simulador_procesos;
 
     function __construct( $tarea, $datos_tarea ) {
-      $this-$administrador = new Administrador();
-
       $this->tarea = $tarea;
       $this->datosTarea = $datos_tarea;
+      $this->administrador = new Administrador();
+      $this->simulador_procesos = new simulador_procesos();
     }
 
     public function asignar_tarea() {
-      switch ( $this->$tarea ) {
-        case 'añadir':
-          $administrador->añadir( $datos_tarea );
+      switch ( $this->tarea ) {
+        case 'agregar':
+          $this->administrador->agregar_nuevo( $datos_tarea );
         break;
 
         case 'modificar':
-          $administrador->modificar( $datos_tarea );
+          $this->administrador->modificar( $datos_tarea );
         break;
 
         case 'eliminar':
-          $administrador->eliminar( $datos_tarea );
+          $this->administrador->eliminar( $datos_tarea );
         break;
 
-        case 'generar reporte':
+        case 'generar historial':
           #code...
         break;
 
         case 'simular':
-          # code...
+          $this->simulador_procesos->simular( $procesos );
         break;
 
         case 'activar proceso':
-          # code...
+
         break;
 
         default:
