@@ -131,7 +131,7 @@
     }
 
 
-    public function realizar_consulta( $nombre_tabla, $id ) {
+    public function realizar_consulta( $nombre_tabla, $datos ) {
 
       if( $datos['elemento_consulta'] == 'lista' ) {
 
@@ -139,7 +139,7 @@
 
       } else if ( $datos['elemento_consulta'] == 'especifico' ) {
 
-        $consulta = "SELECT * FROM $nombre_tabla WHERE id = $id";
+        $consulta = "SELECT * FROM $nombre_tabla WHERE id = {$datos[ 'id' ]}";
 
       }
 
