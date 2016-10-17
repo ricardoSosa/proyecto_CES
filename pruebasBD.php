@@ -16,6 +16,6 @@ $datos = array( 'elemento_consulta' => 'lista' );
 
 $consulta = $base_datos->realizar_consulta( 'componentes', $datos );
 
-echo $consulta;
+print_r( $consulta );
 
  ?>

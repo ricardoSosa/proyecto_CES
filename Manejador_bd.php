@@ -146,8 +146,9 @@
       //Se realiza la consulta y se guarda el resultado.
 
       $resultado = $this->conexion->query( $consulta );
+      $datos_obtenidos = $resultado->fetch( PDO::FETCH_ASSOC );
 
-      return $resultado;
+      return $datos_obtenidos;
 
     }
 
