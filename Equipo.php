@@ -12,11 +12,11 @@
     private $porcentaje_uso;
 
     function __construct( $datos_equipo ) {
-      $this->$id = $datos_equipo[ 'id' ];
-      $this->$nombre = $datos_equipo[ 'nombre' ];
-      $this->$descripcion = $datos_equipo[ 'descripcion' ];
-      $this->$ubicacion = $datos_equipo[ 'ubicacion' ];
-      $this->porcentaje_uso = $datos_equipo[ 'porcentaje_uso' ];
+      $this->id = $datos_equipo[ 'id' ];
+      $this->nombre = $datos_equipo[ 'nombre' ];
+      $this->descripcion = $datos_equipo[ 'descripcion' ];
+      $this->ubicacion = $datos_equipo[ 'ubicacion' ];
+      $this->orcentaje_uso = $datos_equipo[ 'porcentaje_uso' ];
     }
 
     public function obtener_id() {

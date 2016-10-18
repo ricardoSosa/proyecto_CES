@@ -16,16 +16,16 @@
       $this->manejador_bd->insertar( $tipo_elemento, $datos );
     }
 
-    public function modificar( $tipo_elemento, $datos ) {
-      $this->manejador_bd->modificar( $tipo_elemento, $datos  );
-    }
-
     public function eliminar( $tipo_elemento, $id ) {
       $this->manejador_bd->eliminar( $tipo_elemento, $id );
     }
 
     public function leer_datos( $tipo_elemento, $datos ) {
       $this->manejador_bd->realizar_consulta( $tipo_elemento, $datos );
+    }
+
+    public function modificar( $tipo_elemento, $datos ) {
+      $this->manejador_bd->modificar( $tipo_elemento, $datos  );
     }
 
   }
