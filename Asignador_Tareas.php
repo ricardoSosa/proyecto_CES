@@ -2,6 +2,18 @@
 
   include 'Administrador.php';
 
+  $tarea = $_POST[ 'tarea' ];
+  $tipo_tarea = $_POST[ 'tipo_insercion' ];
+  $datos_peticion = $_POST[ 'datos' ];
+
+  $datos_tarea = array( 'tipo_insercion' => $tipo_tarea ,
+                        'datos' => $datos_peticion );
+
+  $asignador_tareas = new Asignador_tareas( $tarea, $datos_tarea );
+  $asignador_tareas->asignar_tarea();
+
+
+//------------------------------------------------------------------------------
   class Asignador_tareas {
 
     private $tarea;

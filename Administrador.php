@@ -13,6 +13,10 @@
     }
 
     public function añadirElemento( $datos_elemento ) {
+
+      $id = 'id generico1'; //eliminar esto despues
+      $tipo_insercion = $datos_elemento[ 'tipo_insercion' ];
+
       $this-$manejador_bd->insertar( $datos_elemento );
     }
 

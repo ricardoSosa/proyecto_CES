@@ -9,7 +9,9 @@ ventana.boton_enviar.on( "click", function() {
   var datos_correctos = controlador_ventana.validar_campos_ventana();
 
   if ( datos_correctos ) {
-    controlador_ventana.enviar_datos_componente().
+    var datos_componente = controlador_ventana.obtener_datos_componente();
+    controlador_ventana.enviar_datos_componente( datos_componente );
+
   } else {
     controlador_ventana.notificar_mensaje_error();
   }
@@ -47,7 +49,25 @@ function Controlador_Ventana_Componentes( ventana ) {
     ventana.mensaje_error.text( 'Datos incorrectos.' );
   }
 
-  this.enviar_datos_componente = function() {
-    
+  this.obtener_datos_componente = function() {
+    var nombre_componente = ventana.campo_nombre_comp.val();
+    var tiempo_vida_max = ventana.campo_tiempo_vida_comp.val();
+    var info_componente = ventana.campo_info_comp.val();
+
+    var datos_componente ={'nombre' : nombre_componente,
+                           'tiempo vida' : tiempo_vida_max,
+                           'info componente' : info_componente};
+
+    return datos_componente;
+  }
+
+  this.enviar_datos_componente = function( datos_componente ) {
+    $.ajax( {
+      'type' : "POST",
+      'url' : "Asignador_Tareas.php",
+      'data' : {'tarea' : "Añadir",
+                'tipo_insercion' : "Componente",
+                'datos' : datos_componente}
+    } );
   }
 }
