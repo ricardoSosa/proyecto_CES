@@ -1,11 +1,11 @@
 <?php
 
-  include( "Administrador.php" );
+  include "Administrador.php";
 
   class Administrador_proceso extends Administrador {
 
     function __construct() {
-
+      parent::__construct();
     }
 
     public function iniciar_proceso( $id_proceso ) {
@@ -23,15 +23,19 @@
         'dato_nuevo' => '',
         'id' => $id_proceso );
 
-      $this->manejador_bd->modificar( 'historial_procesos',  );
+      $this->manejador_bd->modificar( 'historial_procesos', $datos );
     }
 
     public function agregar_equipo( $datos ) {
       $this->manejador_bd->insertar( 'porcentajes_equipos', $datos );
     }
 
-    public function quitar_equipo( $id ) {
-      $this->manejador_bd->eliminar( 'porcentajes_equipos', $id );
+    public function quitar_equipo( $id_equipo ) {
+      $this->manejador_bd->eliminar( 'porcentajes_equipos', $id_equipo );
+    }
+
+    public function generar_historial() {
+      $this->manejador_bd->realizar_consulta( 'historial_procesos',  );
     }
 
   }

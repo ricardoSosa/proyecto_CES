@@ -1,6 +1,6 @@
 <?php
 
-  include( "Manejador_bd.php" );
+  include "Manejador_bd.php";
 
   abstract class Administrador {
 
@@ -24,10 +24,6 @@
 
     public function leer_datos( $nombre_tabla, $datos ) {
       $this->manejador_bd->realizar_consulta( $nombre_tabla, $datos );
-    }
-
-    public function generar_historial() {
-
     }
 
   }

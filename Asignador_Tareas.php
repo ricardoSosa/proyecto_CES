@@ -1,6 +1,9 @@
 <?php
 
-  include 'Administrador.php';
+  include 'Administrador_proceso.php';
+  include 'Administrador_equipo.php';
+  include 'Administrador_componente.php';
+  include 'Simulador_procesos.php';
 
   class Asignador_tareas {
 
@@ -12,8 +15,7 @@
     function __construct( $tarea, $datos_tarea ) {
       $this->tarea = $tarea;
       $this->datosTarea = $datos_tarea;
-      $this->administrador = new Administrador();
-      $this->simulador_procesos = new simulador_procesos();
+      $this->asignar_administrador( $datos_tarea[ 'tipo_administrador' ] );
     }
 
     public function asignar_tarea() {
@@ -31,7 +33,7 @@
         break;
 
         case 'generar historial':
-          #code...
+          $this->administrador->generar_historial();
         break;
 
         case 'simular':
@@ -39,12 +41,33 @@
         break;
 
         case 'activar proceso':
-
+          $this->administrador->iniciar_proceso( $id_proceso );
         break;
 
         default:
           # code...
         break;
+      }
+    }
+
+    //Método que selecciona el tipo de administrador a utilizar.
+
+    public function asignar_administrador( $tipo_administrador ) {
+      switch( $administrador ){
+        case 'proceso':
+          $this->administrador = new Administrador_proceso();
+          break;
+
+        case 'equipo':
+          $this->administrador = new Administrador_equipo();
+          break;
+
+        case 'componente':
+          $this->administrador = new Administrador_componente();
+          break;
+
+        case 'simulador':
+          $this->simulador_procesos = new Simulador_procesos();
       }
     }
 

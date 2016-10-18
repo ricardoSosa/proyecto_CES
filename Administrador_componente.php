@@ -1,11 +1,11 @@
 <?php
 
-  include( "Administrador.php" );
+  include "Administrador.php";
 
   class Administrador_componente extends Administrador {
 
     function __construct() {
-
+      parent::__construct();
     }
 
   }
