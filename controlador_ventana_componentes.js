@@ -6,6 +6,7 @@ var controlador_ventana = new Controlador_Ventana_Componentes( ventana );
 
 
 ventana.boton_enviar.on( "click", function() {
+
   var datos_correctos = controlador_ventana.validar_campos_ventana();
 
   if ( datos_correctos ) {
@@ -23,10 +24,16 @@ ventana.boton_enviar.on( "click", function() {
 function Ventana_Componentes() {
   this.campo_nombre_comp = $( '#nombre-componente' );
   this.campo_tiempo_vida_comp = $( '#vida-max-componente' );
-  this.campo_info_comp = $( '#info-componete' );
+  this.campo_info_comp = $( '#info-componente' );
   this.boton_enviar = $( '#btn-enviar' );
   this.mensaje_error = $( '.error' );
 }
+
+//------------------------------------------------------------------------------
+// CLASE CONTROLADOR VENTANA COMPONENTES
+//
+// Esta clase contiene todo lo relacionado al manejo de la ventana componentes
+//------------------------------------------------------------------------------
 
 function Controlador_Ventana_Componentes( ventana ) {
   this.ventana = ventana;
@@ -36,7 +43,7 @@ function Controlador_Ventana_Componentes( ventana ) {
 
     if ( ( ventana.campo_nombre_comp.val() != '' ) &&
          ( ventana.campo_tiempo_vida_comp.val() != '' ) &&
-         ( ventana.campo_info_comp.val() != '' ) ) {
+         ( ventana.campo_info_comp.select() != '' ) ) {
            datos_correctos = true;
     } else {
       datos_correctos = false;
@@ -54,20 +61,27 @@ function Controlador_Ventana_Componentes( ventana ) {
     var tiempo_vida_max = ventana.campo_tiempo_vida_comp.val();
     var info_componente = ventana.campo_info_comp.val();
 
-    var datos_componente ={'nombre' : nombre_componente,
-                           'tiempo vida' : tiempo_vida_max,
-                           'info componente' : info_componente};
+    var datos_componente ={'id' : "id generico 12",
+                           'nombre' : nombre_componente,
+                           'descripcion' : info_componente,
+                           'tiempo_vida_max' : tiempo_vida_max,
+                           'tipo_elemento' : 'componentes'};
 
     return datos_componente;
   }
 
   this.enviar_datos_componente = function( datos_componente ) {
     $.ajax( {
-      'type' : "POST",
-      'url' : "Asignador_Tareas.php",
-      'data' : {'tarea' : "Añadir",
-                'tipo_insercion' : "Componente",
-                'datos' : datos_componente}
+      type : "POST",
+      url : "Asignador_tareas.php",
+      data : {tarea : "agregar",
+              datos : datos_componente},
+      success: function( data ) {
+        console.log(data);
+      },
+      error: function() {
+        console.log( 'No se ha podido completar la comunicación con el servidor.' );
+      }
     } );
   }
 }
