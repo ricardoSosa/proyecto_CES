@@ -25,9 +25,9 @@
     private $administrador;
     private $simulador_procesos;
 
-    function __construct( $tarea, $datos ) {
+    function __construct( $tarea, $datos_tarea ) {
       $this->tarea = $tarea;
-      $this->datos_tarea = $datos;
+      $this->datos_tarea = $datos_tarea;
 
       $this->asignar_administrador( $this->datos_tarea[ 'tipo_elemento' ] );
       $this->asignar_tarea();
