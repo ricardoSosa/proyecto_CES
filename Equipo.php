@@ -3,7 +3,7 @@
   include "Componente.php";
 
   class Equipo {
-
+    
     private $id;
     private $nombre;
     private $descripcion;

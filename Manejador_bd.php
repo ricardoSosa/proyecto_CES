@@ -17,9 +17,9 @@
 
       //Datos requeridos para la conexión.
 
-      $base_datos = 'mysql:host=localhost; dbname=proyecto_ces';
-      $usuario = 'root';
-      $contraseña = '';
+      const BASE_DATOS = 'mysql:host=localhost; dbname=proyecto_ces';
+      const USUARIO = 'root';
+      const CONTRASEÑA = '';
 
       //Conexión con la base de datos.
 
@@ -88,7 +88,6 @@
               ':id_comp' => $datos[ 'id_comp' ],
               ':porcentaje_uso' => $datos[ 'porcentaje_uso' ] );
             break;
-
         }
 
       //Se prepara la consulta y se realiza la inserción.
@@ -113,7 +112,7 @@
       $resultado->execute( $datos_elemento );
     }
 
-    //Método que eliminar elementos de las tablas de la base de datos.
+    //Método que elimina elementos de las tablas de la base de datos.
 
     public function eliminar( $nombre_tabla, $id ) {
       $consulta = "DELETE FROM $nombre_tabla WHERE id = :id";
