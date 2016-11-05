@@ -5,6 +5,19 @@
   include 'Administrador_componente.php';
   include 'Simulador_procesos.php';
 
+  //Se recive la tarea del usuario y se la pasa a un Asignador_tareas
+
+  $tarea_usuario = $_POST[ 'tarea' ];
+  $datos_tarea = $_POST[ 'datos' ];
+
+  $asignador_tareas = new Asignador_tareas( $tarea_usuario, $datos_tarea );
+
+  //----------------------------------------------------------------------------
+  // CLASE ASIGNADOR DE TAREAS
+  //
+  // Esta clase esta encargadas de manejar la tarea que el usuario quiere hacer
+  //----------------------------------------------------------------------------
+
   class Asignador_tareas {
 
     private $tarea;
@@ -14,22 +27,45 @@
 
     function __construct( $tarea, $datos_tarea ) {
       $this->tarea = $tarea;
-      $this->datosTarea = $datos_tarea;
-      $this->asignar_administrador( $datos_tarea[ 'tipo_administrador' ] );
+      $this->datos_tarea = $datos_tarea;
+
+      $this->asignar_administrador( $this->datos_tarea[ 'tipo_elemento' ] );
+      $this->asignar_tarea();
+    }
+
+    //Método que selecciona el tipo de administrador a utilizar.
+
+    public function asignar_administrador( $tipo_elemento ) {
+      switch( $tipo_elemento ){
+        case 'procesos':
+          $this->administrador = new Administrador_proceso();
+          break;
+
+        case 'equipos':
+          $this->administrador = new Administrador_equipo();
+          break;
+
+        case 'componentes':
+          $this->administrador = new Administrador_componente();
+          break;
+
+        case 'simulador':
+          $this->simulador_procesos = new Simulador_procesos();
+      }
     }
 
     public function asignar_tarea() {
       switch ( $this->tarea ) {
         case 'agregar':
-          $this->administrador->agregar_nuevo( $datos_tarea );
+          $this->administrador->agregar_nuevo( $this->datos_tarea );
         break;
 
         case 'modificar':
-          $this->administrador->modificar( $datos_tarea );
+          $this->administrador->modificar( $this->datos_tarea );
         break;
 
         case 'eliminar':
-          $this->administrador->eliminar( $datos_tarea );
+          $this->administrador->eliminar( $this->datos_tarea );
         break;
 
         case 'generar historial':
@@ -46,28 +82,8 @@
 
         default:
           # code...
+          echo "Tarea invalida";
         break;
-      }
-    }
-
-    //Método que selecciona el tipo de administrador a utilizar.
-
-    public function asignar_administrador( $tipo_administrador ) {
-      switch( $administrador ){
-        case 'proceso':
-          $this->administrador = new Administrador_proceso();
-          break;
-
-        case 'equipo':
-          $this->administrador = new Administrador_equipo();
-          break;
-
-        case 'componente':
-          $this->administrador = new Administrador_componente();
-          break;
-
-        case 'simulador':
-          $this->simulador_procesos = new Simulador_procesos();
       }
     }
 

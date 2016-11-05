@@ -125,7 +125,7 @@
     //Método que consulta información de las tablas de la base de datos.
 
     public function realizar_consulta( $nombre_tabla, $datos ) {
-      switch( $datos[ 'tipo_consulta' ] ){
+      switch( $datos[ 'tipo_consulta' ] ) {
         case 'lista':
           $consulta = "SELECT * FROM $nombre_tabla";
           break;
@@ -133,15 +133,18 @@
         case 'especifico':
           $id = $datos[ 'id' ];
           $consulta = "SELECT * FROM $nombre_tabla WHERE id = '$id'";
+          break;
 
         case 'historial':
           $consulta = "SELECT * FROM $nombre_tabla";
+          break;
       }
 
       //Se realiza la consulta y se guarda el resultado.
 
       $resultado = $this->conexion->query( $consulta );
-      return $resultado;
+      $datos_obtenidos = $resultado->fetch( PDO::FETCH_ASSOC );
+      return $datos_obtenidos;
     }
 
   }

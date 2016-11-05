@@ -1,6 +1,6 @@
 <?php
 
-  public class Simulador_Procesos {
+  class Simulador_Procesos {
 
     private $procesos;
 

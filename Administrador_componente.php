@@ -1,6 +1,6 @@
 <?php
 
-  include "Administrador.php";
+  include_once "Administrador.php";
 
   class Administrador_componente extends Administrador {
 
