@@ -23,7 +23,7 @@
 
       //Conexión con la base de datos.
 
-      $this->conexion = new PDO( $base_datos, $usuario, $contraseña );
+      $this->conexion = new PDO( self::BASE_DATOS, self::USUARIO, self::CONTRASEÑA );
 
       //Consulta de manejo del utf8, para admitir símbolos extraños.
 
