@@ -36,64 +36,9 @@
     el tipo de inserción.*/
 
     public function insertar( $nombre_tabla, $datos ) {
-        switch( $nombre_tabla ) {
-          case 'procesos':
-            $consulta = "INSERT INTO
-              procesos ( id, nombre, descripcion ) VALUES
-              ( :id, :nombre, :descripcion )";
-            $datos_elemento = array(
-              ':id' => $datos[ 'id' ],
-              ':nombre' => $datos[ 'nombre' ],
-              ':descripcion' => $datos[ 'descripcion' ] );
-            break;
-
-          case 'equipos':
-            $consulta = "INSERT INTO
-              equipos ( id, nombre, descripcion, ubicacion ) VALUES
-              ( :id, :nombre, :descripcion, :ubicacion )";
-            $datos_elemento = array(
-              ':id' => $datos[ 'id' ],
-              ':nombre' => $datos[ 'nombre' ],
-              ':descripcion' => $datos[ 'descripcion' ],
-              ':ubicacion' => $datos[ 'ubicacion' ] );
-            break;
-
-          case 'componentes':
-            $consulta = "INSERT INTO
-              componentes ( id, nombre, descripcion, tiempo_vida_max ) VALUES
-              ( :id, :nombre, :descripcion, :tiempo_vida_max )";
-            $datos_elemento = array(
-              ':id' => $datos[ 'id' ],
-              ':nombre' => $datos[ 'nombre' ],
-              ':descripcion' => $datos[ 'descripcion' ],
-              ':tiempo_vida_max' => $datos[ 'tiempo_vida_max' ] );
-            break;
-
-          case 'porcentajes_equipos':
-            $consulta = "INSERT INTO
-              porcentajes_equipos ( id_proceso, id_equipo, porcentaje_uso) VALUES
-              ( :id_proceso, :id_equipo, :porcentaje_uso )";
-            $datos_elemento = array(
-              ':id_proceso' => $datos[ 'id_proceso' ],
-              ':id_equipo' => $datos[ 'id_equipo' ],
-              ':porcentaje_uso' => $datos[ 'porcentaje_uso' ] );
-            break;
-
-          case 'porcentajes_componentes':
-            $consulta = "INSERT INTO
-              porcentajes_componentes ( id_equipo, id_comp, porcentaje_uso ) VALUES
-              ( :id_equipo, :id_comp, :porcentaje_uso )";
-            $datos_elemento = array(
-              ':id_equipo' => $datos[ 'id_equipo' ],
-              ':id_comp' => $datos[ 'id_comp' ],
-              ':porcentaje_uso' => $datos[ 'porcentaje_uso' ] );
-            break;
-        }
-
-      //Se prepara la consulta y se realiza la inserción.
-
-      $resultado = $this->conexion->prepare( $consulta );
-      $resultado->execute( $datos_elemento );
+      $consulta = $this->obtener_consulta_insercion( $nombre_tabla, $datos );
+        echo $consulta;
+        $this->conexion->query( $consulta );
     }
 
     //Método que modifica información de las tablas de la base de datos.
@@ -145,6 +90,42 @@
       $resultado = $this->conexion->query( $consulta );
       $datos_obtenidos = $resultado->fetch( PDO::FETCH_ASSOC );
       return $datos_obtenidos;
+    }
+
+    private function obtener_columnas( $nombre_tabla ) {
+      $consulta_atributos = "DESCRIBE $nombre_tabla;";
+      $columnas = $this->conexion->query( $consulta_atributos );
+      return $columnas;
+    }
+
+    private function obtener_consulta_insercion( $nombre_tabla, $datos ) {
+      $cadena = '';
+      $cadena_atributos = '';
+      $cadena_valores = '';
+
+      $columnas = $this->obtener_columnas($nombre_tabla);
+      $indice = 0;
+      while( $columnas_provisional = $columnas->fetch( PDO::FETCH_ASSOC ) ) {
+        $nombre_columnas[$indice] = $columnas_provisional[ 'Field' ];
+        $indice++;
+      } //while
+      $columnas->closeCursor();
+
+      foreach( $nombre_columnas as $key=>$atributo ) {
+        if( $key == 0 ) {
+          $cadena_atributos = '( ' . $atributo;
+          $cadena_valores = '( ' . '"' . $datos[$atributo] . '"';
+        } else {
+          $cadena_atributos = $cadena_atributos . ', ' . $atributo;
+          $cadena_valores = $cadena_valores . ', ' . '"' . $datos[$atributo] . '"';
+        }
+      } //foreach
+      $cadena_atributos = $cadena_atributos . ' )';
+      $cadena_valores = $cadena_valores . ' )';
+
+      $consulta = "INSERT INTO $nombre_tabla $cadena_atributos VALUES $cadena_valores";
+
+      return $consulta;
     }
 
   }

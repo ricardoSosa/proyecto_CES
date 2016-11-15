@@ -15,7 +15,8 @@
       $this->descripcion = $datos_componente[ 'descripcion' ];
       $this->tiempo_vida_max = $datos_componente[ 'tiempo_vida_max' ];
       $this->tiempo_vida_actual = $datos_componente[ 'tiempo_vida_actual' ];
-      $this->porcentaje_uso[ 'porcentaje_uso' ];
+      $this->porcentaje_uso = $datos_componente[ 'porcentaje_uso' ];
+
     }
 
     public function obtener_id() {
@@ -40,6 +41,10 @@
 
     public function obtener_porcentaje_uso() {
       return $this->porcentaje_uso;
+    }
+
+    public function modificar_tiempo_vida_actual($tiempo_vida){
+      $this->tiempo_vida_actual = $tiempo_vida;
     }
 
   }

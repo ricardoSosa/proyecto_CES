@@ -10,12 +10,12 @@
     private $equipos;
     private $duracion_estimada;
 
-    function __contruct( $datos_proceso ) {
+    function __construct( $datos_proceso ) {
       $this->id = $datos_proceso[ 'id' ];
       $this->nombre = $datos_proceso[ 'nombre' ];
       $this->descripcion = $datos_proceso[ 'descripcion' ];
       $this->equipos = $datos_proceso[ 'equipos' ];
-      $this->duracion_estimada = $datos[ 'duracion_estimada' ];
+      $this->duracion_estimada = $datos_proceso[ 'duracion_estimada' ];
     }
 
 
@@ -31,8 +31,8 @@
       return $this->descripcion;
     }
 
-    public function obtener_equipo( $id_equipo ) {
-      return $this->equipos[ 'id_equipo' ];
+    public function obtener_equipos() {
+      return $this->equipos;
     }
 
     public function obtener_duracion_estimada() {
