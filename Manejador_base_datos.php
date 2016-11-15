@@ -2,6 +2,9 @@
 
   class Manejador_base_datos {
 
+    const BASE_DATOS = 'mysql:host=localhost; dbname=proyecto_ces';
+    const USUARIO = 'root';
+    const CONTRASEÑA = '';
     private $conexion;
 
     //Método constructor.
@@ -14,14 +17,6 @@
     //Método que realiza la conexión con la base de datos.
 
     private function realizar_conexion() {
-
-      //Datos requeridos para la conexión.
-
-      const BASE_DATOS = 'mysql:host=localhost; dbname=proyecto_ces';
-      const USUARIO = 'root';
-      const CONTRASEÑA = '';
-
-      //Conexión con la base de datos.
 
       $this->conexion = new PDO( self::BASE_DATOS, self::USUARIO, self::CONTRASEÑA );
 
