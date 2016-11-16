@@ -74,10 +74,6 @@
           $id = $datos[ 'id' ];
           $consulta = "SELECT * FROM $nombre_tabla WHERE id = '$id'";
           break;
-
-        case 'historial':
-          $consulta = "SELECT * FROM $nombre_tabla";
-          break;
       }
 
       //Se realiza la consulta y se guarda el resultado.
