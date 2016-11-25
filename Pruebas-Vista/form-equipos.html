@@ -1,0 +1,19 @@
+<div class="form">
+  <label for="nombre">Nombre Equipo: </label>
+  <input type="text" id="nombre" ng-model="equipo.nombre">
+
+  <label for="ubicacion">Ubicacion Equipo: </label>
+  <input type="text" id="ubicacion" ng-model="equipo.ubicacion">
+
+  <label for="descripcion">Descripcion Equipo: </label>
+  <textarea name="descrip" id="descripcion" cols="30" rows="10" ng-model="equipo.descripcion"></textarea>
+
+  <h3>Lista de componentes Dispoibles</h3>
+  <div lista-componentes>
+
+  </div>
+
+  <button type="button" ng-click="controlador.validarDatos( equipo ) && controlador.enviarDatos( equipo )">
+    Añadir Equipo
+  </button>
+</div>

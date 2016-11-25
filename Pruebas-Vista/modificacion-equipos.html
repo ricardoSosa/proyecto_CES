@@ -1,0 +1,27 @@
+<div>
+  <h3>Lista de Equipos</h3>
+
+  <div ng-repeat="equipo in controlador.listaEquipos">
+    <p>{{equipo.id}}</p>
+    <p>{{equipo.nombre}}</p>
+    <p>{{equipo.ubicacion}}</p>
+    <p>{{equipo.descripcion}}</p>
+    <button type="button" ng-click="controlador.seleccionarEquipo( equipo )">Modificar Equipo</button>
+
+  </div>
+
+  <div class="form">
+    <h3>Formulario de modificación de Equipo</h3>
+    <p>Id: {{controlador.equipoSeleccionado.id}}</p>
+    <label for="nombre">Nombre</label>
+    <input type="text" id="nombre" ng-model="controlador.equipoSeleccionado.nombre">
+
+    <label for="ubicacion">Ubicación</label>
+    <input type="text" id="ubicacion" ng-model="controlador.equipoSeleccionado.ubicacion">
+
+    <label for="descripcion">Descripción: </label>
+    <textarea name="descrip" id="descripcion" cols="30" rows="10" ng-model="controlador.equipoSeleccionado.descripcion"></textarea>
+
+    <button ng-click="controlador.mandarSolicitudCambio( controlador.equipoSeleccionado )">Modificar</button>
+  </div>
+</div>

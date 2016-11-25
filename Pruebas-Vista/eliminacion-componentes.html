@@ -1,0 +1,8 @@
+<div ng-repeat="componente in controlador.listaComponentes">
+  <p>{{componente.id}}</p>
+  <p>{{componente.nombre}}</p>
+  <p>{{componente.tiempo_vida_max}}</p>
+  <p>{{componente.descripcion}}</p>
+
+  <button type="button" ng-click="controlador.eliminarComponente( componente.id )">Eliminar Componente</button>
+</div>
