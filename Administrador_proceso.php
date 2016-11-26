@@ -5,7 +5,7 @@
   class Administrador_proceso extends Administrador {
 
     function __construct() {
-      parent::__construct();
+      parent::__construct( 'procesos' );
     }
 
     public function agregar_equipo( $datos ) {

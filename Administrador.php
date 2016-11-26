@@ -4,28 +4,30 @@
 
   abstract class Administrador {
 
-    private $manejador_bd;
+    private $conector_bd;
+    private $nombre_tabla_principal;
 
-    function __construct() {
+    function __construct( $nombre_tabla ) {
       $this->manejador_bd = new Manejador_base_datos();
+      $this->nombre_tabla_principal = $nombre_tabla;
     }
 
     public function agregar_nuevo( $datos ) {
-      $tipo_elemento = $datos[ 'tipo_elemento' ];
-
-      $this->manejador_bd->insertar( $tipo_elemento, $datos );
+      $this->manejador_bd->insertar( $nombre_tabla_principal, $datos );
     }
 
-    public function eliminar( $tipo_elemento, $id ) {
-      $this->manejador_bd->eliminar( $tipo_elemento, $id );
+    public function eliminar( $datos ) {
+      $nombre_id = $datos[ 'nombre_id' ];
+      $valor_id = $datos[ 'valor_id' ];
+      $this->manejador_bd->eliminar( $nombre_tabla_principal, $nombre_id, $valor_id );
     }
 
-    public function leer_datos( $tipo_elemento, $datos ) {
-      $this->manejador_bd->realizar_consulta( $tipo_elemento, $datos );
+    public function leer_datos( $datos ) {
+      $this->manejador_bd->obtener_informacion( $nombre_tabla_principal, $datos );
     }
 
-    public function modificar( $tipo_elemento, $datos ) {
-      $this->manejador_bd->modificar( $tipo_elemento, $datos  );
+    public function modificar( $datos ) {
+      $this->manejador_bd->modificar( $nombre_tabla_principal, $datos );
     }
 
   }

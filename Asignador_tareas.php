@@ -81,7 +81,7 @@
 
         default:
           # code...
-          echo "Tarea invalida";
+          echo "Tarea inválida";
         break;
       }
     }
