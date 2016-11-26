@@ -9,7 +9,7 @@
     }
 
     public function agregar_equipo( $datos ) {
-      $this->manejador_bd->insertar( 'porcentajes_equipos', $datos );
+      $this->conector_bd->insertar( 'porcentajes_equipos', $datos );
     }
 
     public function finalizar_proceso( $id_proceso ) {
@@ -18,11 +18,11 @@
         'dato_nuevo' => '',
         'id' => $id_proceso );
 
-      $this->manejador_bd->modificar( 'historial_procesos', $datos );
+      $this->conector_bd->modificar( 'historial_procesos', $datos );
     }
 
     public function generar_historial() {
-      //$this->manejador_bd->realizar_consulta( 'historial_procesos',  );
+      //$this->conector_bd->realizar_consulta( 'historial_procesos',  );
     }
 
     public function iniciar_proceso( $id_proceso ) {
@@ -31,11 +31,11 @@
         'dato_nuevo' => '',
         'id' => $id_proceso );
 
-      $this->manejador_bd->modificar( 'historial_procesos', $datos );
+      $this->conector_bd->modificar( 'historial_procesos', $datos );
     }
 
     public function quitar_equipo( $id_equipo ) {
-      $this->manejador_bd->eliminar( 'porcentajes_equipos', $id_equipo );
+      $this->conector_bd->eliminar( 'porcentajes_equipos', $id_equipo );
     }
 
 

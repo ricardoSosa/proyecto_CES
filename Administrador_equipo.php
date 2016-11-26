@@ -9,11 +9,11 @@
     }
 
     public function agregar_componente( $datos ) {
-      $this->manejador_bd->insertar( 'porcentajes_componentes', $datos );
+      $this->conector_bd->insertar( 'porcentajes_componentes', $datos );
     }
 
     public function quitar_componente( $datos ) {
-      $this->manejador_bd->eliminar( 'porcentajes_componentes', $datos );
+      $this->conector_bd->eliminar( 'porcentajes_componentes', $datos );
     }
 
   }
