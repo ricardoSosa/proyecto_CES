@@ -1,0 +1,10 @@
+<div>
+  <h2 class="page-header">Eliminacón de Procesos</h2>
+
+  <div ng-repeat="proceso in controlador.listaProcesos" class="well well-lg">
+    <h4>{{proceso.nombre}}</h4>
+    <p><strong>ID Proceso: </strong>{{proceso.id}}</p>
+    <p><strong>Descripción: </strong>{{proseso.descripcion}}</p>
+    <button type="button" ng-click="controlador.eliminarProceso( proceso.id )">Eliminar Proceso</button>
+  </div>
+</div>

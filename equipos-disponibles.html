@@ -1,0 +1,9 @@
+<div>
+  <h2 class="page-header">Lista de Equipos</h2>
+  <div ng-repeat="equipo in controlador.listaEquipos" class="well well-lg">
+    <h4>{{equipo.nombre}}</h4>
+    <h5><strong>ID Equipo:</strong> {{equipo.id}}</h5>
+    <h5><strong>Ubicación Equipo:</strong> {{equipo.ubicacion}}</h5>
+    <h5><strong>Descripción:</strong> {{equipo.descripcion}}</h5>
+  </div>
+</div>

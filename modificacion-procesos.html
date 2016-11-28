@@ -1,0 +1,41 @@
+<div class="row">
+  <h2 class="page-header">Modificación de Proceos</h2>
+
+  <div class="col-md-6">
+    <h3 class="page-header">Procesos Disponibles</h3>
+
+    <div ng-repeat="proceso in controlador.listaProcesos" class="well well-sm">
+      <h4>{{proceso.nombre}}</h4>
+      <p>{{proceso.id}}</p>
+      <p>{{proceso.descripcion}}</p>
+      <button class="btn btn-default" ng-click="controlador.seleccionarProceso( proceso )">Modificar Proceso</button>
+
+    </div>
+  </div>
+
+
+  <div class="col-md-6">
+    <div class="form-horizontal">
+      <h3 class="page-header">Formulario de modificación</h3>
+      <p><strong>ID Proceso: </strong>{{controlador.procesoSeleccionado.id}}</p>
+
+      <div class="form-group">
+        <label for="nombre" class="control-label">Nombre</label>
+        <input type="text" class="form-control" id="nombre" ng-model="controlador.procesoSeleccionado.nombre">
+      </div>
+
+      <div class="form-group">
+        <label class="control-label" for="descripcion">Descripción: </label>
+        <textarea class="form-control" name="descrip" id="descripcion" cols="30" rows="10" ng-model="controlador.procesoSeleccionado.descripcion"></textarea>
+      </div>
+
+
+
+      <button ng-click="controlador.mandarSolicitudCambio( controlador.procesoSeleccionado )" class="btn btn-primary">Realizar Cambios</button>
+    </div>
+  </div>
+
+
+
+
+</div>

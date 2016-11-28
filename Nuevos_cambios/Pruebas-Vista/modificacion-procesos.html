@@ -1,0 +1,23 @@
+<div>
+  <h3>Lista de Procesos</h3>
+
+  <div ng-repeat="proceso in controlador.listaProcesos">
+    <p>{{proceso.id}}</p>
+    <p>{{proceso.nombre}}</p>
+    <p>{{proceso.descripcion}}</p>
+    <button type="button" ng-click="controlador.seleccionarProceso( proceso )">Modificar Proceso</button>
+
+  </div>
+
+  <div class="form">
+    <h3>Formulario de modificacion de Proceso</h3>
+    <p>Id: {{controlador.procesoSeleccionado.id}}</p>
+    <label for="nombre">Nombre</label>
+    <input type="text" id="nombre" ng-model="controlador.procesoSeleccionado.nombre">
+
+    <label for="descripcion">Descripción: </label>
+    <textarea name="descrip" id="descripcion" cols="30" rows="10" ng-model="controlador.procesoSeleccionado.descripcion"></textarea>
+
+    <button ng-click="controlador.mandarSolicitudCambio( controlador.procesoSeleccionado )">Modificar</button>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<div>
+  <h3>Lista de Componentes</h3>
+
+  <div ng-repeat="componente in controlador.listaComponentes">
+    <p>{{componente.id}}</p>
+    <p>{{componente.nombre}}</p>
+    <p>{{componente.tiempoVida}}</p>
+    <p>{{componente.descripcion}}</p>
+
+    <button type="button" ng-click="controlador.seleccionarComponente( componente )">Modificar Componente</button>
+  </div>
+
+  <div class="form">
+    <h3>Formulario de modificación de Componentes</h3>
+    <p>ID: {{controlador.componenteSeleccionado.id}}</p>
+    <label for="nombre">Nombre</label>
+    <input type="text" id="nombre" ng-model="controlador.componenteSeleccionado.nombre">
+
+    <label for="tiempoVida">Tiempo Vida Max: </label>
+    <input type="text" id="tiempoVida" ng-model="controlador.componenteSeleccionado.tiempoVida">
+
+    <label for="descripcion">Descripción: </label>
+    <textarea name="descrip" id="descripcion" cols="30" rows="10" ng-model="controlador.componenteSeleccionado.descripcion"></textarea>
+
+    <button ng-click="controlador.mandarSolicitudCambio( controlador.componenteSeleccionado )">Modificar</button>
+  </div>
+
+</div>

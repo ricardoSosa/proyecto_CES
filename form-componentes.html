@@ -1,0 +1,29 @@
+<div class="form-horizontal">
+  <h2 class="page-header">Agregar Componente</h2>
+
+  <div class="form-group">
+    <label class="col-sm-2 control-label" for="nombre">Nombre Componente</label>
+    <div class="col-sm-10">
+      <input class="form-control" type="text" id="nombre" ng-model="componente.nombre">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="tiempoVida" class="col-sm-2 control-label">Tiempo Vida Max</label>
+    <div class="col-sm-10">
+      <input class="form-control" type="text" id="tiempoVida" ng-model="componente.tiempoVida">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-2 control-label" for="descripcion">Descripción Componente</label>
+    <div class="col-sm-10">
+      <textarea class="form-control" name="descript" id="descripcion" cols="30" rows="10" ng-model="componente.descripcion"></textarea>
+    </div>
+  </div>
+
+
+  <button type="button" ng-click="controlador.validarDatos( componente ) && controlador.enviarDatos( componente )">
+    Añadir Componente
+  </button>
+</div>

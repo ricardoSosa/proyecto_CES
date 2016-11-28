@@ -1,0 +1,8 @@
+<div>
+  <h2 class="page-header">Lista de Procesos</h2>
+  <div ng-repeat="proceso in controlador.listaProcesos" class="well well-lg">
+    <h4>{{proceso.nombre}}</h4>
+    <p><strong>ID Proceso: </strong>{{proceso.id}}</p>
+    <p><strong>Descripción: </strong>{{proceso.descripcion}}</p>
+  </div>
+</div>

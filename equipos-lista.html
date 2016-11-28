@@ -1,0 +1,27 @@
+<div class="row">
+
+  <div class="col-md-6">
+    <h3 class="page-header">Equipos Disponibles</h3>
+    <div ng-repeat="equipo in controlador.equipos" class="well well-sm">
+      <h4>{{equipo.nombre}}</h4>
+      <p><strong>ID Equipo: </strong>{{equipo.id}}</p>
+      <p><strong>Ubicación Equipo: </strong>{{equipo.ubicacion}}</p>
+      <p><strong>Descripción: </strong>{{equipo.descripcion}}</p>
+
+      <button class="btn btn-default" type="button" ng-click='controlador.agregarEquipo( equipo )'>Añadir a lista Equipos</button>
+    </div>
+  </div>
+
+
+  <div class="col-md-6">
+    <h3 class="page-header">Equipos Seleccionados</h3>
+    <div ng-repeat="equipo_selec in controlador.listaEquipos track by $index" class="well well-sm">
+      <h4>{{equipo_selec.nombre}}</h4>
+      <p><strong>ID Equipo: </strong>{{equipo_selec.id}}</p>
+
+      <button class="btn btn-default" ng-click='controlador.eliminarEquipo( equipo_selec )'>Quitar de lista</button>
+    </div>
+  </div>
+
+
+</div>

@@ -1,0 +1,30 @@
+<div class="row">
+
+  <div class="col-md-6">
+    <h3 class="page-header">Componentes Disponibles</h3>
+    <div ng-repeat="componente in controlador.componentes" class="well well-sm">
+      <h4>{{componente.nombre}}</h4>
+      <p><strong>ID Componente: </strong>{{componente.id}}</p>
+      <p><strong>Tiempo Vida Max: </strong>{{componente.tiempo_vida_max}} hrs.</p>
+      <p><strong>Descripción: </strong>{{componente.descripcion}}</p>
+
+      <button class="btn btn-default" type="button" ng-click='controlador.agregarComponente( componente )'>Añadir a lista componentes</button>
+
+    </div>
+  </div>
+
+  <div class="col-md-6">
+
+    <h3 class="page-header">Componentes Seleccionados</h3>
+    <div ng-repeat="componente_selec in controlador.listaComponentes track by $index" class="well well-sm">
+      <h4>{{componente_selec.nombre}}</h4>
+      <p><strong>ID Componente: </strong>{{componente_selec.id}}</p>
+
+      <button class="btn btn-default" ng-click='controlador.eliminarComponente( componente_selec )'>Quitar de lista</button>
+    </div>
+  </div>
+
+
+
+</div>
+

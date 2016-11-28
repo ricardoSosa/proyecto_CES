@@ -1,0 +1,43 @@
+<div class="row">
+  <h2 class="page-header">Modificación de Componentes</h2>
+
+  <div class="col-md-6">
+    <h3 class="page-header">Componentes Disponibles</h3>
+
+    <div ng-repeat="componente in controlador.listaComponentes">
+      <h4>{{componente.nombre}}</h4>
+      <p><strong>ID Componente: </strong>{{componente.id}}</p>
+      <p><strong>Tiempo Vida Max: </strong>{{componente.tiempo_vida_max}}</p>
+      <p><strong>Descripción: </strong>{{componente.descripcion}}</p>
+
+      <button class="btn btn-default" type="button" ng-click="controlador.seleccionarComponente( componente )">Modificar Componente</button>
+    </div>
+  </div>
+
+
+  <div class="col-md-6">
+    <div class="form-horizontal">
+      <h3 class="page-header">Formulario de modificación</h3>
+      <p><strong>ID Componente: </strong>{{controlador.componenteSeleccionado.id}}</p>
+
+      <div class="form-group">
+        <label class="control-label" for="nombre">Nombre</label>
+        <input class="form-control" type="text" id="nombre" ng-model="controlador.componenteSeleccionado.nombre">
+      </div>
+
+      <div class="form-group">
+        <label class="control-label" for="tiempoVida">Tiempo Vida Max</label>
+        <input class="form-control" type="text" id="tiempoVida" ng-model="controlador.componenteSeleccionado.tiempoVida">
+      </div>
+
+      <div class="form-group">
+        <label for="descripcion">Descripción</label>
+        <textarea class="form-control" name="descrip" id="descripcion" cols="30" rows="10" ng-model="controlador.componenteSeleccionado.descripcion"></textarea>
+      </div>
+
+      <button class="btn btn-default" ng-click="controlador.mandarSolicitudCambio( controlador.componenteSeleccionado )">Realizar Cambio</button>
+    </div>
+  </div>
+
+
+</div>
