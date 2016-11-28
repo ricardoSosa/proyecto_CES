@@ -74,7 +74,7 @@
       return $consulta;
     }
 
-    private function obtener_consulta_columnas( $nombre_tabla ) { //PROVICIONAL
+    public function obtener_consulta_columnas( $nombre_tabla ) { //PROVICIONAL
       $consulta = "DESCRIBE $nombre_tabla;";
 
       return $consulta;
