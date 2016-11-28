@@ -5,9 +5,7 @@
     function __construct() {
     }
 
-    public function obtener_consulta_insercion( $nombre_tabla, $datos, $columnas ) {
-      $nombres_columnas = $this->obtener_nombres_columnas( $columnas );
-
+    public function obtener_consulta_insercion( $nombre_tabla, $datos, $nombres_columnas ) {
       $cadena_atributos = '';
       $cadena_valores = '';
 
@@ -29,10 +27,7 @@
       return $consulta;
     }
 
-    public function obtener_consulta_modificacion( $nombre_tabla, $datos, $columnas ) {
-      echo $nombre_tabla;
-      $nombres_columnas =  $this->obtener_nombres_columnas( $columnas );
-
+    public function obtener_consulta_modificacion( $nombre_tabla, $datos, $nombres_columnas ) {
       $cadena_modificacion = '';
       $nombre_id = '';
       $valor_id = '';
