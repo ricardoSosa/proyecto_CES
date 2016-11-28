@@ -79,6 +79,10 @@
           $this->encargado_tarea->iniciar_proceso( $id_proceso );
         break;
 
+        case 'consultar':
+          $this->encargado_tarea->leer_datos( $this->datos_tarea );
+        break;
+
         default:
           # code...
           echo "Tarea inválida";
