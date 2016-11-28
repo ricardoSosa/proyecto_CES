@@ -92,6 +92,7 @@
  *
  */
 function Main() {
+    $_POST = json_decode(file_get_contents('php://input'),true);
     $tarea_usuario = $_POST[ 'tarea' ];
     $datos_tarea = $_POST[ 'datos' ];
 
