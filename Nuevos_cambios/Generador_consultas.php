@@ -30,6 +30,7 @@
     }
 
     public function obtener_consulta_modificacion( $nombre_tabla, $datos, $columnas ) {
+      echo $nombre_tabla;
       $nombres_columnas =  $this->obtener_nombres_columnas( $columnas );
 
       $cadena_modificacion = '';

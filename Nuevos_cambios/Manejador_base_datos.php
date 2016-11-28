@@ -32,7 +32,7 @@
     /*Método que inserta elementos nuevos a las tablas de la base de datos según
     el tipo de inserción.*/
     public function insertar( $nombre_tabla, $datos ) {
-      $columnas = $this->obtener_columnas( $nombre_tabla );
+      $columnas = $this->obtener_nombres_columnas( $nombre_tabla );
       $consulta = $this->generador_consultas->obtener_consulta_insercion( $nombre_tabla, $datos, $columnas );
       echo $consulta;
       $this->conexion->query( $consulta );
@@ -54,7 +54,7 @@
 
     //Método que modifica información de las tablas de la base de datos.
     public function modificar( $nombre_tabla, $datos ) {
-      $columnas = $this->obtener_columnas( $nombre_tabla );
+      $columnas = $this->obtener_nombres_columnas( $nombre_tabla );
       $consulta = $this->generador_consultas->obtener_consulta_modificacion( $nombre_tabla, $datos, $columnas );
 
       $resultado = $this->conexion->prepare( $consulta );
