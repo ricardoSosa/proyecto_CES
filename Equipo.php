@@ -1,6 +1,6 @@
 <?php
 
-  include "Componente.php";
+  include_once "Componente.php";
 
   class Equipo {
 

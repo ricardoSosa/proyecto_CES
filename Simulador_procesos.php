@@ -16,11 +16,11 @@
 		private $procesos_simulados;
 
 		private $administrador_proceso;
-		
+
 		private $administrador_equipo;
 
 		function __construct(){
-			echo "Simulador_procesos<br>";
+			//echo "Simulador_procesos<br>";
 			$this->creaar_procesos();
 			//$this->procesos = $procesos;
 			// $this->administrador_proceso = new Administrador_proceso();
@@ -28,9 +28,9 @@
 		}
 
 		private function creaar_procesos(){
-			echo "creaar_procesos()<br>";
+			//echo "creaar_procesos()<br>";
 
-			for ($i=1; $i <= 3; $i++) { 
+			for ($i=1; $i <= 3; $i++) {
 
 				$datos_componente = array(
 				'id' => $i,
@@ -41,7 +41,7 @@
 				'porcentaje_uso' => '10' );
 
 				$componente = new Componente($datos_componente);
-					
+
 				$componentes[] = $componente; // aqui ya tenemos los componentes creados
 
 			}
@@ -52,7 +52,7 @@
 				'descripcion' => 'equipo1d',
 				'ubicacion' => 'en la bodega',
 				'componentes' => $componentes,
-				'porcentaje_uso' => '7' 
+				'porcentaje_uso' => '7'
 				);
 
 			$equipo = new Equipo($datos_equipo);
@@ -88,7 +88,7 @@
 
 		public function iniciar_simulacion($procesos){
 
-			echo "iniciar_simulacion()<br>";
+			//echo "iniciar_simulacion()<br>";
 
 			foreach ($procesos as $proceso) {// por cada proceso
 
@@ -103,7 +103,7 @@
 
 		private function simular_proceso($proceso){
 
-			echo "simular_proceso()<br>";
+			//echo "simular_proceso()<br>";
 
 			$duracion_proceso = $proceso->obtener_duracion_estimada();
 
@@ -125,15 +125,15 @@
 
 		private function activar_equipo($equipo, $duracion_proceso){
 
-			echo "activar_equipo()<br>";
+			//echo "activar_equipo()<br>";
 
 			$porcentaje_uso_equipo = $equipo->obtener_porcentaje_uso();
 
-			print('porcentaje del equipo: '.$porcentaje_uso_equipo.'<br>');
+			//print('porcentaje del equipo: '.$porcentaje_uso_equipo.'<br>');
 
 			$tiempo_uso_equipo = $porcentaje_uso_equipo * $duracion_proceso;
 
-			print('tiempo uso equipo: '.$tiempo_uso_equipo.'<br>');
+			//print('tiempo uso equipo: '.$tiempo_uso_equipo.'<br>');
 
 			$componentes = $equipo->obtener_componentes();
 
@@ -141,7 +141,7 @@
 
 			foreach ($componentes as $componente) {
 
-				print('componente antes de entrar al mecánico: '.$componente->obtener_tiempo_vida_actual().'<br>');
+				//print('componente antes de entrar al mecánico: '.$componente->obtener_tiempo_vida_actual().'<br>');
 
 				$mecanico = new Mecanico();
 
@@ -149,8 +149,8 @@
 
 				// $this->calcular_desgaste($componente, $tiempo_uso_equipo);
 
-				print('componente despues de entrar al mecánico'.$componente->obtener_tiempo_vida_actual().'<br>');
-					
+				//print('componente despues de entrar al mecánico'.$componente->obtener_tiempo_vida_actual().'<br>');
+
 			}
 
 		}
@@ -174,7 +174,7 @@
 		// 	// $tiempo_vida_max = $componente->obtener_tiempo_vida_max();
 
 		// 	$tiempo_vida_actual = $componente->obtener_tiempo_vida_actual();
- 
+
 		// 	$tiempo_vida_actual = $tiempo_vida_actual + $tiempo_usado;
 
 		// 	print('id: '.$componente->obtener_id().' -> '.$componente->obtener_tiempo_vida_actual().'<br>');
