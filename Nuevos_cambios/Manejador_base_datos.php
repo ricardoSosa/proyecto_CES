@@ -39,7 +39,7 @@
     }
 
     private function obtener_nombres_columnas( $nombre_tabla ) { //PROVICIONAL
-      $consulta = $this->generador_consultas->obtener_consulta_columnas;
+      $consulta = $this->generador_consultas->obtener_consulta_columnas();
       $columnas = $this->conexion->query( $consulta );
 
       $indice = 0;
