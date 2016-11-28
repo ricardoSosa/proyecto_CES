@@ -73,18 +73,12 @@
       return $consulta;
     }
 
+    private function obtener_consulta_columnas( $nombre_tabla ) { //PROVICIONAL
+      $consulta = "DESCRIBE $nombre_tabla;";
 
-    private function obtener_nombres_columnas( $columnas ) {
-      $indice = 0;
-
-      while( $columnas_provisional = $columnas->fetch( PDO::FETCH_ASSOC ) ) {
-        $nombres_columnas[ $indice ] = $columnas_provisional[ 'Field' ];
-        $indice++;
-      }
-      $columnas->closeCursor();
-
-      return $nombres_columnas;
+      return $consulta;
     }
+
   }
 
 ?>

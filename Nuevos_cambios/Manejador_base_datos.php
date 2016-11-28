@@ -38,11 +38,18 @@
       $this->conexion->query( $consulta );
     }
 
-    private function obtener_columnas( $nombre_tabla ) { //PROVICIONAL
-      $consulta_atributos = "DESCRIBE $nombre_tabla;";
-      $columnas = $this->conexion->query( $consulta_atributos );
+    private function obtener_nombres_columnas( $nombre_tabla ) { //PROVICIONAL
+      $consulta = $this->generador_consultas->obtener_consulta_columnas;
+      $columnas = $this->conexion->query( $consulta );
 
-      return $columnas;
+      $indice = 0;
+      while( $columnas_provisional = $columnas->fetch( PDO::FETCH_ASSOC ) ) {
+        $nombres_columnas[ $indice ] = $columnas_provisional[ 'Field' ];
+        $indice++;
+      }
+      $columnas->closeCursor();
+
+      return $nombres_columnas;
     }
 
     //Método que modifica información de las tablas de la base de datos.
