@@ -69,16 +69,14 @@
                      "nombre" : nombreEquipo,
                      "descripcion" : descripcionEquipo,
                      "ubicacion" : ubicacionEquipo,
-                     "tipo_elemento" : 'equipos'
-                   };
+                     "tipo_elemento" : 'equipos'};
 
       var datos_equipo = { tarea : 'agregar',
-                           datos : equipo
-                         };
+                           datos : equipo};
 
      this.listaEquipos.push( equipo );
 
-      var direccionDestino = 'proyecto_CES/Asignador_tareas.php';
+      var direccionDestino = 'Nuevos_cambios/Asignador_tareas.php';
       $http( {
         url: direccionDestino,
         method: "POST",
@@ -108,14 +106,13 @@
       this.listaEquipos.splice(indiceEquipo, 1);
 
       var datos_equipo = {"id" : equipo,
-                          "tipo_elemento" : "equipos"
-                         };
+                          "tipo_elemento" : "equipos",
+                          "nombre_id" : "id"};
 
       var datos_eliminacion = {tarea : "eliminar",
-                               datos : datos_equipo
-                              };
+                               datos : datos_equipo};
 
-      var direccionDestino = 'proyecto_CES/Asignador_tareas.php';
+      var direccionDestino = 'Nuevos_cambios/Asignador_tareas.php';
       $http( {
         url: direccionDestino,
         method: "POST",
@@ -135,28 +132,29 @@
       this.datosCorrectos = this.validarDatos( equipo );
 
       if( this.datosCorrectos ) {
-        var camposEquipo = [ 'nombre', 'ubicacion', 'descripcion' ];
-        var atributosEquipo = [ equipo.nombre, equipo.ubicacion, equipo.descripcion ];
+        var id_equipo = equipo.id;
+        var nombre_equipo = equipo.nombre;
+        var ubicacion_equipo = equipo.ubicacion;
+        var descripcion = equipo.descripcion;
 
-        for( i=0;i<camposEquipo.length; i++ ) {
-          var modificacion = { "tipo_elemento" : "equipos",
-                               "atrib_modificar" : camposEquipo[ i ],
-                               "dato_nuevo" : atributosEquipo[ i ],
-                               "id" : equipo.id};
+        var datos_modificacion = {"id" : id_equipo,
+                                  "nombre" : nombre_equipo,
+                                  "ubicacion" : ubicacion_equipo,
+                                  "descripcion" : descripcion,
+                                  "tipo_elemento" : "equipos" };
 
-          var solicitud = { "tarea" : "modificar", "datos" : modificacion };
+        var solicitud = {"tarea" : "modificar", "datos" : datos_modificacion};
 
-          var direccionDestino = 'proyecto_CES/Asignador_tareas.php';
-          $http( {
-            url: direccionDestino,
-            method: "POST",
-            data: solicitud
-          } ).then( function ( response ) {
-            console.log( response );
-          }, function ( response ) {
-            console.log( response )
-          } );
-        }
+        var direccionDestino = 'Nuevos_cambios/Asignador_tareas.php';
+        $http( {
+          url: direccionDestino,
+          method: "POST",
+          data: solicitud
+        } ).then( function ( response ) {
+          console.log( response );
+        }, function ( response ) {
+          console.log( response )
+        } );
 
 
       }
@@ -181,10 +179,9 @@
                             };
 
       var solicitud = {tarea : "consultar",
-                       datos : datos_solicitud
-                      };
+                       datos : datos_solicitud};
 
-      var direccionDestino = 'proyecto_CES/Asignador_tareas.php';
+      var direccionDestino = 'Nuevos_cambios/Asignador_tareas.php';
       $http( {
         url : direccionDestino,
         method : "POST",
@@ -204,7 +201,7 @@
       var solicitud = {"tarea" : "consultar",
                        "datos" : datos_solicitud};
 
-      var direccionDestino = 'proyecto_CES/Asignador_tareas.php';
+      var direccionDestino = 'Nuevos_cambios/Asignador_tareas.php';
       $http( {
         url : direccionDestino,
         method : "POST",

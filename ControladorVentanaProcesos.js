@@ -60,8 +60,7 @@
       var proceso = { "id" : "id_proceso_" + (this.listaProcesos.length+1),
                       "nombre": nombreProceso,
                       "descripcion" : descripcionProceso,
-                      "tipo_elemento" : "procesos"
-                    };
+                      "tipo_elemento" : "procesos"};
 
       var datos_proceso = { tarea : "agregar",
                             datos: proceso};
