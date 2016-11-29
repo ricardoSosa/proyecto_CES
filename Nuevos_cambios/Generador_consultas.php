@@ -14,8 +14,8 @@
           $cadena_atributos = "( $atributo";
           $cadena_valores = '( "' . $datos[ $atributo ] . '"';
         } else {
-          $cadena_atributos = $cadena_atributos . ', ' . $atributo;
-          $cadena_valores = $cadena_valores . ', "' . $datos[ $atributo ] . '"';
+          $cadena_atributos = "$cadena_atributos, $atributo";
+          $cadena_valores = "$cadena_valores, '" . $datos[ $atributo ] . "'";
         }
       } //foreach
 
@@ -34,11 +34,11 @@
 
       foreach( $nombres_columnas as $atributo ) {
         if( $cadena_modificacion == '' ) {
-          $cadena_modificacion = "$atributo = " . '"' . $datos[ $atributo ] . '"';
+          $cadena_modificacion = "$atributo = '" . $datos[ $atributo ] . "'";
           $nombre_id = $atributo;
           $valor_id = '"' . $datos[ $atributo ] . '"';
         } else {
-          $cadena_modificacion = "$cadena_modificacion, $atributo = " . '"' . $datos[ $atributo ] . '"';
+          $cadena_modificacion = "$cadena_modificacion, $atributo = '" . $datos[ $atributo ] . "'";
         }
       } //foreach
 
@@ -68,7 +68,7 @@
       return $consulta;
     }
 
-    public function obtener_consulta_columnas( $nombre_tabla ) { //PROVICIONAL
+    public function obtener_consulta_columnas( $nombre_tabla ) { 
       $consulta = "DESCRIBE $nombre_tabla;";
 
       return $consulta;
