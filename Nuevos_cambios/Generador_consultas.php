@@ -12,10 +12,10 @@
       foreach( $nombres_columnas as $atributo ) {
         if( $cadena_atributos == '' ) {
           $cadena_atributos = "( $atributo";
-          $cadena_valores = '( "' . $datos[$atributo] . '"';
+          $cadena_valores = '( "' . $datos[ $atributo ] . '"';
         } else {
           $cadena_atributos = $cadena_atributos . ', ' . $atributo;
-          $cadena_valores = $cadena_valores . ', "' . $datos[$atributo] . '"';
+          $cadena_valores = $cadena_valores . ', "' . $datos[ $atributo ] . '"';
         }
       } //foreach
 
@@ -34,17 +34,17 @@
 
       foreach( $nombres_columnas as $atributo ) {
         if( $cadena_modificacion == '' ) {
-          $cadena_modificacion = "$atributo = " . $datos[ $atributo ];
+          $cadena_modificacion = "$atributo = " . '"' . $datos[ $atributo ] . '"';
           $nombre_id = $atributo;
-          $valor_id = $datos[ $atributo ];
+          $valor_id = '"' . $datos[ $atributo ] . '"';
         } else {
-          $cadena_modificacion = ", $cadena_modificacion, $atributo = " . $datos[ $atributo ];
+          $cadena_modificacion = "$cadena_modificacion, $atributo = " . '"' . $datos[ $atributo ] . '"';
         }
       } //foreach
 
-      $consulta = "UPDATE $nombre_tabla SET $cadena_modificacion WHERE $nombre_id = '$valor_id'";
-      echo $consulta;
-      //return $consulta;
+      $consulta = "UPDATE $nombre_tabla SET $cadena_modificacion WHERE $nombre_id = $valor_id";
+
+      return $consulta;
     }
 
     public function obtener_consulta_eliminacion( $nombre_tabla, $nombre_id, $valor_id ) {
@@ -54,8 +54,7 @@
     }
 
     public function obtener_consulta_informacion( $nombre_tabla, $datos ){
-      $consulta = '';
-
+      $consulta = ''
       switch( $datos[ 'tipo_consulta' ] ){
         case 'lista':
           $consulta = "SELECT * FROM $nombre_tabla";
