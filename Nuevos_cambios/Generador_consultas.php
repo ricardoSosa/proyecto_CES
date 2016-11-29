@@ -54,7 +54,7 @@
     }
 
     public function obtener_consulta_informacion( $nombre_tabla, $datos ){
-      $consulta = ''
+      $consulta = '';
       switch( $datos[ 'tipo_consulta' ] ){
         case 'lista':
           $consulta = "SELECT * FROM $nombre_tabla";
@@ -68,7 +68,7 @@
       return $consulta;
     }
 
-    public function obtener_consulta_columnas( $nombre_tabla ) { 
+    public function obtener_consulta_columnas( $nombre_tabla ) {
       $consulta = "DESCRIBE $nombre_tabla;";
 
       return $consulta;
