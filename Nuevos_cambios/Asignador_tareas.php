@@ -50,11 +50,13 @@
     }
 
     /*
-     *Asigna la tarea del usuario al quien la deberia realizar
+     *Asigna la tarea del usuario a quien la deberia realizar
      *@return void
      */
     public function asignar_tarea() {
       switch ( $this->tarea ) {
+
+        //Tareas generales------------------------------------------------------
         case 'agregar':
           $this->encargado_tarea->agregar_nuevo( $this->datos_tarea );
         break;
@@ -71,16 +73,54 @@
           $this->encargado_tarea->generar_historial();
         break;
 
+        case 'consultar':
+          $this->encargado_tarea->obtener_datos( $this->datos_tarea );
+        break;
+
         case 'simular':
           $this->encargado_tarea->simular( $procesos );
         break;
 
+        //Tareas del administrador de proceso-----------------------------------
         case 'activar proceso':
-          $this->encargado_tarea->iniciar_proceso( $id_proceso );
+          $this->encargado_tarea->iniciar_proceso( $this->datos_tarea );
         break;
 
-        case 'consultar':
-          $this->encargado_tarea->leer_datos( $this->datos_tarea );
+        case 'finalizar proceso':
+          $this->encargado_tarea->finalizar_proceso( $this->datos_tarea );
+        break;
+
+        case 'agregar equipo a proceso':
+          $this->encargado_tarea->agregar_equipo( $this->datos_tarea );
+        break;
+
+        case 'modificar porcentaje de equipo':
+          $this->encargado_tarea->modificar_porcentaje_equipo( $this->datos_tarea );
+        break;
+
+        case 'eliminar equipo de proceso':
+          $this->encargado_tarea->quitar_equipo( $this->datos_tarea );
+        break;
+
+        case 'consultar porcentajes de equipos':
+          $this->encargado_tarea->obtener_porcentajes_equipos( $this->datos_tarea );
+        break;
+
+        //Tareas del administrador de equipo------------------------------------
+        case 'agregar componente a equipo':
+          $this->encargado_tarea->agregar_componente( $this->datos_tarea );
+        break;
+
+        case 'modificar porcentaje de componente':
+          $this->encargado_tarea->modificar_porcentaje_componente( $this->datos_tarea );
+        break;
+
+        case 'eliminar componente de equipo':
+          $this->encargado_tarea->quitar_componente( $this->datos_tarea );
+        break;
+
+        case 'consultar porcentajes de componentes':
+          $this->encargado_tarea->obtener_porcentajes_componentes( $this->datos_tarea );
         break;
 
         default:

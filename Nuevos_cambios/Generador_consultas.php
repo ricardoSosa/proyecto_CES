@@ -5,17 +5,17 @@
     function __construct() {
     }
 
-    public function obtener_consulta_insercion( $nombre_tabla, $datos, $nombres_columnas ) {
+    public function obtener_consulta_insercion( $nombre_tabla, $datos ) {
       $cadena_atributos = '';
       $cadena_valores = '';
 
-      foreach( $nombres_columnas as $atributo ) {
+      foreach( $datos as $atributo=>$valor ) {
         if( $cadena_atributos == '' ) {
           $cadena_atributos = "( $atributo";
-          $cadena_valores = '( "' . $datos[ $atributo ] . '"';
+          $cadena_valores = "( '$valor'";
         } else {
           $cadena_atributos = "$cadena_atributos, $atributo";
-          $cadena_valores = "$cadena_valores, '" . $datos[ $atributo ] . "'";
+          $cadena_valores = "$cadena_valores, '$valor'";
         }
       } //foreach
 
@@ -27,51 +27,61 @@
       return $consulta;
     }
 
-    public function obtener_consulta_modificacion( $nombre_tabla, $datos, $nombres_columnas ) {
+    public function obtener_consulta_modificacion( $nombre_tabla, $datos, $num_ids ) {
       $cadena_modificacion = '';
-      $nombre_id = '';
-      $valor_id = '';
-
-      foreach( $nombres_columnas as $atributo ) {
+      foreach( $datos as $atributo=>$valor ) {
         if( $cadena_modificacion == '' ) {
-          $cadena_modificacion = "$atributo = '" . $datos[ $atributo ] . "'";
-          $nombre_id = $atributo;
-          $valor_id = '"' . $datos[ $atributo ] . '"';
+          $cadena_modificacion = "$atributo = '$valor'";
         } else {
-          $cadena_modificacion = "$cadena_modificacion, $atributo = '" . $datos[ $atributo ] . "'";
+          $cadena_modificacion = "$cadena_modificacion, $atributo = '$valor'";
         }
       } //foreach
+      $cadena_id = $this->obtener_cadena_id( $datos, $num_ids );
 
-      $consulta = "UPDATE $nombre_tabla SET $cadena_modificacion WHERE $nombre_id = $valor_id";
-
-      return $consulta;
-    }
-
-    public function obtener_consulta_eliminacion( $nombre_tabla, $nombre_id, $valor_id ) {
-      $consulta = "DELETE FROM $nombre_tabla WHERE $nombre_id = '$valor_id'";
+      $consulta = "UPDATE $nombre_tabla SET $cadena_modificacion WHERE $cadena_id";
 
       return $consulta;
     }
 
-    public function obtener_consulta_informacion( $nombre_tabla, $datos ){
-      $consulta = '';
-      switch( $datos[ 'tipo_consulta' ] ){
-        case 'lista':
-          $consulta = "SELECT * FROM $nombre_tabla";
+    public function obtener_consulta_eliminacion( $nombre_tabla, $ids ) {
+      $cadena_id = $this->obtener_cadena_id( $ids, count( $ids ) );
+
+      $consulta = "DELETE FROM $nombre_tabla WHERE $cadena_id";
+
+      return $consulta;
+    }
+
+    public function obtener_consulta_lista( $nombre_tabla ) {
+      $consulta = "SELECT * FROM $nombre_tabla";
+
+      return $consulta;
+    }
+
+    public function obtener_consulta_especifica( $nombre_tabla, $ids ) {
+      $cadena_id = $this->obtener_cadena_id( $ids, count( $ids ) );
+
+      $consulta = "SELECT * FROM $nombre_tabla WHERE $cadena_id";
+
+      return $consulta;
+    }
+
+    private function obtener_cadena_id( $datos, $num_ids ) {
+      $cadena_id = '';
+      $contador = 0;
+      foreach ( $datos as $atributo=>$valor ) {
+        if( $contador < $num_ids ) {
+          if( $cadena_id == '' ) {
+            $cadena_id = "$atributo = '$valor'";
+          } else {
+            $cadena_id = "$cadena_id AND $atributo = '$valor'";
+          } //if
+          $contador++;
+        } else {
           break;
-        case 'elemento':
-          $id = $datos[ 'id' ];
-          $consulta = "SELECT * FROM $nombre_tabla WHERE id = '$id'";
-          break;
-      }
+        } //if
+      } //foreach
 
-      return $consulta;
-    }
-
-    public function obtener_consulta_columnas( $nombre_tabla ) {
-      $consulta = "DESCRIBE $nombre_tabla;";
-
-      return $consulta;
+      return $cadena_id;
     }
 
   }
