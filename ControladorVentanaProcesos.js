@@ -60,16 +60,14 @@
       var proceso = { "id" : "id_proceso_" + (this.listaProcesos.length+1),
                       "nombre": nombreProceso,
                       "descripcion" : descripcionProceso,
-                      "tipo_elemento" : "procesos"
-                    };
+                      "tipo_elemento" : "procesos"};
 
       var datos_proceso = { tarea : "agregar",
-                            datos: proceso
-                          };
+                            datos: proceso};
 
       this.listaProcesos.push( proceso ); //BORRAR DESPUES
 
-      var direccionDestino = 'proyecto_CES/Asignador_tareas.php';
+      var direccionDestino = 'Nuevos_cambios/Asignador_tareas.php';
       $http( {
         url: direccionDestino,
         method: "POST",
@@ -100,14 +98,14 @@
       console.log(indiceProceso);
 
       var datos_proceso = {"id" : proceso,
-                           "tipo_elemento" : "procesos"
+                           "tipo_elemento" : "procesos",
+                           "nombre_id" : "id" //PENDIENTE
                           };
 
       var datos_eliminacion = {tarea : "eliminar",
-                               datos : datos_proceso
-                              };
+                               datos : datos_proceso};
 
-      var direccionDestino = 'proyecto_CES/Asignador_tareas.php';
+      var direccionDestino = 'Nuevos_cambios/Asignador_tareas.php';
       $http( {
         url: direccionDestino,
         method: "POST",
@@ -144,31 +142,27 @@
       console.log(this.datosCorrectos);
 
       if( this.datosCorrectos ) {
-        var camposProceso = [ 'nombre', 'descripcion' ];
-        var atributosPrceso = [ proceso.nombre, proceso.descripcion ];
+        var id_proceso = proceso.id;
+        var nombre_proceso = proceso.nombre;
+        var descripcion = proceso.descripcion;
 
-        for( i=0; i<camposProceso.length; i++ ) {
+        var datos_modificacion = {"id" : id_proceso,
+                                  "nombre" : nombre_proceso,
+                                  "descripcion" : descripcion,
+                                  "tipo_elemento" : "procesos"};
 
-          var modificacion = { "tipo_elemento" : "procesos",
-                               "atrib_modificar" : camposProceso[ i ],
-                               "dato_nuevo" : atributosPrceso[ i ],
-                               "id" : proceso.id };
+        var solicitud = {"tarea" : "modificar", "datos" : datos_modificacion};
 
-
-          var solicitud = { "tarea" : "modificar", "datos" : modificacion };
-
-          var direccionDestino = 'proyecto_CES/Asignador_tareas.php';
-          $http( {
-            url: direccionDestino,
-            method: "POST",
-            data: solicitud
-          } ).then( function ( response ) {
-            console.log( response );
-          }, function ( response ) {
-            console.log( response )
-          } );
-
-        }
+        var direccionDestino = 'Nuevos_cambios/Asignador_tareas.php';
+        $http( {
+          url: direccionDestino,
+          method: "POST",
+          data: solicitud
+        } ).then( function ( response ) {
+          console.log( response );
+        }, function ( response ) {
+          console.log( response )
+        } );
 
       }
     };
@@ -179,10 +173,9 @@
                             };
 
       var solicitud = {tarea : "consultar",
-                       datos : datos_solicitud
-                      };
+                       datos : datos_solicitud};
 
-      var direccionDestino = 'proyecto_CES/Asignador_tareas.php';
+      var direccionDestino = 'Nuevos_cambios/Asignador_tareas.php';
       $http( {
         url : direccionDestino,
         method : "POST",
@@ -204,7 +197,7 @@
       var solicitud = {"tarea" : "consultar",
                        "datos" : datos_solicitud};
 
-      var direccionDestino = 'proyecto_CES/Asignador_tareas.php';
+      var direccionDestino = 'Nuevos_cambios/Asignador_tareas.php';
       $http( {
         url : direccionDestino,
         method : "POST",

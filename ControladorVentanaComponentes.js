@@ -93,8 +93,7 @@
                              };
 
       var datos_eliminacion = {tarea : "eliminar",
-                               datos : datos_componente
-                               };
+                               datos : datos_componente};
 
       var direccionDestino = 'Nuevos_cambios/Asignador_tareas.php';
       $http( {
