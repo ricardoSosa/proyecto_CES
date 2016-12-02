@@ -25,7 +25,7 @@
     }
 
     public function obtener_datos( $datos ) {
-      $this->conector_bd->obtener_informacion( $this->nombre_tabla_principal, $ids );
+      $this->conector_bd->obtener_informacion( $this->nombre_tabla_principal, $datos );
     }
 
   }

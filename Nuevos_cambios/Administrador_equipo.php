@@ -23,7 +23,7 @@
     }
 
     public function obtener_porcentajes_componentes( $datos ) {
-      $this->conector_bd->obtener_informacion( self::NOMBRE_TABLA_PORCENTAJES, $ids );
+      $this->conector_bd->obtener_informacion( self::NOMBRE_TABLA_PORCENTAJES, $datos );
     }
 
   }
