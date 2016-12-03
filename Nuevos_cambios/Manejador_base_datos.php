@@ -36,7 +36,7 @@
 
     //Método que modifica información de las tablas de la base de datos.
     public function modificar( $nombre_tabla, $datos, $num_ids ) {
-      $consulta = $this->generador_consultas->obtener_consulta_modificacion( $nombre_tabla, $datos, $nombres_columnas );
+      $consulta = $this->generador_consultas->obtener_consulta_modificacion( $nombre_tabla, $datos, $num_ids );
       $resultado = $this->conexion->query( $consulta );
     }
 

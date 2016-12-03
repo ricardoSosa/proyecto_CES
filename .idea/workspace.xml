@@ -3,59 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6dff6832-263c-4da9-897b-5a9c56f36540" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proyecto_CES" afterPath="$PROJECT_DIR$/proyecto_CES" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ControladorVentanaComponentes.js" afterPath="$PROJECT_DIR$/ControladorVentanaComponentes.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nuevos_cambios/Administrador.php" afterPath="$PROJECT_DIR$/Nuevos_cambios/Administrador.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nuevos_cambios/Administrador_componente.php" afterPath="$PROJECT_DIR$/Nuevos_cambios/Administrador_componente.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nuevos_cambios/Administrador_equipo.php" afterPath="$PROJECT_DIR$/Nuevos_cambios/Administrador_equipo.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nuevos_cambios/Administrador_proceso.php" afterPath="$PROJECT_DIR$/Nuevos_cambios/Administrador_proceso.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nuevos_cambios/Asignador_tareas.php" afterPath="$PROJECT_DIR$/Nuevos_cambios/Asignador_tareas.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nuevos_cambios/Componente.php" afterPath="$PROJECT_DIR$/Nuevos_cambios/Componente.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nuevos_cambios/Equipo.php" afterPath="$PROJECT_DIR$/Nuevos_cambios/Equipo.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nuevos_cambios/Generador_consultas.php" afterPath="$PROJECT_DIR$/Nuevos_cambios/Generador_consultas.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nuevos_cambios/Manejador_base_datos.php" afterPath="$PROJECT_DIR$/Nuevos_cambios/Manejador_base_datos.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nuevos_cambios/Mecanico.php" afterPath="$PROJECT_DIR$/Nuevos_cambios/Mecanico.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nuevos_cambios/Proceso.php" afterPath="$PROJECT_DIR$/Nuevos_cambios/Proceso.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/Componentes.html" afterPath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/Componentes.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/ControladorVentanaComponentes.js" afterPath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/ControladorVentanaComponentes.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/ControladorVentanaProcesos.js" afterPath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/ControladorVentanaProcesos.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/ElementosVista.js" afterPath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/ElementosVista.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/Equipos.html" afterPath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/Equipos.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/Procesos.html" afterPath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/Procesos.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/app.js" afterPath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/componentes.json" afterPath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/componentes.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/eliminacion-componentes.html" afterPath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/eliminacion-componentes.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/eliminacion-equipos.html" afterPath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/eliminacion-equipos.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/eliminacion-procesos.html" afterPath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/eliminacion-procesos.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/form-componentes.html" afterPath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/form-componentes.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/form-equipos.html" afterPath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/form-equipos.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/form-procesos.html" afterPath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/form-procesos.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/lista-componentes.html" afterPath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/lista-componentes.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/modificacion-componentes.html" afterPath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/modificacion-componentes.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/modificacion-equipos.html" afterPath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/modificacion-equipos.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/modificacion-procesos.html" afterPath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/modificacion-procesos.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/proyecto_CES/Administrador.php" afterPath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/proyecto_CES/Administrador.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/proyecto_CES/Administrador_componente.php" afterPath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/proyecto_CES/Administrador_componente.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/proyecto_CES/Administrador_equipo.php" afterPath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/proyecto_CES/Administrador_equipo.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/proyecto_CES/Administrador_proceso.php" afterPath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/proyecto_CES/Administrador_proceso.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/proyecto_CES/Asignador_tareas.php" afterPath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/proyecto_CES/Asignador_tareas.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/proyecto_CES/Componente.php" afterPath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/proyecto_CES/Componente.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/proyecto_CES/Equipo.php" afterPath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/proyecto_CES/Equipo.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/proyecto_CES/Manejador_base_datos.php" afterPath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/proyecto_CES/Manejador_base_datos.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/proyecto_CES/Proceso.php" afterPath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/proyecto_CES/Proceso.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/proyecto_CES/README.md" afterPath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/proyecto_CES/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/proyecto_CES/Simulador_procesos.php" afterPath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/proyecto_CES/Simulador_procesos.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/proyecto_CES/controlador_ventana_componentes.js" afterPath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/proyecto_CES/controlador_ventana_componentes.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/proyecto_CES/jquery-3.1.1.min.js" afterPath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/proyecto_CES/jquery-3.1.1.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/proyecto_CES/pruebasBD.php" afterPath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/proyecto_CES/pruebasBD.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/proyecto_CES/ventana_prueba_componentes.html" afterPath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/proyecto_CES/ventana_prueba_componentes.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/prueba.html" afterPath="$PROJECT_DIR$/Nuevos_cambios/Pruebas-Vista/prueba.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nuevos_cambios/README.md" afterPath="$PROJECT_DIR$/Nuevos_cambios/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nuevos_cambios/Simulador_procesos.php" afterPath="$PROJECT_DIR$/Nuevos_cambios/Simulador_procesos.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nuevos_cambios/controlador_ventana_componentes.js" afterPath="$PROJECT_DIR$/Nuevos_cambios/controlador_ventana_componentes.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nuevos_cambios/jquery-3.1.1.min.js" afterPath="$PROJECT_DIR$/Nuevos_cambios/jquery-3.1.1.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nuevos_cambios/pruebasBD.php" afterPath="$PROJECT_DIR$/Nuevos_cambios/pruebasBD.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nuevos_cambios/ventana_prueba_componentes.html" afterPath="$PROJECT_DIR$/Nuevos_cambios/ventana_prueba_componentes.html" />
     </list>
     <ignored path="proyecto_CES.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -78,7 +26,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ControladorVentanaComponentes.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ControladorVentanaComponentes.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ControladorVentanaComponentes.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="147">
@@ -91,7 +39,7 @@
       <file leaf-file-name="Asignador_tareas.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Nuevos_cambios/Asignador_tareas.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
+            <state relative-caret-position="119">
               <caret line="64" column="35" selection-start-line="64" selection-start-column="35" selection-end-line="64" selection-end-column="35" />
               <folding />
             </state>
@@ -101,18 +49,18 @@
       <file leaf-file-name="Administrador.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Nuevos_cambios/Administrador.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="27" column="84" selection-start-line="27" selection-start-column="78" selection-end-line="27" selection-end-column="84" />
+            <state relative-caret-position="323">
+              <caret line="19" column="65" selection-start-line="19" selection-start-column="65" selection-end-line="19" selection-end-column="65" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Manejador_base_datos.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Manejador_base_datos.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Nuevos_cambios/Manejador_base_datos.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="368">
-              <caret line="38" column="117" selection-start-line="38" selection-start-column="100" selection-end-line="38" selection-end-column="117" />
+              <caret line="38" column="108" selection-start-line="38" selection-start-column="108" selection-end-line="38" selection-end-column="108" />
               <folding />
             </state>
           </provider>
@@ -142,6 +90,7 @@
         <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/Nuevos_cambios/Asignador_tareas.php" />
         <option value="$PROJECT_DIR$/ControladorVentanaComponentes.js" />
+        <option value="$PROJECT_DIR$/Nuevos_cambios/Manejador_base_datos.php" />
       </list>
     </option>
   </component>
@@ -296,7 +245,7 @@
       <workItem from="1480739962076" duration="162000" />
       <workItem from="1480740257770" duration="2726000" />
       <workItem from="1480743090567" duration="12000" />
-      <workItem from="1480743119574" duration="1107000" />
+      <workItem from="1480743119574" duration="1442000" />
     </task>
     <task id="LOCAL-00001" summary="Nuevos cambios implementados en Procesos">
       <created>1480458767068</created>
@@ -316,7 +265,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7016000" />
+    <option name="totallyTimeSpent" value="7351000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="0" />
@@ -580,30 +529,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Nuevos_cambios/Administrador.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="84" selection-start-line="27" selection-start-column="78" selection-end-line="27" selection-end-column="84" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Nuevos_cambios/Asignador_tareas.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="64" column="35" selection-start-line="64" selection-start-column="35" selection-end-line="64" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Nuevos_cambios/Manejador_base_datos.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="38" column="117" selection-start-line="38" selection-start-column="100" selection-end-line="38" selection-end-column="117" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Nuevos_cambios/Generador_consultas.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
@@ -616,6 +541,30 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="147">
           <caret line="140" column="0" selection-start-line="140" selection-start-column="0" selection-end-line="140" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Nuevos_cambios/Asignador_tareas.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="64" column="35" selection-start-line="64" selection-start-column="35" selection-end-line="64" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Nuevos_cambios/Administrador.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="65" selection-start-line="19" selection-start-column="65" selection-end-line="19" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Nuevos_cambios/Manejador_base_datos.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="38" column="108" selection-start-line="38" selection-start-column="108" selection-end-line="38" selection-end-column="108" />
           <folding />
         </state>
       </provider>
