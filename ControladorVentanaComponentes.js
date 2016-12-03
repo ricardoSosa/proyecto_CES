@@ -30,7 +30,7 @@
       datosExisten = !( datosComponente === undefined );
       if( datosExisten ) {
         var nombreComponenteCorrecto = datosComponente.nombre.length != 0;
-        var tiempoVidaComponenteCorrect = datosComponente.tiempoVida.length != 0;
+        var tiempoVidaComponenteCorrect = datosComponente.tiempo_vida_max.length != 0;
         var descripcionComponenteCorrecto = datosComponente.descripcion.length != 0;
 
         if( nombreComponenteCorrecto && tiempoVidaComponenteCorrect && descripcionComponenteCorrecto ) {
@@ -86,12 +86,11 @@
 
       console.log(indiceComponente);
 
-      var datos_componente = {"id" : componente,
-                              "tipo_elemento" : "componentes",
+      var datos_componente = {"id" : {id : componente},
                               "nombre_id" : "id" //PENDIENTE
                              };
 
-      var datos_eliminacion = {tarea : "eliminar",
+      var datos_eliminacion = {tarea : {nombre_tarea : "eliminar", tipo_elemento : "componentes"},
                                datos : datos_componente};
 
       var direccionDestino = 'Nuevos_cambios/Asignador_tareas.php';

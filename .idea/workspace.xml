@@ -3,7 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="6dff6832-263c-4da9-897b-5a9c56f36540" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proyecto_CES" afterPath="$PROJECT_DIR$/proyecto_CES" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ControladorVentanaComponentes.js" afterPath="$PROJECT_DIR$/ControladorVentanaComponentes.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nuevos_cambios/Administrador.php" afterPath="$PROJECT_DIR$/Nuevos_cambios/Administrador.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nuevos_cambios/Manejador_base_datos.php" afterPath="$PROJECT_DIR$/Nuevos_cambios/Manejador_base_datos.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modificacion-componentes.html" afterPath="$PROJECT_DIR$/modificacion-componentes.html" />
     </list>
     <ignored path="proyecto_CES.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,11 +29,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ControladorVentanaComponentes.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ControladorVentanaComponentes.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ControladorVentanaComponentes.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="147">
-              <caret line="140" column="0" selection-start-line="140" selection-start-column="0" selection-end-line="140" selection-end-column="0" />
+            <state relative-caret-position="272">
+              <caret line="88" column="53" selection-start-line="88" selection-start-column="53" selection-end-line="88" selection-end-column="53" />
               <folding />
             </state>
           </provider>
@@ -39,8 +42,8 @@
       <file leaf-file-name="Asignador_tareas.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Nuevos_cambios/Asignador_tareas.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="64" column="35" selection-start-line="64" selection-start-column="35" selection-end-line="64" selection-end-column="35" />
+            <state relative-caret-position="187">
+              <caret line="68" column="65" selection-start-line="68" selection-start-column="51" selection-end-line="68" selection-end-column="65" />
               <folding />
             </state>
           </provider>
@@ -49,18 +52,18 @@
       <file leaf-file-name="Administrador.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Nuevos_cambios/Administrador.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="65" selection-start-line="19" selection-start-column="65" selection-end-line="19" selection-end-column="65" />
+            <state relative-caret-position="425">
+              <caret line="25" column="66" selection-start-line="25" selection-start-column="66" selection-end-line="25" selection-end-column="66" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Manejador_base_datos.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Manejador_base_datos.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Nuevos_cambios/Manejador_base_datos.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="38" column="108" selection-start-line="38" selection-start-column="108" selection-end-line="38" selection-end-column="108" />
+            <state relative-caret-position="402">
+              <caret line="43" column="49" selection-start-line="43" selection-start-column="49" selection-end-line="43" selection-end-column="49" />
               <folding />
             </state>
           </provider>
@@ -69,8 +72,8 @@
       <file leaf-file-name="Generador_consultas.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Nuevos_cambios/Generador_consultas.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="36" column="9" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="9" />
+            <state relative-caret-position="272">
+              <caret line="67" column="36" selection-start-line="67" selection-start-column="21" selection-end-line="67" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -89,8 +92,10 @@
         <option value="$PROJECT_DIR$/ControladorVentanaProcesos.js" />
         <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/Nuevos_cambios/Asignador_tareas.php" />
-        <option value="$PROJECT_DIR$/ControladorVentanaComponentes.js" />
+        <option value="$PROJECT_DIR$/modificacion-componentes.html" />
+        <option value="$PROJECT_DIR$/Nuevos_cambios/Administrador.php" />
         <option value="$PROJECT_DIR$/Nuevos_cambios/Manejador_base_datos.php" />
+        <option value="$PROJECT_DIR$/ControladorVentanaComponentes.js" />
       </list>
     </option>
   </component>
@@ -245,7 +250,7 @@
       <workItem from="1480739962076" duration="162000" />
       <workItem from="1480740257770" duration="2726000" />
       <workItem from="1480743090567" duration="12000" />
-      <workItem from="1480743119574" duration="1442000" />
+      <workItem from="1480743119574" duration="3697000" />
     </task>
     <task id="LOCAL-00001" summary="Nuevos cambios implementados en Procesos">
       <created>1480458767068</created>
@@ -265,7 +270,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7351000" />
+    <option name="totallyTimeSpent" value="9606000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="0" />
@@ -529,42 +534,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Nuevos_cambios/Generador_consultas.php">
+    <entry file="file://$PROJECT_DIR$/modificacion-componentes.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="36" column="9" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ControladorVentanaComponentes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="140" column="0" selection-start-line="140" selection-start-column="0" selection-end-line="140" selection-end-column="0" />
+        <state relative-caret-position="289">
+          <caret line="29" column="124" selection-start-line="29" selection-start-column="124" selection-end-line="29" selection-end-column="124" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Nuevos_cambios/Asignador_tareas.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="64" column="35" selection-start-line="64" selection-start-column="35" selection-end-line="64" selection-end-column="35" />
+        <state relative-caret-position="187">
+          <caret line="68" column="65" selection-start-line="68" selection-start-column="51" selection-end-line="68" selection-end-column="65" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Nuevos_cambios/Administrador.php">
+    <entry file="file://$PROJECT_DIR$/Nuevos_cambios/Generador_consultas.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="65" selection-start-line="19" selection-start-column="65" selection-end-line="19" selection-end-column="65" />
+        <state relative-caret-position="272">
+          <caret line="67" column="36" selection-start-line="67" selection-start-column="21" selection-end-line="67" selection-end-column="38" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Nuevos_cambios/Manejador_base_datos.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="38" column="108" selection-start-line="38" selection-start-column="108" selection-end-line="38" selection-end-column="108" />
+        <state relative-caret-position="402">
+          <caret line="43" column="49" selection-start-line="43" selection-start-column="49" selection-end-line="43" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Nuevos_cambios/Administrador.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="66" selection-start-line="25" selection-start-column="66" selection-end-line="25" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ControladorVentanaComponentes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="88" column="53" selection-start-line="88" selection-start-column="53" selection-end-line="88" selection-end-column="53" />
           <folding />
         </state>
       </provider>

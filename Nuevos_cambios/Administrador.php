@@ -20,8 +20,10 @@
       $this->conector_bd->modificar( $this->nombre_tabla_principal, $datos, self::NUM_IDS_PRINCIPAL );
     }
 
-    public function eliminar( $datos ) {
-      $this->conector_bd->eliminar( $this->nombre_tabla_principal, $datos );
+    public function eliminar( $datos_eliminacion ) {
+      $id = $datos_eliminacion[ 'id' ];
+
+      $this->conector_bd->eliminar( $this->nombre_tabla_principal, $id );
     }
 
     public function obtener_datos( $datos ) {
