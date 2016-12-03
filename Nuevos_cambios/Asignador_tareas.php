@@ -20,7 +20,7 @@
       $this->tarea = $datos_tarea[ 'nombre_tarea' ];
       $this->datos_elemento = $datos_elemento;
 
-      $this->encontrar_encargado_tarea( $this->datos_tarea[ 'tipo_elemento' ] );
+      $this->encontrar_encargado_tarea( $datos_tarea[ 'tipo_elemento' ] );
       $this->asignar_tarea();
     }
 
