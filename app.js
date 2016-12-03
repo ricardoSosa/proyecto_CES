@@ -120,6 +120,12 @@
       }, function ( response ) {
         console.log( response ); //BORRAR DESPUES
       } );
+
+      //incerta los componentes al equipo uno por uno
+      for(i=0; i<this.listaComponentes.length; i++) {
+        var componente = this.listaComponentes[ i ];
+        console.log(componente.porcentaje_usado);
+      }
     };
 
     this.seleccionarEquipo = function ( equipo ) {
