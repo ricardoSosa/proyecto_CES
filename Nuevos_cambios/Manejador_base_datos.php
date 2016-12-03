@@ -42,7 +42,7 @@
 
     //Método que elimina elementos de las tablas de la base de datos.
     public function eliminar( $nombre_tabla, $ids ) {
-      $consulta = $this->generador_consultas->obtener_consulta_eliminacion( $nombre_tabla, $nombre_id, $valor_id );
+      $consulta = $this->generador_consultas->obtener_consulta_eliminacion( $nombre_tabla, $ids );
       $resultado = $this->conexion->query( $consulta );
     }
 
