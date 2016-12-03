@@ -68,10 +68,9 @@
       var equipo = { "id" : "id_equipos_" + (this.listaEquipos.length+1),
                      "nombre" : nombreEquipo,
                      "descripcion" : descripcionEquipo,
-                     "ubicacion" : ubicacionEquipo,
-                     "tipo_elemento" : 'equipos'};
+                     "ubicacion" : ubicacionEquipo};
 
-      var datos_equipo = { tarea : 'agregar',
+      var datos_equipo = { tarea : {nombre_tarea : "agregar", tipo_elemento : "equipos"},
                            datos : equipo};
 
      this.listaEquipos.push( equipo );
@@ -105,11 +104,10 @@
 
       this.listaEquipos.splice(indiceEquipo, 1);
 
-      var datos_equipo = {"id" : equipo,
-                          "tipo_elemento" : "equipos",
+      var datos_equipo = {"id" : {id : equipo},
                           "nombre_id" : "id"};
 
-      var datos_eliminacion = {tarea : "eliminar",
+      var datos_eliminacion = {tarea : {nombre_tarea : "eliminar", tipo_elemento : "equipos"},
                                datos : datos_equipo};
 
       var direccionDestino = 'Nuevos_cambios/Asignador_tareas.php';
@@ -140,10 +138,10 @@
         var datos_modificacion = {"id" : id_equipo,
                                   "nombre" : nombre_equipo,
                                   "ubicacion" : ubicacion_equipo,
-                                  "descripcion" : descripcion,
-                                  "tipo_elemento" : "equipos" };
+                                  "descripcion" : descripcion};
 
-        var solicitud = {"tarea" : "modificar", "datos" : datos_modificacion};
+        var solicitud = {"tarea" : {nombre_tarea : "modificar", tipo_elemento : "equipos"},
+                         "datos" : datos_modificacion};
 
         var direccionDestino = 'Nuevos_cambios/Asignador_tareas.php';
         $http( {
@@ -174,12 +172,9 @@
     };
 
     this.solicitarListaEquipos = function () {
-      var datos_solicitud = {"tipo_elemento" : "equipos",
-                             "tipo_consulta" : "lista"
-                            };
 
-      var solicitud = {tarea : "consultar",
-                       datos : datos_solicitud};
+      var solicitud = {tarea : {nombre_tarea : "consultar lista", tipo_elemento : "equipos"},
+                       datos : "consultar"};
 
       var direccionDestino = 'Nuevos_cambios/Asignador_tareas.php';
       $http( {
@@ -195,11 +190,9 @@
     };
 
     this.solicitarListaComponenesDisponibles = function () {
-      var datos_solicitud = {"tipo_elemento" : "componentes",
-                             "tipo_consulta" : "lista" };
 
-      var solicitud = {"tarea" : "consultar",
-                       "datos" : datos_solicitud};
+      var solicitud = {"tarea" : {nombre_tarea : "consultar lista", tipo_elemento : "componentes"},
+                       "datos" : "datos comoponentes"};
 
       var direccionDestino = 'Nuevos_cambios/Asignador_tareas.php';
       $http( {
