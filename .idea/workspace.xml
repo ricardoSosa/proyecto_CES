@@ -2,18 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6dff6832-263c-4da9-897b-5a9c56f36540" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lista-componentes.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lista-equipo.html" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/componentes-lista.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/equipos-lista.html" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proyecto_CES" afterPath="$PROJECT_DIR$/proyecto_CES" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ControladorVentanaProcesos.js" afterPath="$PROJECT_DIR$/ControladorVentanaProcesos.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ElementosVista.js" afterPath="$PROJECT_DIR$/ElementosVista.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nuevos_cambios/Administrador.php" afterPath="$PROJECT_DIR$/Nuevos_cambios/Administrador.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/form-equipos.html" afterPath="$PROJECT_DIR$/form-equipos.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/form-procesos.html" afterPath="$PROJECT_DIR$/form-procesos.html" />
     </list>
     <ignored path="proyecto_CES.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,26 +18,6 @@
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
-  </component>
-  <component name="DockManager">
-    <window id="4">
-      <content type="file-editors">
-        <state>
-          <leaf>
-            <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/app.js">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="351">
-                    <caret line="101" column="7" selection-start-line="100" selection-start-column="0" selection-end-line="108" selection-end-column="12" />
-                    <folding />
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
@@ -324,7 +293,7 @@
       <workItem from="1480739962076" duration="162000" />
       <workItem from="1480740257770" duration="2726000" />
       <workItem from="1480743090567" duration="12000" />
-      <workItem from="1480743119574" duration="11205000" />
+      <workItem from="1480743119574" duration="11403000" />
     </task>
     <task id="LOCAL-00001" summary="Nuevos cambios implementados en Procesos">
       <created>1480458767068</created>
@@ -344,7 +313,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17114000" />
+    <option name="totallyTimeSpent" value="17312000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="0" />
