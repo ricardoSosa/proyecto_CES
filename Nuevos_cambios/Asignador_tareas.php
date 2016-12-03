@@ -8,7 +8,7 @@
   class Asignador_tareas {
 
     private $tarea;
-    private $datos_tarea;
+    private $datos_elemento;
     private $encargado_tarea;
 
     /*
@@ -16,9 +16,9 @@
      *@param String $tarea - contiene la tarea que el usuario quiere hacer
      *@param Array $datos_tarea - contiene todos los datos para realizar la tarea
      */
-    function __construct( $tarea, $datos_tarea ) {
-      $this->tarea = $tarea;
-      $this->datos_tarea = $datos_tarea;
+    function __construct( $datos_tarea, $datos_elemento ) {
+      $this->tarea = $datos_tarea[ 'nombre_tarea' ];
+      $this->datos_elemento = $datos_elemento;
 
       $this->encontrar_encargado_tarea( $this->datos_tarea[ 'tipo_elemento' ] );
       $this->asignar_tarea();
