@@ -59,10 +59,9 @@
 
       var proceso = { "id" : "id_proceso_" + (this.listaProcesos.length+1),
                       "nombre": nombreProceso,
-                      "descripcion" : descripcionProceso,
-                      "tipo_elemento" : "procesos"};
+                      "descripcion" : descripcionProceso};
 
-      var datos_proceso = { tarea : "agregar",
+      var datos_proceso = { tarea : {nombre_tarea : "agregar", tipo_elemento : "procesos"},
                             datos: proceso};
 
       this.listaProcesos.push( proceso ); //BORRAR DESPUES
@@ -97,12 +96,11 @@
 
       console.log(indiceProceso);
 
-      var datos_proceso = {"id" : proceso,
-                           "tipo_elemento" : "procesos",
+      var datos_proceso = {"id" : {id : proceso},
                            "nombre_id" : "id" //PENDIENTE
                           };
 
-      var datos_eliminacion = {tarea : "eliminar",
+      var datos_eliminacion = {tarea : {nombre_tarea : "eliminar", tipo_elemento : "procesos"},
                                datos : datos_proceso};
 
       var direccionDestino = 'Nuevos_cambios/Asignador_tareas.php';
@@ -148,10 +146,10 @@
 
         var datos_modificacion = {"id" : id_proceso,
                                   "nombre" : nombre_proceso,
-                                  "descripcion" : descripcion,
-                                  "tipo_elemento" : "procesos"};
+                                  "descripcion" : descripcion};
 
-        var solicitud = {"tarea" : "modificar", "datos" : datos_modificacion};
+        var solicitud = {"tarea" : {nombre_tarea : "modificar", tipo_elemento : "procesos"},
+                         "datos" : datos_modificacion};
 
         var direccionDestino = 'Nuevos_cambios/Asignador_tareas.php';
         $http( {
@@ -168,12 +166,9 @@
     };
 
     this.solicitarListaProcesos = function() {
-      var datos_solicitud = {"tipo_elemento" : "procesos",
-                             "tipo_consulta" : "lista"
-                            };
 
-      var solicitud = {tarea : "consultar",
-                       datos : datos_solicitud};
+      var solicitud = {tarea : {nombre_tarea : "consultar lista", tipo_elemento : "procesos"},
+                       datos : "datos"};
 
       var direccionDestino = 'Nuevos_cambios/Asignador_tareas.php';
       $http( {
@@ -191,11 +186,9 @@
     };
 
     this.solicitarListaEquiposDisponibles = function () {
-      var datos_solicitud = {"tipo_elemento" : "equipos",
-                             "tipo_consulta" : "lista"};
 
-      var solicitud = {"tarea" : "consultar",
-                       "datos" : datos_solicitud};
+      var solicitud = {"tarea" : {nombre_tarea : "consultar lista", tipo_elemento : "equipos"},
+                       "datos" : "datos"};
 
       var direccionDestino = 'Nuevos_cambios/Asignador_tareas.php';
       $http( {

@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6dff6832-263c-4da9-897b-5a9c56f36540" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proyecto_CES" afterPath="$PROJECT_DIR$/proyecto_CES" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ControladorVentanaComponentes.js" afterPath="$PROJECT_DIR$/ControladorVentanaComponentes.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nuevos_cambios/Administrador.php" afterPath="$PROJECT_DIR$/Nuevos_cambios/Administrador.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nuevos_cambios/Manejador_base_datos.php" afterPath="$PROJECT_DIR$/Nuevos_cambios/Manejador_base_datos.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modificacion-componentes.html" afterPath="$PROJECT_DIR$/modificacion-componentes.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ControladorVentanaProcesos.js" afterPath="$PROJECT_DIR$/ControladorVentanaProcesos.js" />
     </list>
     <ignored path="proyecto_CES.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -23,27 +20,47 @@
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
+  <component name="DockManager">
+    <window id="1">
+      <content type="file-editors">
+        <state>
+          <leaf>
+            <file leaf-file-name="ControladorVentanaComponentes.js" pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/ControladorVentanaComponentes.js">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="-1513">
+                    <caret line="85" column="0" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
+                    <folding />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+          </leaf>
+        </state>
+      </content>
+    </window>
+  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="proyecto_CES" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ControladorVentanaComponentes.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/ControladorVentanaComponentes.js">
+      <file leaf-file-name="Asignador_tareas.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Nuevos_cambios/Asignador_tareas.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="88" column="53" selection-start-line="88" selection-start-column="53" selection-end-line="88" selection-end-column="53" />
+            <state relative-caret-position="595">
+              <caret line="68" column="65" selection-start-line="68" selection-start-column="51" selection-end-line="68" selection-end-column="65" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Asignador_tareas.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Nuevos_cambios/Asignador_tareas.php">
+      <file leaf-file-name="ControladorVentanaProcesos.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ControladorVentanaProcesos.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="68" column="65" selection-start-line="68" selection-start-column="51" selection-end-line="68" selection-end-column="65" />
+            <state relative-caret-position="408">
+              <caret line="189" column="92" selection-start-line="189" selection-start-column="92" selection-end-line="189" selection-end-column="92" />
               <folding />
             </state>
           </provider>
@@ -89,13 +106,13 @@
       <list>
         <option value="$PROJECT_DIR$/Procesos.html" />
         <option value="$PROJECT_DIR$/Equipos.html" />
-        <option value="$PROJECT_DIR$/ControladorVentanaProcesos.js" />
         <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/Nuevos_cambios/Asignador_tareas.php" />
         <option value="$PROJECT_DIR$/modificacion-componentes.html" />
         <option value="$PROJECT_DIR$/Nuevos_cambios/Administrador.php" />
         <option value="$PROJECT_DIR$/Nuevos_cambios/Manejador_base_datos.php" />
         <option value="$PROJECT_DIR$/ControladorVentanaComponentes.js" />
+        <option value="$PROJECT_DIR$/ControladorVentanaProcesos.js" />
       </list>
     </option>
   </component>
@@ -153,20 +170,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="proyecto_CES" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="proyecto_CES" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="proyecto_CES" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Nuevos_cambios" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -250,7 +253,7 @@
       <workItem from="1480739962076" duration="162000" />
       <workItem from="1480740257770" duration="2726000" />
       <workItem from="1480743090567" duration="12000" />
-      <workItem from="1480743119574" duration="3697000" />
+      <workItem from="1480743119574" duration="5017000" />
     </task>
     <task id="LOCAL-00001" summary="Nuevos cambios implementados en Procesos">
       <created>1480458767068</created>
@@ -270,7 +273,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9606000" />
+    <option name="totallyTimeSpent" value="10926000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="0" />
@@ -502,14 +505,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ControladorVentanaProcesos.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="62">
-          <caret line="199" column="67" selection-start-line="199" selection-start-column="67" selection-end-line="199" selection-end-column="67" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Procesos.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
@@ -542,14 +537,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Nuevos_cambios/Asignador_tareas.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="68" column="65" selection-start-line="68" selection-start-column="51" selection-end-line="68" selection-end-column="65" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Nuevos_cambios/Generador_consultas.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -574,10 +561,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Nuevos_cambios/Asignador_tareas.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="68" column="65" selection-start-line="68" selection-start-column="51" selection-end-line="68" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ControladorVentanaComponentes.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="88" column="53" selection-start-line="88" selection-start-column="53" selection-end-line="88" selection-end-column="53" />
+        <state relative-caret-position="-1513">
+          <caret line="85" column="0" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ControladorVentanaProcesos.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="189" column="92" selection-start-line="189" selection-start-column="92" selection-end-line="189" selection-end-column="92" />
           <folding />
         </state>
       </provider>
