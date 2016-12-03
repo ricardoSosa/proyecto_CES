@@ -53,10 +53,9 @@
       var componente = {"id" : "id_componente_" + (this.listaComponentes.length+1),
                         "nombre" : nombreComponente,
                         "tiempo_vida_max" : tiempoVidaMax,
-                        "descripcion" : descripcionComponente,
-                        "tipo_elemento" : "componentes"};
+                        "descripcion" : descripcionComponente};
 
-      var datos_componente = {tarea : "agregar",
+      var datos_componente = {tarea : {nombre_tarea : "agregar", tipo_elemento : "componentes"},
                               datos : componente};
 
       this.listaComponentes.push( componente ); //BORRAR DESPUES
@@ -138,10 +137,10 @@
         var datos_modificacion = { "id" : id_componente,
                                    "nombre" : nombre_componente,
                                    "tiempo_vida_max" : tiempo_vida,
-                                   "descripcion" : descripcion,
-                                   "tipo_elemento" : "componentes"};
+                                   "descripcion" : descripcion};
 
-        var solicitud = {"tarea" : "modificar", "datos" : datos_modificacion};
+        var solicitud = {"tarea" : {nombre_tarea : "modificar", tipo_elemento : "componentes"},
+                         "datos" : datos_modificacion};
 
         var direccionDestino = 'Nuevos_cambios/Asignador_tareas.php';
         $http( {
@@ -180,11 +179,11 @@
     }
 
     this.solicitarListaComponentes = function() {
-      var datos_solicitud = {"tipo_elemento" : "componentes",
-                             "tipo_consulta" : "lista"};
+      /*var datos_solicitud = {"tipo_elemento" : "componentes",
+                             "tipo_consulta" : "lista"};*/
 
-      var solicitud = {tarea : "consultar",
-                       datos : datos_solicitud};
+      var solicitud = {tarea : {nombre_tarea : "consultar lista", tipo_elemento : "componentes"},
+                       datos : "consulta"};
 
       var direccionDestino = 'Nuevos_cambios/Asignador_tareas.php';
       $http( {
