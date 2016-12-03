@@ -4,12 +4,6 @@
 ( function () {
   var app = angular.module( 'elementos-vista', [] );
 
-  app.directive( 'componentesLista', function () {
-    return{
-      restrict : "A",
-      templateUrl : "componentes-lista.html"
-    };
-  } );
 
   app.directive( 'procesosLista', function () {
     return{
@@ -18,12 +12,20 @@
     }
   } );
 
-  app.directive( 'equiposLista', function () {
+  app.directive( 'listaComponentes', function () {
     return{
       restrict : "A",
-      templateUrl : "equipos-lista.html"
+      templateUrl : "lista-componentes.html"
     }
   } );
+
+
+ app.directive( 'listaEquipo', function () {
+   return{
+     restrict : "A",
+     templateUrl : "lista-equipo.html"
+   }
+ } );
 
   app.directive( 'formEquipos', function () {
     return{

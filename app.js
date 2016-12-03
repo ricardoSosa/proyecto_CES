@@ -64,8 +64,9 @@
       var nombreEquipo = datosEquipo.nombre;
       var ubicacionEquipo = datosEquipo.ubicacion;
       var descripcionEquipo = datosEquipo.descripcion;
+      var idEquipo = "id_equipos_" + (this.listaEquipos.length+1);
 
-      var equipo = { "id" : "id_equipos_" + (this.listaEquipos.length+1),
+      var equipo = { "id" : idEquipo,
                      "nombre" : nombreEquipo,
                      "descripcion" : descripcionEquipo,
                      "ubicacion" : ubicacionEquipo};
@@ -85,6 +86,28 @@
       }, function (response) {
         
       } );
+
+      //incerta los componentes al equipo uno por uno
+      for(i=0; i<this.listaComponentes.length; i++) {
+        var componente = this.listaComponentes[ i ];
+        console.log(componente); //BORAR DESPUES
+        var componente = {id_equipo : idEquipo,
+                          id_comp : componente.id,
+                          porcentaje_uso : componente.porcentaje_usado};
+
+        var solicitud = {tarea : {nombre_tarea : "agregar componente a equipo", tipo_elemento : "equipos"},
+                         datos : componente};
+
+        $http( {
+          url: direccionDestino,
+          method: "POST",
+          data: solicitud
+        } ).then( function (response) {
+          console.log(response);
+        }, function (response) {
+
+        } );
+      }
     };
 
     this.eliminarComponente = function( componente ) {
@@ -121,11 +144,7 @@
         console.log( response ); //BORRAR DESPUES
       } );
 
-      //incerta los componentes al equipo uno por uno
-      for(i=0; i<this.listaComponentes.length; i++) {
-        var componente = this.listaComponentes[ i ];
-        console.log(componente.porcentaje_usado);
-      }
+
     };
 
     this.seleccionarEquipo = function ( equipo ) {

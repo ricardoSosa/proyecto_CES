@@ -19,6 +19,13 @@
       <h4>{{equipo_selec.nombre}}</h4>
       <p><strong>ID Equipo: </strong>{{equipo_selec.id}}</p>
 
+      <div class="form-group">
+        <label for="porcentajeUsado" class="col-sm-2 control-label">Porcentaje de Uso: </label>
+        <div class="col-sm-10">
+          <input type="text" id="porcentajeUsado" ng-model="equipo_selec.porcentaje_usado" class="form-control">
+        </div>
+      </div>
+
       <button class="btn btn-default" ng-click='controlador.eliminarEquipo( equipo_selec )'>Quitar de lista</button>
     </div>
   </div>

@@ -56,8 +56,9 @@
     this.enviarDatos = function ( datosProceso ) {
       var nombreProceso = datosProceso.nombre;
       var descripcionProceso = datosProceso.descripcion;
+      var idProceso = "id_proceso_" + (this.listaProcesos.length+1);
 
-      var proceso = { "id" : "id_proceso_" + (this.listaProcesos.length+1),
+      var proceso = { "id" : idProceso,
                       "nombre": nombreProceso,
                       "descripcion" : descripcionProceso};
 
@@ -76,6 +77,27 @@
       }, function ( response ) {
         console.log( response )
       } );
+
+      for(i=0; i<this.listaEquipos.length; i++) {
+        var equipo = this.listaEquipos[ i ];
+        console.log(equipo);
+        var equipo = {id_proceso : idProceso,
+                      id_equipo : equipo.id,
+                      porcentaje_uso : equipo.porcentaje_usado};
+
+        var solicitud = {tarea : {nombre_tarea : "agregar equipo a proceso", tipo_elemento : "procesos"},
+                         datos : equipo};
+
+        $http( {
+          url: direccionDestino,
+          method: "POST",
+          data: solicitud
+        } ).then( function (response) {
+          console.log(response);
+        }, function (response) {
+
+        } );
+      }
     };
 
     this.eliminarEquipo = function ( equipo ) {

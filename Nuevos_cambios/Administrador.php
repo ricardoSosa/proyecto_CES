@@ -4,7 +4,7 @@
 
   abstract class Administrador {
     const NUM_IDS_PRINCIPAL = 1;
-    private $conector_bd;
+    public $conector_bd;
     private $nombre_tabla_principal;
 
     function __construct( $nombre_tabla ) {
