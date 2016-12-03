@@ -73,7 +73,11 @@
           $this->encargado_tarea->generar_historial();
         break;
 
-        case 'consultar':
+        case 'consultar lista':
+          $this->encargado_tarea->obtener_datos( null );
+        break;
+
+        case 'consulta especifica':
           $this->encargado_tarea->obtener_datos( $this->datos_tarea );
         break;
 
@@ -103,7 +107,7 @@
         break;
 
         case 'consultar porcentajes de equipos':
-          $this->encargado_tarea->obtener_porcentajes_equipos( $this->datos_tarea );
+          $this->encargado_tarea->obtener_porcentajes_equipos( null );
         break;
 
         //Tareas del administrador de equipo------------------------------------
@@ -120,7 +124,7 @@
         break;
 
         case 'consultar porcentajes de componentes':
-          $this->encargado_tarea->obtener_porcentajes_componentes( $this->datos_tarea );
+          $this->encargado_tarea->obtener_porcentajes_componentes( null );
         break;
 
         default:
