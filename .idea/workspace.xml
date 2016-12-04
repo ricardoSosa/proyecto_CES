@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6dff6832-263c-4da9-897b-5a9c56f36540" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/activacion-procesos.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/procesos-activos.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proyecto_CES" afterPath="$PROJECT_DIR$/proyecto_CES" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ControladorVentanaProcesos.js" afterPath="$PROJECT_DIR$/ControladorVentanaProcesos.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ElementosVista.js" afterPath="$PROJECT_DIR$/ElementosVista.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nuevos_cambios/Administrador_proceso.php" afterPath="$PROJECT_DIR$/Nuevos_cambios/Administrador_proceso.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Procesos.html" afterPath="$PROJECT_DIR$/Procesos.html" />
     </list>
     <ignored path="proyecto_CES.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -42,17 +36,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ControladorVentanaProcesos.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ControladorVentanaProcesos.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ControladorVentanaProcesos.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="309">
-              <caret line="308" column="48" selection-start-line="308" selection-start-column="48" selection-end-line="308" selection-end-column="48" />
+            <state relative-caret-position="462">
+              <caret line="112" column="9" selection-start-line="112" selection-start-column="9" selection-end-line="112" selection-end-column="9" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Administrador_proceso.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Administrador_proceso.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Nuevos_cambios/Administrador_proceso.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="306">
@@ -146,8 +140,8 @@
         <option value="$PROJECT_DIR$/Procesos.html" />
         <option value="$PROJECT_DIR$/procesos-activos.html" />
         <option value="$PROJECT_DIR$/activacion-procesos.html" />
-        <option value="$PROJECT_DIR$/ControladorVentanaProcesos.js" />
         <option value="$PROJECT_DIR$/Nuevos_cambios/Administrador_proceso.php" />
+        <option value="$PROJECT_DIR$/ControladorVentanaProcesos.js" />
       </list>
     </option>
   </component>
@@ -303,7 +297,7 @@
       <workItem from="1480740257770" duration="2726000" />
       <workItem from="1480743090567" duration="12000" />
       <workItem from="1480743119574" duration="11403000" />
-      <workItem from="1480757571157" duration="11979000" />
+      <workItem from="1480757571157" duration="14400000" />
     </task>
     <task id="LOCAL-00001" summary="Nuevos cambios implementados en Procesos">
       <created>1480458767068</created>
@@ -323,7 +317,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29291000" />
+    <option name="totallyTimeSpent" value="31712000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="1378" height="736" extended-state="0" />
@@ -742,14 +736,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ControladorVentanaProcesos.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="309">
-          <caret line="308" column="48" selection-start-line="308" selection-start-column="48" selection-end-line="308" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Nuevos_cambios/Asignador_tareas.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -770,6 +756,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="18" column="76" selection-start-line="18" selection-start-column="76" selection-end-line="18" selection-end-column="76" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ControladorVentanaProcesos.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="112" column="9" selection-start-line="112" selection-start-column="9" selection-end-line="112" selection-end-column="9" />
           <folding />
         </state>
       </provider>

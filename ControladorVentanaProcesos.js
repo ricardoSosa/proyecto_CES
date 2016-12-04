@@ -54,51 +54,69 @@
     }
 
     this.enviarDatos = function ( datosProceso ) {
-      var nombreProceso = datosProceso.nombre;
-      var descripcionProceso = datosProceso.descripcion;
-      var idProceso = "id_proceso_" + (this.listaProcesos.length+1);
+      //VALIDACION DE PORCENTAJES-------------------------------------------------------------
+      var porcentaje_total = 0;
 
-      var proceso = { "id" : idProceso,
-                      "nombre": nombreProceso,
-                      "descripcion" : descripcionProceso,
-                      "activado" : false};
+      for(j=0; j<this.listaEquipos.length; j++) {
+        porcentaje_total = parseInt(this.listaEquipos[j].porcentaje_usado) + porcentaje_total;
+      }
 
-      var datos_proceso = { tarea : {nombre_tarea : "agregar", tipo_elemento : "procesos"},
-                            datos: proceso};
+      console.log(porcentaje_total);
 
-      this.listaProcesos.push( proceso ); //BORRAR DESPUES
+      if(porcentaje_total > 0 && porcentaje_total<100){
+        console.log("correcto");
+        var nombreProceso = datosProceso.nombre;
+        var descripcionProceso = datosProceso.descripcion;
+        var idProceso = "id_proceso_" + (this.listaProcesos.length+1);
 
-      var direccionDestino = 'Nuevos_cambios/Asignador_tareas.php';
-      $http( {
-        url: direccionDestino,
-        method: "POST",
-        data: datos_proceso
-      } ).then( function ( response ) {
-        console.log( response );
-      }, function ( response ) {
-        console.log( response )
-      } );
+        var proceso = { "id" : idProceso,
+          "nombre": nombreProceso,
+          "descripcion" : descripcionProceso,
+          "activado" : false};
 
-      for(i=0; i<this.listaEquipos.length; i++) {
-        var equipo = this.listaEquipos[ i ];
-        console.log(equipo);
-        var equipo = {id_proceso : idProceso,
-                      id_equipo : equipo.id,
-                      porcentaje_uso : equipo.porcentaje_usado};
+        var datos_proceso = { tarea : {nombre_tarea : "agregar", tipo_elemento : "procesos"},
+          datos: proceso};
 
-        var solicitud = {tarea : {nombre_tarea : "agregar equipo a proceso", tipo_elemento : "procesos"},
-                         datos : equipo};
+        this.listaProcesos.push( proceso ); //BORRAR DESPUES
 
+        var direccionDestino = 'Nuevos_cambios/Asignador_tareas.php';
         $http( {
           url: direccionDestino,
           method: "POST",
-          data: solicitud
-        } ).then( function (response) {
-          console.log(response);
-        }, function (response) {
-
+          data: datos_proceso
+        } ).then( function ( response ) {
+          console.log( response );
+        }, function ( response ) {
+          console.log( response )
         } );
+
+
+        for(i=0; i<this.listaEquipos.length; i++) {
+          var equipo = this.listaEquipos[ i ];
+          console.log(equipo);
+          var equipo = {id_proceso : idProceso,
+            id_equipo : equipo.id,
+            porcentaje_uso : equipo.porcentaje_usado};
+
+          var solicitud = {tarea : {nombre_tarea : "agregar equipo a proceso", tipo_elemento : "procesos"},
+            datos : equipo};
+
+          $http( {
+            url: direccionDestino,
+            method: "POST",
+            data: solicitud
+          } ).then( function (response) {
+            console.log(response);
+          }, function (response) {
+
+          } );
+        }
+      } else {
+        console.log("incorrecto");
       }
+      //---------------------------------------------------------------------------------------
+
+
     };
 
     this.eliminarEquipo = function ( equipo ) {
