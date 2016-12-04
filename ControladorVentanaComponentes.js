@@ -79,7 +79,6 @@
         if(componente == this.listaComponentes[i].id) {
           indiceComponente = i;
         }
-
       }
 
       this.listaComponentes.splice(indiceComponente, 1);

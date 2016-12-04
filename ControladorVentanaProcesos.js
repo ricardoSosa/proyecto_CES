@@ -15,6 +15,60 @@
     this.procesoSeleccionado = {};
 
     //-----------------------------------------------
+    //cosas de la simulacion
+    this.procesosSeleccionados = [];
+    this.listaProcesosSeleccionados = [];
+
+
+    this.anadirProcesoSelecionado = function( proceso ){
+      console.log("añadirProcesoSelecionado()");
+      console.log("----->" + proceso.descripcion);
+      var isProcesoOnArray = this.procesosSeleccionados.indexOf( proceso.id );
+      if(isProcesoOnArray < 0){
+        this.procesosSeleccionados.push( proceso.id );
+        this.listaProcesosSeleccionados.push(proceso);
+        console.log(this.procesosSeleccionados);
+      }else{
+        console.log("proceso ya se encuentra en el array");
+      }
+    }
+
+    this.simularProcesos = function( duracion ){
+      var duracion_procesos = document.getElementsByTagName('input');
+      // console.log(elements[0].value);
+      // console.log("---->"+duracion);
+
+      for(var i = 0; i < this.procesosSeleccionados; i++){
+        
+      }
+
+      var datos_solicitud = {"id_procesos" : this.procesosSeleccionados,
+                            "duracion_procesos" : duracion_procesos};
+
+      var solicitud = {tarea : {nombre_tarea : "simular", tipo_elemento : "simulador"},
+                       datos : datos_solicitud}
+
+      var direccionDestino = 'Nuevos_cambios/Asignador_tareas.php';
+      $http( {
+        url: direccionDestino,
+        method: "POST",
+        data: solicitud
+      } ).then( function ( response ) {
+        console.log( response );
+      }, function ( response ) {
+        console.log( response );
+      } );
+    }
+
+    this.quitarProcesoSimulacion = function( proceso ){
+      console.log("quitarProcesoSimulacion");
+      var indiceProceso = this.procesosSeleccionados.indexOf( proceso.id );
+      this.procesosSeleccionados.splice(indiceProceso, 1);
+      this.listaProcesosSeleccionados.splice(indiceProceso, 1);
+      console.log(this.procesosSeleccionados);
+    }
+
+    //-----------------------------------------------
     var panel_procesos = "panel_lista_procesos";
     this.panel_actual = panel_procesos;
     console.log( this.panel_actual ); //BORRAR DESPUES
@@ -62,7 +116,7 @@
                       "nombre": nombreProceso,
                       "descripcion" : descripcionProceso};
 
-      var datos_proceso = { tarea : {nombre_tarea : "agregar", tipo_elemento : "procesos"},
+      var datos_proceso = { tarea : {nombre_tarea : "agregar", tipo_elemento : "simulador"},
                             datos: proceso};
 
       this.listaProcesos.push( proceso ); //BORRAR DESPUES

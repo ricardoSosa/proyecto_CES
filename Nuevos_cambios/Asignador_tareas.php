@@ -46,6 +46,7 @@
 
         case 'simulador':
           $this->encargado_tarea = new Simulador_procesos();
+          break;
       }
     }
 
@@ -82,7 +83,22 @@
         break;
 
         case 'simular':
-          $this->encargado_tarea->simular( $procesos );
+
+          $long_array_id = sizeof($this->datos_elemento['id_procesos']);
+
+          for ($indice_id=0; $indice_id < $long_array_id; $indice_id++) { 
+
+            $id_procesos [] = $this->datos_elemento['id_procesos'][$indice_id];
+            echo "->->->".$this->datos_elemento['id_procesos'][$indice_id];
+
+            $id_procesos_duracion[] = ;
+
+          }
+
+          // echo "----->>>".$id_procesos;
+
+          $this->encargado_tarea->pedir_procesos( $datos_elemento );
+
         break;
 
         //Tareas del administrador de proceso-----------------------------------
