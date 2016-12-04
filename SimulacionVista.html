@@ -47,7 +47,7 @@
 							<div class="col-md-4">
 					            <div class="form-group">
 					                <div class='input-group date' id='datetimepicker3'>
-					                    <input type='text' id='duracion' class="form-control" ng-model="dur" />
+					                    <input type='text' id='duracion' class="form-control" ng-model="proceso_select.duracion" />
 					                    <span class="input-group-addon">
 					                        <span class="glyphicon glyphicon-time" >
 					                        </span>
@@ -58,7 +58,7 @@
 						</div>
 					</div>
 				</div><div>
-					 <button type="button" class="btn btn-success btn-lg btn-block" ng-click="controlador.simularProcesos( dur )">
+					 <button type="button" class="btn btn-success btn-lg btn-block" ng-click="controlador.simularProcesos( proceso_select )">
 					 	Simular
 					 </button>
 				</div>

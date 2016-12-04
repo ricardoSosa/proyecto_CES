@@ -2,7 +2,7 @@
 
   include_once "Administrador.php";
 
-  // include_once "Simulador_procesos.php";
+  // require "Administrador_equipo.php";
 
   class Administrador_proceso extends Administrador {
     const NOMBRE_TABLA_PORCENTAJES = 'porcentajes_equipos';
@@ -35,10 +35,6 @@
 
     public function obtener_porcentajes_equipos( $datos ) {
       $this->conector_bd->obtener_informacion( self::NOMBRE_TABLA_PORCENTAJES, $datos );
-    }
-
-    public function mandar_simulacion( $id_procesos ){
-
     }
 
   }
