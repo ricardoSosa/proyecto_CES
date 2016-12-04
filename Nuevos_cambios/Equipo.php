@@ -11,12 +11,12 @@
     private $componentes;
     private $porcentaje_uso;
 
-    function __construct( $datos_equipo ) {
+    function __construct( $datos_equipo, $componentes ) {
         $this->id = $datos_equipo[ 'id' ];
         $this->nombre = $datos_equipo[ 'nombre' ];
         $this->descripcion = $datos_equipo[ 'descripcion' ];
         $this->ubicacion = $datos_equipo[ 'ubicacion' ];
-        $this->componentes = $datos_equipo[ 'componentes' ];
+        $this->componentes = $componentes;
         $this->porcentaje_uso = $datos_equipo[ 'porcentaje_uso' ];
     }
 

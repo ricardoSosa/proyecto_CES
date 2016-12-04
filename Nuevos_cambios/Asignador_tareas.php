@@ -3,7 +3,7 @@
   include 'Administrador_proceso.php';
   include 'Administrador_equipo.php';
   include 'Administrador_componente.php';
-  include 'Simulador_procesos.php';
+  include 'Encargado_simulacion.php';
   /*Clase que sirve como delegador de lo que el usuario quiere hacer*/
   class Asignador_tareas {
 
@@ -45,7 +45,7 @@
           break;
 
         case 'simulador':
-          $this->encargado_tarea = new Simulador_procesos();
+          $this->encargado_tarea = new Encargado_simulacion();
           break;
       }
     }
@@ -83,22 +83,7 @@
         break;
 
         case 'simular':
-
-          $long_array_id = sizeof($this->datos_elemento['id_procesos']);
-
-          for ($indice_id=0; $indice_id < $long_array_id; $indice_id++) { 
-
-            $id_procesos [] = $this->datos_elemento['id_procesos'][$indice_id];
-            echo "->->->".$this->datos_elemento['id_procesos'][$indice_id];
-
-            $id_procesos_duracion[] = ;
-
-          }
-
-          // echo "----->>>".$id_procesos;
-
-          $this->encargado_tarea->pedir_procesos( $datos_elemento );
-
+          $this->encargador_tarea->mandar_simulacion( $this->datos_elemento )
         break;
 
         //Tareas del administrador de proceso-----------------------------------
@@ -123,7 +108,7 @@
         break;
 
         case 'consultar porcentajes de equipos':
-          $this->encargado_tarea->obtener_porcentajes_equipos( null );
+          $this->encargado_tarea->obtener_porcentajes_equipos();
         break;
 
         //Tareas del administrador de equipo------------------------------------
@@ -140,7 +125,7 @@
         break;
 
         case 'consultar porcentajes de componentes':
-          $this->encargado_tarea->obtener_porcentajes_componentes( null );
+          $this->encargado_tarea->obtener_porcentajes_componentes();
         break;
 
         default:

@@ -22,8 +22,18 @@
       $this->conector_bd->eliminar( self::NOMBRE_TABLA_PORCENTAJES, $datos );
     }
 
-    public function obtener_porcentajes_componentes( $datos ) {
-      $this->conector_bd->obtener_informacion( self::NOMBRE_TABLA_PORCENTAJES, $datos );
+    public function obtener_porcentajes_componentes() {
+      $this->conector_bd->obtener_informacion( self::NOMBRE_TABLA_PORCENTAJES, null );
+    }
+
+    public function obtener_ids_componentes() {
+      $ids_componentes = array();
+      $porcentajes_equipos = $this->obtener_porcentajes_componentes();
+      foreach( $porcentajes_componentes as $porcentaje_componente ) {
+        $ids_componentes[] = $porcentaje_componente[ 'id_componente' ];
+      }
+
+      return $ids_componentes;
     }
 
   }

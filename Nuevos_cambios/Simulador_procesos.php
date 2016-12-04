@@ -22,36 +22,11 @@
 			// $this->creaar_procesos();
 		}
 
-		public function pedir_procesos( $id_procesos_simular ){
+		private function iniciar_simulacion( $procesos ) {
 
-			$this->administrador_proceso = new Administrador_proceso();
+			foreach ( $procesos as $proceso ) {// por cada proceso
 
-			foreach ($id_procesos_simular as $id_proceso) {
-
-				$datos = array(
-					'tipo_consulta' => 'elemento',
-					'id' => $id_proceso
-					 );
-
-				$proceso = $this->administrador_proceso->leer_datos($datos);
-
-				//ncontrar los componentes qu ele pertenecen 
-				//a los equipos que participan en el proceso
-				//a simular
-
-				// $procesos[] = //añadir aqui los proceso que el aministrador va a crear
-
-			}
-
-			$this->iniciar_simulacion($procesos);
-
-		}
-
-		private function iniciar_simulacion($procesos){
-
-			foreach ($procesos as $proceso) {// por cada proceso
-
-				$this->obtener_equipos_proceso($proceso);
+				$this->obtener_equipos_proceso( $proceso );
 
 				$id_proceso = $proceso->obtener_id();
 
@@ -59,7 +34,7 @@
 
 		}
 
-		private function obtener_equipos_proceso($proceso){
+		private function obtener_equipos_proceso( $proceso ) {
 
 			$duracion_proceso = $proceso->obtener_duracion_estimada();
 
@@ -75,7 +50,7 @@
 
 		}
 
-		private function activar_equipo($equipo, $duracion_proceso){
+		private function activar_equipo( $equipo, $duracion_proceso ) {
 
 			$porcentaje_uso_equipo = $equipo->obtener_porcentaje_uso();
 
@@ -89,7 +64,7 @@
 
 				$mecanico = new Mecanico();
 
-				$mecanico->calcular_desgaste($componente , $tiempo_uso_equipo);
+				$mecanico->calcular_desgaste( $componente , $tiempo_uso_equipo );
 
 			}
 

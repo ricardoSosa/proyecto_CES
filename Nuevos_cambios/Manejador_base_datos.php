@@ -56,8 +56,7 @@
 
       $resultado = $this->conexion->query( $consulta );
       $datos_obtenidos = $resultado->fetchAll();
-      print_r (json_encode($datos_obtenidos)); //BORRAR DESPUES
-      //return $datos_obtenidos;
+      return $datos_obtenidos;
     }
 
   }

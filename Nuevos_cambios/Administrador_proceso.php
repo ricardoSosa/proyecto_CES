@@ -2,8 +2,6 @@
 
   include_once "Administrador.php";
 
-  // include_once "Simulador_procesos.php";
-
   class Administrador_proceso extends Administrador {
     const NOMBRE_TABLA_PORCENTAJES = 'porcentajes_equipos';
     const NOMBRE_TABLA_HISTORIAL = 'historial_procesos';
@@ -33,12 +31,18 @@
       $this->conector_bd->eliminar( self::NOMBRE_TABLA_PORCENTAJES, $datos );
     }
 
-    public function obtener_porcentajes_equipos( $datos ) {
-      $this->conector_bd->obtener_informacion( self::NOMBRE_TABLA_PORCENTAJES, $datos );
+    public function obtener_porcentajes_equipos() {
+      $this->conector_bd->obtener_informacion( self::NOMBRE_TABLA_PORCENTAJES, null );
     }
 
-    public function mandar_simulacion( $id_procesos ){
+    public function obtener_ids_equipos() {
+      $ids_equipos = array();
+      $porcentajes_equipos = $this->obtener_porcentajes_equipos();
+      foreach( $porcentajes_equipos as $porcentaje_equipo ) {
+        $ids_equipos[] = $porcentaje_equipo[ 'id_equipo' ];
+      }
 
+      return $ids_equipos;
     }
 
   }
