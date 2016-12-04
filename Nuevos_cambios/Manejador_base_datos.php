@@ -47,7 +47,7 @@
     }
 
     //Método que consulta información de las tablas de la base de datos.
-    public function obtener_informacion( $nombre_tabla, $ids ) {
+    public function obtener_informacion( $nombre_tabla, $ids, $x ) {
       if( $ids == null ) {
         $consulta = $this->generador_consultas->obtener_consulta_lista( $nombre_tabla );
       } else {
@@ -56,8 +56,12 @@
 
       $resultado = $this->conexion->query( $consulta );
       $datos_obtenidos = $resultado->fetchAll();
-      print_r (json_encode($datos_obtenidos)); //BORRAR DESPUES
-      //return $datos_obtenidos;
+
+      if( $x == false ){
+        print_r (json_encode($datos_obtenidos)); //BORRAR DESPUES
+      }
+      // print_r($datos_obtenidos);
+      return $datos_obtenidos;
     }
 
   }

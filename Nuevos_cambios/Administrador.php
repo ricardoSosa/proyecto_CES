@@ -6,6 +6,7 @@
     const NUM_IDS_PRINCIPAL = 1;
     public $conector_bd;
     private $nombre_tabla_principal;
+    public $x = false;
 
     function __construct( $nombre_tabla ) {
       $this->conector_bd = new Conector_base_datos();
@@ -20,14 +21,17 @@
       $this->conector_bd->modificar( $this->nombre_tabla_principal, $datos, self::NUM_IDS_PRINCIPAL );
     }
 
-    public function eliminar( $datos_eliminacion ) {
-      $id = $datos_eliminacion[ 'id' ];
-
-      $this->conector_bd->eliminar( $this->nombre_tabla_principal, $id );
+    public function eliminar( $datos ) {
+      $this->conector_bd->eliminar( $this->nombre_tabla_principal, $datos );
     }
 
     public function obtener_datos( $datos ) {
-      $this->conector_bd->obtener_informacion( $this->nombre_tabla_principal, $datos );
+      $datos = $this->conector_bd->obtener_informacion( $this->nombre_tabla_principal, $datos, $this->x );
+      return $datos;
+    }
+
+    public function setX(){
+      $this->x=true;
     }
 
   }

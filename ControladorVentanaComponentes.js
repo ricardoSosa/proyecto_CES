@@ -53,6 +53,7 @@
       var componente = {"id" : "id_componente_" + (this.listaComponentes.length+1),
                         "nombre" : nombreComponente,
                         "tiempo_vida_max" : tiempoVidaMax,
+                        "tiempo_vida_actual" : 0,
                         "descripcion" : descripcionComponente};
 
       var datos_componente = {tarea : {nombre_tarea : "agregar", tipo_elemento : "componentes"},

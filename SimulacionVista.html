@@ -58,13 +58,34 @@
 						</div>
 					</div>
 				</div><div>
-					 <button type="button" class="btn btn-success btn-lg btn-block" ng-click="controlador.simularProcesos( proceso_select )">
+					 <button type="button" class="btn btn-success btn-lg btn-block" ng-click="controlador.simularProcesos(); controlador.simular()">
 					 	Simular
 					 </button>
 				</div>
 			</div>
 		</div>
+
+		<div ng-show='controlador.simulado'>
+			
+			<div ng-repeat="procesoSim in controlador.procesosSim">
+				->
+				{{ procesosSim }}
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				llllllllllllllllllllllllllll
+				{{ procesoSim.equipos_proceso[0].id_equipo }}
+				--------------------------
+				{{ procesoSim }}
+			</div>
+
+		</div>
+
 	</div>
+
+
 	
 	
 

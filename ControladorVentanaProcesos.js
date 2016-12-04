@@ -15,9 +15,20 @@
     this.procesoSeleccionado = {};
 
     //-----------------------------------------------
+    //cosas del panel despues de la simulacion
+
+    this.simulado = false;
+
+    this.simular = function(){
+      this.simulado = true;
+      console.log("simular");
+    }
+
+    //-----------------------------------------------
     //cosas de la simulacion
     this.procesosSeleccionados = [];
     this.listaProcesosSeleccionados = [];
+    var procesosSimulados = [];
 
 
     this.anadirProcesoSelecionado = function( proceso ){
@@ -33,33 +44,44 @@
       }
     }
 
-    this.simularProcesos = function( duracion ){
+    this.procesosSim = procesosSimulados;//procesosSimulados;
+
+    this.simularProcesos = function(){
+      console.log("simularProcesos");
       var duracion_procesos = document.getElementsByTagName('input');
-      console.log(duracion_procesos[0].value);
+      console.log("value"+duracion_procesos[0].value);
 
       var id_procesos_duracion = {};
 
       for(var i = 0; i < this.procesosSeleccionados.length; i++){
-        id_procesos_duracion [this.procesosSeleccionados[i]] = duracion_procesos[i].value;
+        console.log(duracion_procesos[i].value);
+        var duracion = parseInt(duracion_procesos[i].value);
+        id_procesos_duracion [this.procesosSeleccionados[i]] = duracion;
       }
       console.log(id_procesos_duracion);
 
       var datos_solicitud = {"id_procesos_duracion" : id_procesos_duracion};
 
-      var solicitud = {tarea : {nombre_tarea : "simular", tipo_elemento : "simulador"},
-                       datos : datos_solicitud}
+      var solicitud = { tarea : {nombre_tarea : "simular", tipo_elemento : "simulador"},
+                            datos: datos_solicitud};
 
+      console.log("mandando informacion");
       var direccionDestino = 'Nuevos_cambios/Asignador_tareas.php';
       $http( {
         url: direccionDestino,
         method: "POST",
         data: solicitud
-      } ).then( function ( response ) {
-        console.log( response );
-      }, function ( response ) {
-        console.log( response );
-      } );
-    }
+      } ).success( function ( procesos ) {
+        console.log(procesos);
+        angular.forEach( procesos, function ( procesoSim, key ) {
+          // console.log("id_proceso:-> "+procesoSim.id_proceso);
+          console.log(procesoSim);
+          procesosSimulados.push( procesoSim );
+        } );
+          // console.log("fin simular procesos");
+      }  );
+      console.log("fin simular procesos");
+    };
 
     this.quitarProcesoSimulacion = function( proceso ){
       console.log("quitarProcesoSimulacion");
@@ -117,7 +139,7 @@
                       "nombre": nombreProceso,
                       "descripcion" : descripcionProceso};
 
-      var datos_proceso = { tarea : {nombre_tarea : "agregar", tipo_elemento : "simulador"},
+      var datos_proceso = { tarea : {nombre_tarea : "agregar", tipo_elemento : "procesos"},
                             datos: proceso};
 
       this.listaProcesos.push( proceso ); //BORRAR DESPUES

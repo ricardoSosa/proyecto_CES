@@ -2,8 +2,6 @@
 
   include_once "Administrador.php";
 
-  // require "Administrador_equipo.php";
-
   class Administrador_proceso extends Administrador {
     const NOMBRE_TABLA_PORCENTAJES = 'porcentajes_equipos';
     const NOMBRE_TABLA_HISTORIAL = 'historial_procesos';
@@ -33,8 +31,18 @@
       $this->conector_bd->eliminar( self::NOMBRE_TABLA_PORCENTAJES, $datos );
     }
 
-    public function obtener_porcentajes_equipos( $datos ) {
-      $this->conector_bd->obtener_informacion( self::NOMBRE_TABLA_PORCENTAJES, $datos );
+    public function obtener_porcentajes_equipos( $id_proceso ) {
+      $ids_equipos = array();
+      $this->x=true;
+      $porcentajes_equipos = $this->conector_bd->obtener_informacion( self::NOMBRE_TABLA_PORCENTAJES, null, $this->x );
+      for( $indice = 0; $indice < count($porcentajes_equipos); $indice++ ) {
+        if( $porcentajes_equipos[ $indice ][ 'id_proceso' ] == $id_proceso) {
+          $ids_equipos = array(
+            $porcentajes_equipos[ $indice ][ 'id_equipo' ] => $porcentajes_equipos[ $indice ][ 'porcentaje_uso' ]
+          );
+        }
+      }
+      return $ids_equipos;
     }
 
   }
