@@ -35,15 +35,16 @@
 
     this.simularProcesos = function( duracion ){
       var duracion_procesos = document.getElementsByTagName('input');
-      // console.log(elements[0].value);
-      // console.log("---->"+duracion);
+      console.log(duracion_procesos[0].value);
 
-      for(var i = 0; i < this.procesosSeleccionados; i++){
-        
+      var id_procesos_duracion = {};
+
+      for(var i = 0; i < this.procesosSeleccionados.length; i++){
+        id_procesos_duracion [this.procesosSeleccionados[i]] = duracion_procesos[i].value;
       }
+      console.log(id_procesos_duracion);
 
-      var datos_solicitud = {"id_procesos" : this.procesosSeleccionados,
-                            "duracion_procesos" : duracion_procesos};
+      var datos_solicitud = {"id_procesos_duracion" : id_procesos_duracion};
 
       var solicitud = {tarea : {nombre_tarea : "simular", tipo_elemento : "simulador"},
                        datos : datos_solicitud}

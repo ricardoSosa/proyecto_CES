@@ -45,7 +45,11 @@
           break;
 
         case 'simulador':
+<<<<<<< HEAD
           $this->encargado_tarea = new Encargado_simulacion();
+=======
+          $this->encargado_tarea = new Administrador_proceso();
+>>>>>>> eb4975260107a374b3bc5c95419726f05bd84c3d
           break;
       }
     }
