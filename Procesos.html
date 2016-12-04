@@ -25,6 +25,11 @@
           <h5 class="page-header">Opciones de Pagina</h5>
 
           <ul class="nav">
+            <li>
+              <a href="#" class="btn" ng-click='controlador.cambiar_panel( "panel_procesos_activos" )'>
+                <span><i class="glyphicon glyphicon-th-list"></i></span> Procesos Activos
+              </a>
+            </li>
             <li class="active">
               <a href="#" class="btn" ng-click='controlador.cambiar_panel( "panel_lista_procesos" )'>
                 Procesos Disponibles
@@ -43,6 +48,11 @@
             <li>
               <a href="#"class="btn" ng-click='controlador.cambiar_panel( "panel_eliminar_proceso" )'>
                 <span><i class="glyphicon glyphicon-remove"></i></span> Eliminar Proceso
+              </a>
+            </li>
+            <li>
+              <a href="#" class="btn" ng-click='controlador.cambiar_panel( "panel_activar_proceso" )'>
+                <span><i class="glyphicon glyphicon-off"></i></span> Activar Proceso
               </a>
             </li>
           </ul>
@@ -69,7 +79,13 @@
 
         </div>
 
+        <div activacion-procesos ng-show='controlador.panel_seleccionado( "panel_activar_proceso" )'>
 
+        </div>
+
+        <div procesos-activos ng-show='controlador.panel_seleccionado( "panel_procesos_activos" )'>
+
+        </div>
 
 
       </div>

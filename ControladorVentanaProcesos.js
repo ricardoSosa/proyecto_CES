@@ -60,7 +60,8 @@
 
       var proceso = { "id" : idProceso,
                       "nombre": nombreProceso,
-                      "descripcion" : descripcionProceso};
+                      "descripcion" : descripcionProceso,
+                      "activado" : false};
 
       var datos_proceso = { tarea : {nombre_tarea : "agregar", tipo_elemento : "procesos"},
                             datos: proceso};
@@ -200,6 +201,7 @@
 
       } ).success( function ( procesos ) {
         angular.forEach( procesos, function ( proceso, key ) {
+          console.log(proceso); //BORRAR DESPUES
           procesosSolicitud.push( proceso );
         } );
           console.log(procesosSolicitud);
@@ -223,6 +225,101 @@
         console.log(tabla.equipos);
       } );
     };
+
+    this.activar_proceso = function (  proceso  ) {
+      proceso.activado = 1;
+      var id_proceso = proceso.id;
+
+      //MODIFICA EL ESTO DEL EQUIPO A ACTIVO
+      var datos_activacion = {id : id_proceso,
+                              activado : true};
+
+      var solicitud = {"tarea" : {nombre_tarea : "modificar", tipo_elemento : "procesos"},
+        "datos" : datos_activacion};
+
+      var direccionDestino = 'Nuevos_cambios/Asignador_tareas.php';
+      $http( {
+        url: direccionDestino,
+        method: "POST",
+        data: solicitud
+      } ).then( function ( response ) {
+        console.log( response );
+      }, function ( response ) {
+        console.log( response )
+      } );
+
+      //SE AGREGA AL HISTORIAL
+      var fecha = new Date();
+      var fecha_activacion = fecha.getDate() + "/" + fecha.getMonth() + "/" + fecha.getFullYear();
+      var hora_activacion = "-" + fecha.getHours() + ":" + fecha.getMinutes();
+      console.log(fecha_activacion + hora_activacion);
+
+      var proceso_activo = {id_proceso : id_proceso,
+                            fecha_ini : fecha_activacion + hora_activacion,
+                            fecha_ter : ' '};
+
+      var solicitud = {tarea : {nombre_tarea : "activar proceso", tipo_elemento : "procesos"},
+                       datos : proceso_activo};
+
+      var direccionDestino = 'Nuevos_cambios/Asignador_tareas.php';
+      $http( {
+        url: direccionDestino,
+        method: "POST",
+        data: solicitud
+      } ).then( function ( response ) {
+        console.log( response );
+      }, function ( response ) {
+        console.log( response )
+      } );
+
+    };
+
+    this.terminar_proceso = function ( proceso ) {
+      var id_proceso = proceso.id;
+      proceso.activado = 0;
+
+      //MODIFICA EL ESTO DEL EQUIPO A ACTIVO
+      var datos_terminacion = {id : id_proceso,
+                              activado : false};
+
+      var solicitud = {"tarea" : {nombre_tarea : "modificar", tipo_elemento : "procesos"},
+                       "datos" : datos_terminacion};
+
+      var direccionDestino = 'Nuevos_cambios/Asignador_tareas.php';
+      $http( {
+        url: direccionDestino,
+        method: "POST",
+        data: solicitud
+      } ).then( function ( response ) {
+        console.log( response );
+      }, function ( response ) {
+        console.log( response )
+      } );
+
+      //SE AGREGA AL HISTORIAL
+      var fecha = new Date();
+      var fecha_activacion = fecha.getDate() + "/" + fecha.getMonth() + "/" + fecha.getFullYear();
+      var hora_activacion = "-" + fecha.getHours() + ":" + fecha.getMinutes();
+      console.log(fecha_activacion + hora_activacion);
+
+      var proceso_terminado = {id_proceso : id_proceso,
+                            fecha_ter : fecha_activacion + hora_activacion};
+
+      var solicitud = {tarea : {nombre_tarea : "finalizar proceso", tipo_elemento : "procesos"},
+                       datos : proceso_terminado};
+
+      var direccionDestino = 'Nuevos_cambios/Asignador_tareas.php';
+      $http( {
+        url: direccionDestino,
+        method: "POST",
+        data: solicitud
+      } ).then( function ( response ) {
+        console.log( response );
+      }, function ( response ) {
+        console.log( response )
+      } );
+
+    }
 
     this.solicitarListaProcesos();
     this.solicitarListaEquiposDisponibles();

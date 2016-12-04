@@ -16,7 +16,7 @@
     }
 
     public function finalizar_proceso( $datos ) {
-      $this->conector_bd->modificar( self::NOMBRE_TABLA_HISTORIAL, $datos );
+      $this->conector_bd->modificar( self::NOMBRE_TABLA_HISTORIAL, $datos, 1 );
     }
 
     public function agregar_equipo( $datos ) {

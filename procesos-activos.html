@@ -1,0 +1,11 @@
+<div>
+  <h2 class="page-header">Procesos Activos</h2>
+
+  <div ng-repeat="proceso in controlador.listaProcesos" ng-show="proceso.activado == 1" class="well well-lg">
+    <h4>{{proceso.nombre}}</h4>
+    <p><strong>ID Proceso: </strong>{{proceso.id}}</p>
+    <p><strong>Descripción: </strong>{{proceso.descripcion}}</p>
+    <button class="btn btn-danger" ng-click="controlador.terminar_proceso( proceso )">Terminar Proceso</button>
+  </div>
+
+</div>
