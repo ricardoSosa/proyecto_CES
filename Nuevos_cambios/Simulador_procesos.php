@@ -4,14 +4,74 @@
 	include_once "Equipo.php";
 	include_once "Proceso.php";
 
-	include_once "Mecanico.php";
+	include_once "Calculador_desgaste.php";
 
 	class Simulador_procesos{
 
+		/*
+	     *Construct
+	     */
 		function __construct(){
 		}
 
+		/*Método que iniica da inicio a la simulacion */
 		public function iniciar_simulacion($procesos){
+
+			$this->separar_por_procesos($procesos);
+
+		}
+
+		/* Método que separa los process que le pidieron simular */
+		private function separar_por_procesos($procesos){
+
+			foreach ($procesos as $proceso) {
+
+				$this->obtener_equipos_proceso($proceso);
+
+			}
+
+			$this->preparar_resultado( $procesos );
+
+		}
+
+		/* Método que obtiene los equipos de cada proceso */
+		private function obtener_equipos_proceso( $proceso ) {
+
+			$duracion_proceso = $proceso->obtener_duracion_estimada();
+
+			$equipos = $proceso->obtener_equipos();
+
+			foreach ($equipos as $equipo) {
+
+				$this->obtener_componentes_equipo( $equipo, $duracion_proceso );
+
+				$id_equipo = $equipo->obtener_id();
+
+			}
+
+		}
+
+		/* Método que obtiene los componentes de cada proceso */
+		private function obtener_componentes_equipo( $equipo, $duracion_proceso ) {
+
+			$porcentaje_uso_equipo = $equipo->obtener_porcentaje_uso();
+
+			$tiempo_uso_equipo = $porcentaje_uso_equipo * $duracion_proceso;
+
+			$componentes = $equipo->obtener_componentes();
+
+			foreach ($componentes as $componente) {
+
+				$mecanico = new Calculador_desgaste();
+
+				$mecanico->calcular_desgaste( $componente , $tiempo_uso_equipo );
+
+			}
+
+		}
+		
+		/* Método que prepara la informacion para ser enviada a la vista */
+		private function preparar_resultado($procesos){
 
 			$componentes_equipo = [];
 
@@ -19,15 +79,13 @@
 
 			$procesos_simulados = [];
 
-
 			foreach ($procesos as $proceso) {
 
 				$this->obtener_equipos_proceso($proceso);
 
-				//--------------------------<
-				$equipos_proceso1 = $proceso->obtener_equipos();
+				$equipos_proceso_simular = $proceso->obtener_equipos();
 
-				foreach ($equipos_proceso1 as $equipo) {
+				foreach ($equipos_proceso_simular as $equipo) {
 
 					$componentes = $equipo->obtener_componentes();
 
@@ -73,44 +131,13 @@
 
 			}
 
+			$this->enviar_resultado($procesos_simulados);
+
+		}
+
+		private function enviar_resultado($procesos_simulados){
+
 			print_r(json_encode($procesos_simulados));
-
-
-		}
-
-		private function obtener_equipos_proceso( $proceso ) {
-
-			$duracion_proceso = $proceso->obtener_duracion_estimada();
-
-			$equipos = $proceso->obtener_equipos();
-
-			foreach ($equipos as $equipo) {
-
-				$this->activar_equipo( $equipo, $duracion_proceso );
-
-				$id_equipo = $equipo->obtener_id();
-
-			}
-
-		}
-
-		private function activar_equipo( $equipo, $duracion_proceso ) {
-
-			$porcentaje_uso_equipo = $equipo->obtener_porcentaje_uso();
-
-			$tiempo_uso_equipo = $porcentaje_uso_equipo * $duracion_proceso;
-
-			$componentes = $equipo->obtener_componentes();
-
-			$componentes_despues_proceso;
-
-			foreach ($componentes as $componente) {
-
-				$mecanico = new Mecanico();
-
-				$mecanico->calcular_desgaste( $componente , $tiempo_uso_equipo );
-
-			}
 
 		}
 
