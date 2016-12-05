@@ -69,16 +69,82 @@
     return Secretaria;
   }]);
   
-  app.factory( 'Jefe_Planta', function () {
+  app.factory( 'Jefe_Planta', ['Secretaria', function ( Secretaria ) {
     function Jefe_Planta() {
-      
+      this.secretaria = new Secretaria();
     }
-  } );
+
+    Jefe_Planta.prototype.solicitar_creacion_componente = function ( datos_componente ) {
+      var datos_validos = this.secretaria.verificar_datos_componente( datos_componente );
+
+      if( datos_validos ) {
+        var nombreComponente = datos_componente.nombre;
+        var tiempoVidaMax = datos_componente.tiempo_vida_max;
+        var descripcionComponente = datos_componente.descripcion;
+
+        var componente = {"id" : "id_componente_" + (Math.floor((Math.random() * 1000) + 1)),
+                          "nombre" : nombreComponente,
+                          "tiempo_vida_max" : tiempoVidaMax,
+                           "descripcion" : descripcionComponente};
+
+        var datos_solicitud = {tarea : "agregar",
+                               elemento: "componentes",
+                               datos : componente};
+
+        var solicitud = this.secretaria.generar_solicitud( datos_solicitud );
+        this.secretaria.enviar_solicitud( solicitud );
+
+        return componente;
+      }
+    }
+
+    Jefe_Planta.prototype.solicitar_modificacion_componente = function ( nuevos_datos_componente ) {
+      var datos_validos = this.secretaria.verificar_datos_componente( nuevos_datos_componente );
+
+      if( datos_validos ) {
+        var id_componente = nuevos_datos_componente.id;
+        var nombre_componente = nuevos_datos_componente.nombre;
+        var tiempo_vida = nuevos_datos_componente.tiempo_vida_max;
+        var descripcion = nuevos_datos_componente.descripcion;
+
+        var datos_modificacion = { id : id_componente,
+                                   nombre : nombre_componente,
+                                   tiempo_vida_max : tiempo_vida,
+                                   descripcion : descripcion};
+
+        var datos_solicitud = {tarea : "modificar",
+                               elemento : "componentes",
+                               datos : datos_modificacion};
+
+        var solicitud = this.secretaria.generar_solicitud( datos_solicitud );
+
+        this.secretaria.enviar_solicitud( solicitud );
+      }
+    }
+
+    Jefe_Planta.prototype.solicitar_eliminacion_componente = function( id_componente ) {
+      var componente = {id : {id : id_componente},
+                        nombre_id : "id" //PENDIENTE
+                       };
+
+      var datos_solicitud = {tarea : "eliminar",
+                             elemento : "componentes",
+                             datos : componente};
+
+      var solicitud = this.secretaria.generar_solicitud( datos_solicitud );
 
 
-  app.controller( 'ControladorVentanaComponentes', [ 'Secretaria','Pra', '$http' ,function ( Secretaria, Pra, $http ) {
+      this.secretaria.enviar_solicitud( solicitud );
+    }
+
+    return Jefe_Planta;
+  } ]);
+
+
+  app.controller( 'ControladorVentanaComponentes', [  'Secretaria','Jefe_Planta','Pra', '$http' ,function (  Secretaria, Jefe_Planta, Pra, $http ) {
     //$http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
     var secretaria = new Secretaria();
+    var jefe_planta = new Jefe_Planta();
 
     this.obtener_secretaria = function (  ) {
       return secretaria;
@@ -97,25 +163,12 @@
 
 
     this.enviarDatos = function( datosComponente ) {
-      var nombreComponente = datosComponente.nombre;
-      var tiempoVidaMax = datosComponente.tiempo_vida_max;
-      var descripcionComponente = datosComponente.descripcion;
-
-      var componente = {"id" : "id_componente_" + (this.listaComponentes.length+1),
-                        "nombre" : nombreComponente,
-                        "tiempo_vida_max" : tiempoVidaMax,
-                        "descripcion" : descripcionComponente};
-
-      var datos_solicitud = {tarea : "agregar",
-                             elemento: "componentes",
-                             datos : componente};
-
-      var solicitud = secretaria.generar_solicitud( datos_solicitud );
 
 
-      this.listaComponentes.push( componente ); //DEBE IR UN NIVEL MAS ARRIBA
+      var nuevo_componente = jefe_planta.solicitar_creacion_componente( datosComponente );
+      this.listaComponentes.push( nuevo_componente ); //DEBE IR UN NIVEL MAS ARRIBA
 
-      secretaria.enviar_solicitud( solicitud );
+
     };
 
     this.buscar_posicion_componente = function ( componente ) {
@@ -137,19 +190,7 @@
 
       this.listaComponentes.splice(posicion_componente, 1);
 
-
-      var componente = {id : {id : componente},
-                        nombre_id : "id" //PENDIENTE
-                       };
-
-      var datos_solicitud = {tarea : "eliminar",
-                             elemento : "componentes",
-                             datos : componente};
-
-      var solicitud = secretaria.generar_solicitud( datos_solicitud );
-
-
-      secretaria.enviar_solicitud( solicitud );
+      jefe_planta.solicitar_eliminacion_componente( componente );
 
 
     };
@@ -160,28 +201,7 @@
     };
 
     this.mandarSolicitudCambio = function( componente ) { //REFACTORIZAR DESPUES
-      this.datosCorrectos = secretaria.verificar_datos_componente( componente );
-
-      if( this.datosCorrectos ) {
-        var id_componente = componente.id;
-        var nombre_componente = componente.nombre;
-        var tiempo_vida = componente.tiempo_vida_max;
-        var descripcion = componente.descripcion;
-
-        var datos_modificacion = { "id" : id_componente,
-                                   "nombre" : nombre_componente,
-                                   "tiempo_vida_max" : tiempo_vida,
-                                   "descripcion" : descripcion};
-
-        var datos_solicitud = {tarea : "modificar",
-                               elemento : "componentes",
-                               datos : datos_modificacion};
-
-        var solicitud = secretaria.generar_solicitud( datos_solicitud );
-
-        secretaria.enviar_solicitud( solicitud );
-
-      }
+      jefe_planta.solicitar_modificacion_componente( componente );
     }
 
 
