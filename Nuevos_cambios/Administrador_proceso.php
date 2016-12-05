@@ -67,11 +67,11 @@
      *@param String $datos - Recibe el id del proceso del que se quiere
      *obtener sus componentes y respectivos porcentajes.
      *@return String[ASSOC] $porcentajes_componentes - Retorna un arreglo asociativo
-     *con los ids de los equipos como llaves y sus respectivos porcentajes.
+     *con los ids de los equipos como llaves y sus respectivos porcentajes.false
     */
     public function obtener_porcentajes_proceso( $id_proceso ) {
       $porcentajes_equipos = array();
-      $porcs_equipos = $this->conector_bd->obtener_informacion( self::NOMBRE_TABLA_PORCENTAJES, null, $bandera_retorno_inmediato );
+      $porcs_equipos = $this->conector_bd->obtener_informacion( self::NOMBRE_TABLA_PORCENTAJES, null, false );
       for( $indice = 0; $indice < count($porcs_equipos); $indice++ ) {
         if( $porcs_equipos[ $indice ][ 'id_proceso' ] == $id_proceso) {
           $porcentajes_equipos[$porcs_equipos[ $indice ][ 'id_equipo' ]] = $porcs_equipos[ $indice ][ 'porcentaje_uso' ];

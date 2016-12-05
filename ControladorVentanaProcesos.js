@@ -92,8 +92,8 @@
         //   };
         // };
 
-          console.log("Veamos si chambea");
-          console.log(arrayInterno);
+          // console.log("Veamos si chambea");
+          // console.log(arrayInterno);
           // console.log("gigantote:");
           // console.log(procesos);
         angular.forEach( procesos, function ( procesoSim, key ) {
@@ -101,6 +101,8 @@
 
           // console.log("los procesos son:")
           // console.log(procesoSim);
+          console.log("push: ");
+          console.log(procesosSimulados);
           procesosSimulados.push( procesoSim );
 
           angular.forEach( procesoSim.equipos_proceso, function( equiposSimulados, key ){
