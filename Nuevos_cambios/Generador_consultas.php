@@ -68,7 +68,6 @@
     private function obtener_cadena_id( $datos, $num_ids ) {
       $cadena_id = '';
       $contador = 0;
-      // print_r($datos);
       foreach ( $datos as $atributo=>$valor ) {
         if( $contador < $num_ids ) {
           if( $cadena_id == '' ) {
