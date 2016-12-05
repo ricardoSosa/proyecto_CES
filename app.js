@@ -92,7 +92,7 @@
         var componente = this.listaComponentes[ i ];
         console.log(componente); //BORAR DESPUES
         var componente = {id_equipo : idEquipo,
-                          id_comp : componente.id,
+                          id_componente : componente.id,
                           porcentaje_uso : componente.porcentaje_usado};
 
         var solicitud = {tarea : {nombre_tarea : "agregar componente a equipo", tipo_elemento : "equipos"},

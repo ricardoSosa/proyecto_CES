@@ -44,8 +44,7 @@
       $equipos_necesarios = [];
       $porcentajes_equipos = $this->administrador_proceso->obtener_porcentajes_equipos( $id_proceso );
       foreach( $porcentajes_equipos as $id_equipo=>$porcentaje_equipo ) {
-        $equipo = $this->recrear_equipo( $id_equipo, $porcentaje_equipo );
-        array_push( $equipos_necesarios, $equipo );
+        $equipos_necesarios[] = $this->recrear_equipo( $id_equipo, $porcentaje_equipo );
       }
       $id_p = array(
         'id' => $id_proceso
@@ -81,10 +80,4 @@
     }
 
   }
-
-    // $id_dur = array(
-    //   '1' => 3,
-    //   '2' => 20
-    //    );
-    // $obj = new Encargado_simulacion($id_dur);
 ?>

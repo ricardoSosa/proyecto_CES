@@ -29,7 +29,6 @@
     this.procesosSeleccionados = [];
     this.listaProcesosSeleccionados = [];
     var procesosSimulados = [];
-    var equiposProcesosSimulados = [];
 
 
     this.anadirProcesoSelecionado = function( proceso ){
@@ -46,7 +45,6 @@
     }
 
     this.procesosSim = procesosSimulados;//procesosSimulados;
-    this.equiposSim = equiposProcesosSimulados;
 
     this.simularProcesos = function(){
       console.log("simularProcesos");
@@ -74,23 +72,11 @@
         method: "POST",
         data: solicitud
       } ).success( function ( procesos ) {
-
-          console.log("gigantote:");
-          console.log(procesos);
-          
+        console.log(procesos);
         angular.forEach( procesos, function ( procesoSim, key ) {
-
-
-          // console.log("los procesos son:")
-          // console.log(procesoSim);
+          // console.log("id_proceso:-> "+procesoSim.id_proceso);
+          console.log(procesoSim);
           procesosSimulados.push( procesoSim );
-
-          angular.forEach( procesoSim.equipos_proceso, function( equiposSimulados, key ){
-            // console.log("equipos procesos son:");
-            // console.log(procesoSim.equipos_proceso);
-            equiposProcesosSimulados.push(equiposSimulados);
-          } );
-
         } );
           // console.log("fin simular procesos");
       }  );
@@ -104,8 +90,6 @@
       this.listaProcesosSeleccionados.splice(indiceProceso, 1);
       console.log(this.procesosSeleccionados);
     }
-
-    //-----------------------------------------------
 
     //-----------------------------------------------
     var panel_procesos = "panel_lista_procesos";
@@ -147,69 +131,50 @@
     }
 
     this.enviarDatos = function ( datosProceso ) {
-      //VALIDACION DE PORCENTAJES-------------------------------------------------------------
-      var porcentaje_total = 0;
+      var nombreProceso = datosProceso.nombre;
+      var descripcionProceso = datosProceso.descripcion;
+      var idProceso = "id_proceso_" + (this.listaProcesos.length+1);
 
-      for(j=0; j<this.listaEquipos.length; j++) {
-        porcentaje_total = parseInt(this.listaEquipos[j].porcentaje_usado) + porcentaje_total;
-      }
+      var proceso = { "id" : idProceso,
+                      "nombre": nombreProceso,
+                      "descripcion" : descripcionProceso};
 
-      console.log(porcentaje_total);
+      var datos_proceso = { tarea : {nombre_tarea : "agregar", tipo_elemento : "procesos"},
+                            datos: proceso};
 
-      if(porcentaje_total > 0 && porcentaje_total<100){
-        console.log("correcto");
-        var nombreProceso = datosProceso.nombre;
-        var descripcionProceso = datosProceso.descripcion;
-        var idProceso = "id_proceso_" + (this.listaProcesos.length+1);
+      this.listaProcesos.push( proceso ); //BORRAR DESPUES
 
-        var proceso = { "id" : idProceso,
-          "nombre": nombreProceso,
-          "descripcion" : descripcionProceso,
-          "activado" : false};
+      var direccionDestino = 'Nuevos_cambios/Asignador_tareas.php';
+      $http( {
+        url: direccionDestino,
+        method: "POST",
+        data: datos_proceso
+      } ).then( function ( response ) {
+        console.log( response );
+      }, function ( response ) {
+        console.log( response )
+      } );
 
-        var datos_proceso = { tarea : {nombre_tarea : "agregar", tipo_elemento : "procesos"},
-          datos: proceso};
+      for(i=0; i<this.listaEquipos.length; i++) {
+        var equipo = this.listaEquipos[ i ];
+        console.log(equipo);
+        var equipo = {id_proceso : idProceso,
+                      id_equipo : equipo.id,
+                      porcentaje_uso : equipo.porcentaje_usado};
 
-        this.listaProcesos.push( proceso ); //BORRAR DESPUES
+        var solicitud = {tarea : {nombre_tarea : "agregar equipo a proceso", tipo_elemento : "procesos"},
+                         datos : equipo};
 
-        var direccionDestino = 'Nuevos_cambios/Asignador_tareas.php';
         $http( {
           url: direccionDestino,
           method: "POST",
-          data: datos_proceso
-        } ).then( function ( response ) {
-          console.log( response );
-        }, function ( response ) {
-          console.log( response )
+          data: solicitud
+        } ).then( function (response) {
+          console.log(response);
+        }, function (response) {
+
         } );
-
-
-        for(i=0; i<this.listaEquipos.length; i++) {
-          var equipo = this.listaEquipos[ i ];
-          console.log(equipo);
-          var equipo = {id_proceso : idProceso,
-            id_equipo : equipo.id,
-            porcentaje_uso : equipo.porcentaje_usado};
-
-          var solicitud = {tarea : {nombre_tarea : "agregar equipo a proceso", tipo_elemento : "procesos"},
-            datos : equipo};
-
-          $http( {
-            url: direccionDestino,
-            method: "POST",
-            data: solicitud
-          } ).then( function (response) {
-            console.log(response);
-          }, function (response) {
-
-          } );
-        }
-      } else {
-        console.log("incorrecto");
       }
-      //---------------------------------------------------------------------------------------
-
-
     };
 
     this.eliminarEquipo = function ( equipo ) {
@@ -312,7 +277,6 @@
 
       } ).success( function ( procesos ) {
         angular.forEach( procesos, function ( proceso, key ) {
-          console.log(proceso); //BORRAR DESPUES
           procesosSolicitud.push( proceso );
         } );
           console.log(procesosSolicitud);
@@ -336,101 +300,6 @@
         console.log(tabla.equipos);
       } );
     };
-
-    this.activar_proceso = function (  proceso  ) {
-      proceso.activado = 1;
-      var id_proceso = proceso.id;
-
-      //MODIFICA EL ESTO DEL EQUIPO A ACTIVO
-      var datos_activacion = {id : id_proceso,
-                              activado : true};
-
-      var solicitud = {"tarea" : {nombre_tarea : "modificar", tipo_elemento : "procesos"},
-        "datos" : datos_activacion};
-
-      var direccionDestino = 'Nuevos_cambios/Asignador_tareas.php';
-      $http( {
-        url: direccionDestino,
-        method: "POST",
-        data: solicitud
-      } ).then( function ( response ) {
-        console.log( response );
-      }, function ( response ) {
-        console.log( response )
-      } );
-
-      //SE AGREGA AL HISTORIAL
-      var fecha = new Date();
-      var fecha_activacion = fecha.getDate() + "/" + fecha.getMonth() + "/" + fecha.getFullYear();
-      var hora_activacion = "-" + fecha.getHours() + ":" + fecha.getMinutes();
-      console.log(fecha_activacion + hora_activacion);
-
-      var proceso_activo = {id_proceso : id_proceso,
-                            fecha_ini : fecha_activacion + hora_activacion,
-                            fecha_ter : ' '};
-
-      var solicitud = {tarea : {nombre_tarea : "activar proceso", tipo_elemento : "procesos"},
-                       datos : proceso_activo};
-
-      var direccionDestino = 'Nuevos_cambios/Asignador_tareas.php';
-      $http( {
-        url: direccionDestino,
-        method: "POST",
-        data: solicitud
-      } ).then( function ( response ) {
-        console.log( response );
-      }, function ( response ) {
-        console.log( response )
-      } );
-
-    };
-
-    this.terminar_proceso = function ( proceso ) {
-      var id_proceso = proceso.id;
-      proceso.activado = 0;
-
-      //MODIFICA EL ESTO DEL EQUIPO A ACTIVO
-      var datos_terminacion = {id : id_proceso,
-                              activado : false};
-
-      var solicitud = {"tarea" : {nombre_tarea : "modificar", tipo_elemento : "procesos"},
-                       "datos" : datos_terminacion};
-
-      var direccionDestino = 'Nuevos_cambios/Asignador_tareas.php';
-      $http( {
-        url: direccionDestino,
-        method: "POST",
-        data: solicitud
-      } ).then( function ( response ) {
-        console.log( response );
-      }, function ( response ) {
-        console.log( response )
-      } );
-
-      //SE AGREGA AL HISTORIAL
-      var fecha = new Date();
-      var fecha_activacion = fecha.getDate() + "/" + fecha.getMonth() + "/" + fecha.getFullYear();
-      var hora_activacion = "-" + fecha.getHours() + ":" + fecha.getMinutes();
-      console.log(fecha_activacion + hora_activacion);
-
-      var proceso_terminado = {id_proceso : id_proceso,
-                            fecha_ter : fecha_activacion + hora_activacion};
-
-      var solicitud = {tarea : {nombre_tarea : "finalizar proceso", tipo_elemento : "procesos"},
-                       datos : proceso_terminado};
-
-      var direccionDestino = 'Nuevos_cambios/Asignador_tareas.php';
-      $http( {
-        url: direccionDestino,
-        method: "POST",
-        data: solicitud
-      } ).then( function ( response ) {
-        console.log( response );
-      }, function ( response ) {
-        console.log( response )
-      } );
-
-    }
 
     this.solicitarListaProcesos();
     this.solicitarListaEquiposDisponibles();

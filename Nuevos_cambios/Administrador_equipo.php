@@ -33,7 +33,7 @@
           );
         }
       }
-      print_r(json_encode($ids_componentes));
+      // print_r(json_encode($ids_componentes));
       return $ids_componentes;
     }
 

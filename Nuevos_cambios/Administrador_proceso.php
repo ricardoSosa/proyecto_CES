@@ -37,9 +37,7 @@
       $porcentajes_equipos = $this->conector_bd->obtener_informacion( self::NOMBRE_TABLA_PORCENTAJES, null, $this->x );
       for( $indice = 0; $indice < count($porcentajes_equipos); $indice++ ) {
         if( $porcentajes_equipos[ $indice ][ 'id_proceso' ] == $id_proceso) {
-          $ids_equipos = array(
-            $porcentajes_equipos[ $indice ][ 'id_equipo' ] => $porcentajes_equipos[ $indice ][ 'porcentaje_uso' ]
-          );
+          $ids_equipos[$porcentajes_equipos[ $indice ][ 'id_equipo' ]] = $porcentajes_equipos[ $indice ][ 'porcentaje_uso' ];
         }
       }
       return $ids_equipos;

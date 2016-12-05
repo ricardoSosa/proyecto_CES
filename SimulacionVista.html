@@ -67,18 +67,17 @@
 
 		<div ng-show='controlador.simulado'>
 			
-			<div ng-repeat="procesoSim in controlador.procesosSim">
-				->
-				{{ procesosSim }}
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				llllllllllllllllllllllllllll
-				{{ procesoSim.equipos_proceso[0].id_equipo }}
-				--------------------------
-				{{ procesoSim }}
+			<div clas="row" ng-repeat="procesoSim in controlador.procesosSim">
+				
+					<div class=".col-md-8">
+						<h3> {{ procesoSim.nombre_proceso }} </h3>
+						<h4> {{ procesoSim.id_proceso }} </h4>
+						<h6> {{ procesoSim.descripcion_proceso }} </h6>
+					</div>
+					<div class=".col-md-8" ng-repeat="equiposSim in controlador.equiposSim">
+						{{ equiposSim.nombre_equipo }}
+					</div>
+				
 			</div>
 
 		</div>

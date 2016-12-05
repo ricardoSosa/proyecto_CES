@@ -1,0 +1,11 @@
+<div>
+  <h2 class="page-header">Activación de Procesos</h2>
+  <p>Seleccione el proceso que quiere activar</p>
+
+  <div ng-repeat="proceso in controlador.listaProcesos" ng-show="proceso.activado == 0" class="well well-lg">
+    <h4>{{proceso.nombre}}</h4>
+    <p><strong>ID Proceso: </strong>{{proceso.id}}</p>
+    <p><strong>Descripción: </strong>{{proceso.descripcion}}</p>
+    <button class="btn btn-primary" ng-click="controlador.activar_proceso( proceso )">Activar Proceso</button>
+  </div>
+</div>

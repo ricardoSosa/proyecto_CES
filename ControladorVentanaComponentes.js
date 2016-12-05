@@ -53,7 +53,6 @@
       var componente = {"id" : "id_componente_" + (this.listaComponentes.length+1),
                         "nombre" : nombreComponente,
                         "tiempo_vida_max" : tiempoVidaMax,
-                        "tiempo_vida_actual" : 0,
                         "descripcion" : descripcionComponente};
 
       var datos_componente = {tarea : {nombre_tarea : "agregar", tipo_elemento : "componentes"},
@@ -80,6 +79,7 @@
         if(componente == this.listaComponentes[i].id) {
           indiceComponente = i;
         }
+
       }
 
       this.listaComponentes.splice(indiceComponente, 1);
@@ -154,15 +154,12 @@
 
         /*var camposComponente = [ 'nombre', 'tiempo_vida_max','descripcion' ];
         var atributosComponente = [componente.nombre, componente.tiempo_vida_max, componente.descripcion];
-
         for( i=0; i<camposComponente.length; i++ ) {
           var modificacion = { "tipo_elemento" : "componentes",
                                "atrib_modificar" : camposComponente[ i ],
                                "dato_nuevo" : atributosComponente[ i ],
                                "id" : componente.id};
-
           var solicitud = { "tarea" : "modificar", "datos" : modificacion };
-
           var direccionDestino = 'Nuevos_cambios/Asignador_tareas.php';
           $http( {
             url: direccionDestino,

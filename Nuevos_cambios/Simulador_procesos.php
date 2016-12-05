@@ -23,81 +23,8 @@
 		}
 
 
-		public function crear_procesos(){
-
-			for ($i=1; $i <= 3; $i++) { 
-
-				$datos_componente = array(
-				'id' => $i,
-				'nombre' => 'compo'.$i,
-				'descripcion' => 'compo'.$i.'d',
-				'tiempo_vida_max' => '130',
-				'tiempo_vida_actual' => '0',
-				'porcentaje_uso' => '10' );
-
-				$componente = new Componente($datos_componente);
-					
-				$componentes[] = $componente;
-
-			}
-
-			$datos_equipo = array(
-				'id' => '1',
-				'nombre' => 'equipo1',
-				'descripcion' => 'equipo1d',
-				'ubicacion' => 'en la bodega',
-				'componentes' => $componentes,
-				'porcentaje_uso' => '7' 
-				);
-
-			$equipo = new Equipo($datos_equipo);
-
-			$equipos[] = $equipo;
-
-			$datos_equipo = array(
-				'id' => '2',
-				'nombre' => 'equipo2',
-				'descripcion' => 'equipo2d',
-				'ubicacion' => 'en la bodega2',
-				'componentes' => $componentes,
-				'porcentaje_uso' => '72' );
-
-			$equipo = new Equipo($datos_equipo);
-
-			$equipos[] = $equipo;
-
-			$datos_proceso = array(
-				'id' => '1',
-				'nombre' => 'proceso1',
-				'descripcion' => 'proceso1d',
-				'equipos' => $equipos,
-				'duracion_estimada' => '120' );
-
-			$proceso = new Proceso($datos_proceso);
-
-			$procesos[] = $proceso;
-
-			$datos_proceso = array(
-				'id' => '2',
-				'nombre' => 'proceso2',
-				'descripcion' => 'proceso1d',
-				'equipos' => $equipos,
-				'duracion_estimada' => '220' );
-
-			$proceso = new Proceso($datos_proceso);
-
-			$procesos[] = $proceso;
-
-			$this->iniciar_simulacion($procesos);
-
-		}
-
 
 		public function iniciar_simulacion($procesos){
-
-			// echo "iniciar_simulacion simulador";
-
-			// print_r($procesos);
 
 			$componentes_equipo = [];
 
@@ -108,11 +35,9 @@
 
 			// print_r($procesos);
 
-			foreach ($procesos as $proceso) {// por cada proceso
+			foreach ($procesos as $proceso) {
 
 				$this->obtener_equipos_proceso($proceso);
-
-				// $id_proceso = $proceso->obtener_id();
 
 				//--------------------------<
 				$equipos_proceso1 = $proceso->obtener_equipos();
@@ -152,7 +77,7 @@
 					'nombre_proceso' => $proceso->obtener_nombre(),
 					'descripcion_proceso' => $proceso->obtener_descripcion(),
 					'equipos_proceso' => $equipos_proceso,
-					'duracion_proceso' => 'dura'
+					'duracion_proceso' => $proceso->obtener_duracion_estimada()
 					 );
 
 				$procesos_simulados[] = $datos_proceso;

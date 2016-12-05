@@ -22,7 +22,8 @@
     }
 
     public function eliminar( $datos ) {
-      $this->conector_bd->eliminar( $this->nombre_tabla_principal, $datos );
+      $id = $datos['id'];
+      $this->conector_bd->eliminar( $this->nombre_tabla_principal, $id );
     }
 
     public function obtener_datos( $datos ) {
