@@ -86,9 +86,7 @@
       this.listaComponentes.splice(posicion_componente, 1);
 
 
-      var componente = {id : {id : componente},
-                        nombre_id : "id" //PENDIENTE
-                       };
+      var componente = {nombre_id : componente};
 
       var datos_solicitud = {tarea : "eliminar",
                              elemento : "componentes",
@@ -98,6 +96,7 @@
 
 
       enviar_solicitud( solicitud );
+
 
     };
 
