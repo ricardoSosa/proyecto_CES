@@ -69,8 +69,11 @@
     return Secretaria;
   }]);
   
-  app.factory( 'Jefe_Planta', ['Secretaria', function ( Secretaria ) {
+  app.factory( 'Jefe_Planta', ['Secretaria', '$http' , function ( Secretaria, $http ) {
+    var componentes_disponibles = [];
     function Jefe_Planta() {
+
+      this.lista_componentes = componentes_disponibles;
       this.secretaria = new Secretaria();
     }
 
@@ -137,6 +140,29 @@
       this.secretaria.enviar_solicitud( solicitud );
     }
 
+    Jefe_Planta.prototype.solicitar_lista_componentes = function () {
+      var datos_solicitud = {tarea : "consultar lista",
+        elemento : "componentes",
+        datos : "consulta"};
+
+      var solicitud = this.secretaria.generar_solicitud( datos_solicitud );
+
+      var direccionDestino = 'Nuevos_cambios/Asignador_tareas.php';
+      $http( {
+        url : direccionDestino,
+        method : "POST",
+        data : solicitud,
+
+      } ).success( function ( componentes ) {
+
+        angular.forEach( componentes, function ( componente, key ) {
+          componentes_disponibles.push( componente );
+        } );
+        console.log(componentes_disponibles);
+
+      }  );
+    }
+
     return Jefe_Planta;
   } ]);
 
@@ -146,9 +172,13 @@
     var secretaria = new Secretaria();
     var jefe_planta = new Jefe_Planta();
 
-    this.obtener_secretaria = function (  ) {
+    /*this.obtener_secretaria = function (  ) {
       return secretaria;
-    };
+    };*/
+
+    this.obtener_jefe = function () {
+      return jefe_planta;
+    }
 
 
 
@@ -162,7 +192,7 @@
     this.panel_actual = panel_componentes;
 
 
-    this.enviarDatos = function( datosComponente ) {
+    this.click_agregar_componente = function( datosComponente ) {
 
 
       var nuevo_componente = jefe_planta.solicitar_creacion_componente( datosComponente );
@@ -184,13 +214,13 @@
       return posicion_componente;
     };
 
-    this.eliminarComponente = function ( componente ) {
+    this.click_eliminar_componente = function ( id_componente ) {
 
-      var posicion_componente = this.buscar_posicion_componente( componente );
+      var posicion_componente = this.buscar_posicion_componente( id_componente );
 
       this.listaComponentes.splice(posicion_componente, 1);
 
-      jefe_planta.solicitar_eliminacion_componente( componente );
+      jefe_planta.solicitar_eliminacion_componente( id_componente );
 
 
     };
@@ -200,38 +230,16 @@
       this.componenteSeleccionado = componente;
     };
 
-    this.mandarSolicitudCambio = function( componente ) { //REFACTORIZAR DESPUES
+    this.click_modificar_componente = function( componente ) { //REFACTORIZAR DESPUES
       jefe_planta.solicitar_modificacion_componente( componente );
     }
 
 
-    this.solicitarListaComponentes = function() {
-
-      var datos_solicitud = {tarea : "consultar lista",
-                             elemento : "componentes",
-                             datos : "consulta"};
-
-      var solicitud = secretaria.generar_solicitud( datos_solicitud );
-
-      var direccionDestino = 'Nuevos_cambios/Asignador_tareas.php';
-      $http( {
-        url : direccionDestino,
-        method : "POST",
-        data : solicitud,
-
-      } ).success( function ( componentes ) {
-        acomodar_componentes_solicitados( componentes );
-      }  );
-    };
-
-    var acomodar_componentes_solicitados = function ( componentes ) {
-      angular.forEach( componentes, function ( componente, key ) {
-        componentesSolicitud.push( componente );
-      } );
-    };
 
 
-    this.solicitarListaComponentes();
+
+    //this.solicitarListaComponentes();
+    jefe_planta.solicitar_lista_componentes();
 
     this.cambiar_panel = function ( nuevo_panel ) {
       this.panel_actual = nuevo_panel;

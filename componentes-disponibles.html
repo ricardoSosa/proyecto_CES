@@ -1,6 +1,6 @@
 <div>
   <h2 class="page-header">Lista de Componentes</h2>
-  <div ng-repeat="componente in controlador.listaComponentes" class="well well-lg">
+  <div ng-repeat="componente in controlador.obtener_jefe().lista_componentes" class="well well-lg">
     <h4>{{componente.nombre}}</h4>
     <h5><strong>ID Componente: </strong>{{componente.id}} </h5>
     <h5><strong>Tiempo Vida Max: </strong>{{componente.tiempo_vida_max}}</h5>
