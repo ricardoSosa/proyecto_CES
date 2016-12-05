@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="6dff6832-263c-4da9-897b-5a9c56f36540" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proyecto_CES" afterPath="$PROJECT_DIR$/proyecto_CES" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ControladorVentanaComponentes.js" afterPath="$PROJECT_DIR$/ControladorVentanaComponentes.js" />
     </list>
     <ignored path="proyecto_CES.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,6 +27,16 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="ControladorVentanaComponentes.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ControladorVentanaComponentes.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-357">
+              <caret line="87" column="0" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="form-componentes.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/form-componentes.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -35,81 +47,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="modificacion-componentes.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modificacion-componentes.html">
+      <file leaf-file-name="lista-componentes.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lista-componentes.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="29" column="124" selection-start-line="29" selection-start-column="124" selection-end-line="29" selection-end-column="124" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Manejador_base_datos.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Nuevos_cambios/Manejador_base_datos.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="44" column="95" selection-start-line="44" selection-start-column="91" selection-end-line="44" selection-end-column="95" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Asignador_tareas.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Nuevos_cambios/Asignador_tareas.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="88" column="28" selection-start-line="88" selection-start-column="14" selection-end-line="88" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Administrador.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Nuevos_cambios/Administrador.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="24" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ControladorVentanaComponentes.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ControladorVentanaComponentes.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="886">
-              <caret line="123" column="44" selection-start-line="123" selection-start-column="44" selection-end-line="123" selection-end-column="44" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Generador_consultas.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Nuevos_cambios/Generador_consultas.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-151">
-              <caret line="46" column="43" selection-start-line="46" selection-start-column="26" selection-end-line="46" selection-end-column="43" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Componentes.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Componentes.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="eliminacion-equipos.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/eliminacion-equipos.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="255">
+              <caret line="15" column="24" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -118,8 +60,28 @@
       <file leaf-file-name="eliminacion-componentes.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/eliminacion-componentes.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="60" selection-start-line="5" selection-start-column="60" selection-end-line="5" selection-end-column="60" />
+            <state relative-caret-position="51">
+              <caret line="3" column="83" selection-start-line="3" selection-start-column="83" selection-end-line="3" selection-end-column="83" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ControladorVentanaProcesos.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ControladorVentanaProcesos.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="22" column="48" selection-start-line="22" selection-start-column="48" selection-end-line="22" selection-end-column="48" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-482">
+              <caret line="198" column="46" selection-start-line="198" selection-start-column="46" selection-end-line="198" selection-end-column="46" />
               <folding />
             </state>
           </provider>
@@ -143,8 +105,6 @@
         <option value="$PROJECT_DIR$/Equipos.html" />
         <option value="$PROJECT_DIR$/Nuevos_cambios/Asignador_tareas.php" />
         <option value="$PROJECT_DIR$/modificacion-componentes.html" />
-        <option value="$PROJECT_DIR$/Nuevos_cambios/Manejador_base_datos.php" />
-        <option value="$PROJECT_DIR$/ControladorVentanaComponentes.js" />
         <option value="$PROJECT_DIR$/componentes-lista.html" />
         <option value="$PROJECT_DIR$/form-equipos.html" />
         <option value="$PROJECT_DIR$/lista-componentes.html" />
@@ -162,6 +122,9 @@
         <option value="$PROJECT_DIR$/Nuevos_cambios/Administrador_proceso.php" />
         <option value="$PROJECT_DIR$/ControladorVentanaProcesos.js" />
         <option value="$PROJECT_DIR$/form-componentes.html" />
+        <option value="$PROJECT_DIR$/Nuevos_cambios/Manejador_base_datos.php" />
+        <option value="$PROJECT_DIR$/eliminacion-componentes.html" />
+        <option value="$PROJECT_DIR$/ControladorVentanaComponentes.js" />
       </list>
     </option>
   </component>
@@ -172,9 +135,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-7" />
-    <option name="width" value="1292" />
-    <option name="height" value="735" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -317,7 +281,7 @@
       <workItem from="1480740257770" duration="2726000" />
       <workItem from="1480743090567" duration="12000" />
       <workItem from="1480743119574" duration="11403000" />
-      <workItem from="1480757571157" duration="16819000" />
+      <workItem from="1480757571157" duration="31595000" />
     </task>
     <task id="LOCAL-00001" summary="Nuevos cambios implementados en Procesos">
       <created>1480458767068</created>
@@ -337,13 +301,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34131000" />
+    <option name="totallyTimeSpent" value="48907000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="1292" height="735" extended-state="1" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15830721" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14787701" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329653" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329653" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -612,22 +576,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/equipos-lista.html" />
     <entry file="file://$PROJECT_DIR$/lista-equipos.html" />
-    <entry file="file://$PROJECT_DIR$/lista-componentes.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="15" column="24" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="101" column="7" selection-start-line="100" selection-start-column="0" selection-end-line="108" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lista-equipo.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="537">
@@ -684,34 +632,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Nuevos_cambios/Administrador_equipo.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="24" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Nuevos_cambios/Administrador_proceso.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="18" column="76" selection-start-line="18" selection-start-column="76" selection-end-line="18" selection-end-column="76" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ControladorVentanaProcesos.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1074">
-          <caret line="112" column="9" selection-start-line="112" selection-start-column="9" selection-end-line="112" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/form-componentes.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="98" selection-start-line="13" selection-start-column="98" selection-end-line="13" selection-end-column="98" />
           <folding />
         </state>
       </provider>
@@ -740,30 +664,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/eliminacion-componentes.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="60" selection-start-line="5" selection-start-column="60" selection-end-line="5" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ControladorVentanaComponentes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="886">
-          <caret line="123" column="44" selection-start-line="123" selection-start-column="44" selection-end-line="123" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Nuevos_cambios/Manejador_base_datos.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="44" column="95" selection-start-line="44" selection-start-column="91" selection-end-line="44" selection-end-column="95" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Nuevos_cambios/Generador_consultas.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-151">
@@ -780,10 +680,74 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Nuevos_cambios/Administrador_equipo.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="24" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Nuevos_cambios/Administrador.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="24" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Nuevos_cambios/Manejador_base_datos.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="32" column="98" selection-start-line="32" selection-start-column="98" selection-end-line="32" selection-end-column="98" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-482">
+          <caret line="198" column="46" selection-start-line="198" selection-start-column="46" selection-end-line="198" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ControladorVentanaProcesos.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="22" column="48" selection-start-line="22" selection-start-column="48" selection-end-line="22" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/eliminacion-componentes.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="83" selection-start-line="3" selection-start-column="83" selection-end-line="3" selection-end-column="83" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/form-componentes.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="98" selection-start-line="13" selection-start-column="98" selection-end-line="13" selection-end-column="98" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lista-componentes.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="24" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ControladorVentanaComponentes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-357">
+          <caret line="87" column="0" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
           <folding />
         </state>
       </provider>

@@ -15,39 +15,38 @@
     var panel_componentes = "panel_lista_componentes";
     this.panel_actual = panel_componentes;
 
-    this.agregarComponente = function( idComponente ){
-      var componenteNoRepetido = this.verificarComponenteNoRepetido( idComponente );
 
-      if( componenteNoRepetido ) {
-        this.listaComponentes.push( idComponente );
-      }
-    };
 
-    this.validarDatos = function ( datosComponente ) {
-      var datosExisten = false;
-      var datosComponenteCorrectos = false;
+    this.validarDatos = function ( datos_componente ) {
+      var datos_componente_correctos = false;
+      var datos_existen = !( datos_componente === undefined );
 
-      datosExisten = !( datosComponente === undefined );
-      if( datosExisten ) {
-        var nombreComponenteCorrecto = datosComponente.nombre.length != 0;
-        var tiempoVidaComponenteCorrect = datosComponente.tiempo_vida_max.length != 0;
-        var descripcionComponenteCorrecto = datosComponente.descripcion.length != 0;
+      if( datos_existen ) {
+        var nombre_componente = datos_componente.nombre;
+        var tiempo_vida_componente = datos_componente.tiempo_vida_max;
+        var descripcion_componente = datos_componente.descripcion;
 
-        if( nombreComponenteCorrecto && tiempoVidaComponenteCorrect && descripcionComponenteCorrecto ) {
-          datosComponenteCorrectos = true;
+        var nombre_componente_correcto = nombre_componente.length != 0;
+        var tiempo_vida_componente_correcto = ( tiempo_vida_componente.length != 0 ) && ( parseInt( tiempo_vida_componente ) > 0 );
+        var descripcion_componente_correcto = descripcion_componente.length != 0;
+
+        var datos_correctos = nombre_componente_correcto && tiempo_vida_componente_correcto && descripcion_componente_correcto;
+
+        if( datos_correctos ) {
+          datos_componente_correctos = true;
         } else {
-          datosComponenteCorrectos = false;
+          datos_componente_correctos = false;
         }
       } else {
-        datosComponenteCorrectos = false;
+        datos_componente_correctos = false;
       }
 
-      return datosComponenteCorrectos;
+      return datos_componente_correctos;
     };
 
     this.enviarDatos = function( datosComponente ) {
       var nombreComponente = datosComponente.nombre;
-      var tiempoVidaMax = datosComponente.tiempoVida;
+      var tiempoVidaMax = datosComponente.tiempo_vida_max;
       var descripcionComponente = datosComponente.descripcion;
 
       var componente = {"id" : "id_componente_" + (this.listaComponentes.length+1),
@@ -55,70 +54,53 @@
                         "tiempo_vida_max" : tiempoVidaMax,
                         "descripcion" : descripcionComponente};
 
-      var datos_componente = {tarea : {nombre_tarea : "agregar", tipo_elemento : "componentes"},
-                              datos : componente};
+      var datos_solicitud = {tarea : "agregar",
+                             elemento: "componentes",
+                             datos : componente};
 
-      this.listaComponentes.push( componente ); //BORRAR DESPUES
+      var solicitud = generar_solicitud( datos_solicitud );
 
-      var direccionDestino = 'Nuevos_cambios/Asignador_tareas.php';
-      $http( {
-        url: direccionDestino,
-        method: "POST",
-        data: datos_componente
-      } ).then( function ( response ) {
-        console.log( response );
-      }, function ( response ) {
-        console.log( response )
-      } );
+
+      this.listaComponentes.push( componente ); //DEBE IR UN NIVEL MAS ARRIBA
+
+      enviar_solicitud( solicitud );
     };
 
-    this.eliminarComponente = function ( componente ) {
+    this.buscar_posicion_componente = function ( componente ) {
+      var posicion_componente = -1;
 
-      var indiceComponente = -1;
       for (i=0; i<this.listaComponentes.length; i++) {
         if(componente == this.listaComponentes[i].id) {
-          indiceComponente = i;
+          posicion_componente = i;
         }
 
       }
 
-      this.listaComponentes.splice(indiceComponente, 1);
+      return posicion_componente;
+    };
 
-      console.log(indiceComponente);
+    this.eliminarComponente = function ( componente ) {
 
-      var datos_componente = {"id" : {id : componente},
-                              "nombre_id" : "id" //PENDIENTE
-                             };
+      var posicion_componente = this.buscar_posicion_componente( componente );
 
-      var datos_eliminacion = {tarea : {nombre_tarea : "eliminar", tipo_elemento : "componentes"},
-                               datos : datos_componente};
+      this.listaComponentes.splice(posicion_componente, 1);
 
-      var direccionDestino = 'Nuevos_cambios/Asignador_tareas.php';
-      $http( {
-        url: direccionDestino,
-        method: "POST",
-        data: datos_eliminacion
-      } ).then( function ( response ) {
-        console.log( response ); //BORRAR DESPUESS
-      }, function ( response ) {
-        console.log( response ); //BORRAR DESPUES
-      } );
 
+      var componente = {id : {id : componente},
+                        nombre_id : "id" //PENDIENTE
+                       };
+
+      var datos_solicitud = {tarea : "eliminar",
+                             elemento : "componentes",
+                             datos : componente};
+
+      var solicitud = generar_solicitud( datos_solicitud );
+
+
+      enviar_solicitud( solicitud );
 
     };
 
-    this.verificarComponenteNoRepetido = function ( componente ) {
-      var componenteNoRepetido = false;
-      var existeIndiceComponente = this.listaComponentes.indexOf( componente );
-
-      if( existeIndiceComponente != 1 ) {
-        componenteNoRepetido = false;
-      } else {
-        componenteNoRepetido = true;
-      }
-
-      return componenteNoRepetido;
-    };
 
     this.seleccionarComponente = function( componente ) {
       this.componenteSeleccionado = componente;
@@ -152,37 +134,28 @@
           console.log( response )
         } );
 
-        /*var camposComponente = [ 'nombre', 'tiempo_vida_max','descripcion' ];
-        var atributosComponente = [componente.nombre, componente.tiempo_vida_max, componente.descripcion];
-
-        for( i=0; i<camposComponente.length; i++ ) {
-          var modificacion = { "tipo_elemento" : "componentes",
-                               "atrib_modificar" : camposComponente[ i ],
-                               "dato_nuevo" : atributosComponente[ i ],
-                               "id" : componente.id};
-
-          var solicitud = { "tarea" : "modificar", "datos" : modificacion };
-
-          var direccionDestino = 'Nuevos_cambios/Asignador_tareas.php';
-          $http( {
-            url: direccionDestino,
-            method: "POST",
-            data: solicitud
-          } ).then( function ( response ) {
-            console.log( response );
-          }, function ( response ) {
-            console.log( response )
-          } );
-        } */
       }
     }
 
-    this.solicitarListaComponentes = function() {
-      /*var datos_solicitud = {"tipo_elemento" : "componentes",
-                             "tipo_consulta" : "lista"};*/
+    var generar_solicitud = function ( datos_consulta ) {
+      var tarea = datos_consulta.tarea;
+      var tipo_elemento = datos_consulta.elemento;
+      var datos = datos_consulta.datos;
 
-      var solicitud = {tarea : {nombre_tarea : "consultar lista", tipo_elemento : "componentes"},
-                       datos : "consulta"};
+      var solicitud = {tarea : {nombre_tarea : tarea, tipo_elemento: tipo_elemento},
+                       datos : datos};
+
+      return solicitud;
+    };
+
+
+    this.solicitarListaComponentes = function() {
+
+      var datos_solicitud = {tarea : "consultar lista",
+                             elemento : "componentes",
+                             datos : "consulta"};
+
+      var solicitud = generar_solicitud( datos_solicitud );
 
       var direccionDestino = 'Nuevos_cambios/Asignador_tareas.php';
       $http( {
@@ -191,11 +164,26 @@
         data : solicitud,
 
       } ).success( function ( componentes ) {
-        angular.forEach( componentes, function ( componente, key ) {
-          componentesSolicitud.push( componente );
-        } );
-        console.log(componentes);
+        acomodar_componentes_solicitados( componentes );
+      }  );
+    };
 
+    var acomodar_componentes_solicitados = function ( componentes ) {
+      angular.forEach( componentes, function ( componente, key ) {
+        componentesSolicitud.push( componente );
+      } );
+    };
+
+    var enviar_solicitud = function ( solicitud ) {
+      console.log(solicitud); // BORAR DESPUES
+      var direccionDestino = 'Nuevos_cambios/Asignador_tareas.php';
+      $http( {
+        url : direccionDestino,
+        method : "POST",
+        data : solicitud,
+
+      } ).success( function ( componentes ) {
+          console.log(componentes); //BORAR DESPUES
       }  );
     };
 
