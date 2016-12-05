@@ -14,7 +14,7 @@
       $this->nombre = $datos_proceso[ 'nombre' ];
       $this->descripcion = $datos_proceso[ 'descripcion' ];
       $this->equipos = $equipos;
-      $this->duracion_estimada = $datos_proceso[ 'duracion_estimada' ];
+      $this->duracion_estimada = $duracion_estimada;
     }
 
 

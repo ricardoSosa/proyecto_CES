@@ -3,7 +3,6 @@
   include_once "Componente.php";
 
   class Equipo {
-
     private $id;
     private $nombre;
     private $descripcion;
@@ -11,13 +10,13 @@
     private $componentes;
     private $porcentaje_uso;
 
-    function __construct( $datos_equipo, $componentes ) {
+    function __construct( $datos_equipo, $componentes, $porcentaje_uso ) {
         $this->id = $datos_equipo[ 'id' ];
         $this->nombre = $datos_equipo[ 'nombre' ];
         $this->descripcion = $datos_equipo[ 'descripcion' ];
         $this->ubicacion = $datos_equipo[ 'ubicacion' ];
         $this->componentes = $componentes;
-        $this->porcentaje_uso = $datos_equipo[ 'porcentaje_uso' ];
+        $this->porcentaje_uso = $porcentaje_uso;
     }
 
     public function obtener_id() {

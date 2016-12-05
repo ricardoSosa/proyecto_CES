@@ -1,9 +1,10 @@
 <?php
 
-  include 'Administrador_proceso.php';
-  include 'Administrador_equipo.php';
-  include 'Administrador_componente.php';
-  include 'Encargado_simulacion.php';
+  include_once 'Administrador_proceso.php';
+  include_once 'Administrador_equipo.php';
+  include_once 'Administrador_componente.php';
+  include_once 'Encargado_simulacion.php';
+
   /*Clase que sirve como delegador de lo que el usuario quiere hacer*/
   class Asignador_tareas {
 
@@ -31,6 +32,7 @@
      *@return void
      */
     public function encontrar_encargado_tarea( $tipo_elemento ) {
+
       switch( $tipo_elemento ){
         case 'procesos':
           $this->encargado_tarea = new Administrador_proceso();
@@ -83,7 +85,7 @@
         break;
 
         case 'simular':
-          $this->encargado_tarea->mandar_simulacion( $this->datos_elemento )
+          $this->encargado_tarea->mandar_simulacion( $this->datos_elemento['id_procesos_duracion'] );
         break;
 
         //Tareas del administrador de proceso-----------------------------------

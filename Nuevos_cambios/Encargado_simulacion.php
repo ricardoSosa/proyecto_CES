@@ -1,7 +1,9 @@
 <?php
 
   include_once 'Simulador_procesos.php';
-  include_once 'Administrador.php';
+  include_once 'Administrador_proceso.php';
+  include_once 'Administrador_equipo.php';
+  include_once 'Administrador_componente.php';
   include_once 'Proceso.php';
   include_once 'Equipo.php';
   include_once 'Componente.php';
@@ -12,8 +14,14 @@
     private $administrador_equipo;
     private $administrador_componente;
 
-    function __construct( ) {
+    function __construct() {
       $this->simulador_procesos = new Simulador_procesos();
+      $this->administrador_proceso = new Administrador_proceso();
+      $this->administrador_proceso->setX();
+      $this->administrador_equipo = new Administrador_equipo();
+      $this->administrador_equipo->setX();
+      $this->administrador_componente = new Administrador_componente();
+      $this->administrador_componente->setX();
     }
 
     public function mandar_simulacion( $datos_procesos ) {
@@ -22,44 +30,53 @@
     }
 
     private function construir_procesos( $datos_procesos ) {
+      $procesos = [];
       foreach( $datos_procesos as $id_proceso=>$duracion_estimada ) {
-        $procesos = $this->recrear_proceso( $datos_proceso, $duracion_estimada );
+        $procesos[] = $this->recrear_proceso( $id_proceso, $duracion_estimada );
       }
 
       return $procesos;
     }
 
     private function recrear_proceso( $id_proceso, $duracion_estimada ) {
-      $equipos_necesarios = array();
-      $ids_equipos = $this->administrador_proceso->obtener_ids_equipos( $id_proceso );
-      foreach( $ids_equipos as $id_equipo ) {
-        $equipos_necesarios[] = $this->recrear_equipo( $datos_componente );
+      $equipos_necesarios = [];
+      $porcentajes_equipos = $this->administrador_proceso->obtener_porcentajes_equipos( $id_proceso );
+      foreach( $porcentajes_equipos as $id_equipo=>$porcentaje_equipo ) {
+        $equipos_necesarios[] = $this->recrear_equipo( $id_equipo, $porcentaje_equipo );
       }
-      $datos_proceso = $this->administrador_proceso->obtener_datos( $id_proceso );
+      $id_p = array(
+        'id' => $id_proceso
+      );
+      $datos_proceso = $this->administrador_proceso->obtener_datos( $id_p )[0];
       $proceso = new Proceso( $datos_proceso, $equipos_necesarios, $duracion_estimada );
 
       return $proceso;
     }
 
-    private function recrear_equipo( $id_equipo ) {
-      $componentes_necesarios = array();
-      $ids_componentes = $this->administrador_equipo->obtener_ids_componentes( $id_equipo );
-      foreach( $ids_componentes as $id_componente ) {
-        $componentes_necesarios[] = $this->recrear_componente( $datos_componente );
+    private function recrear_equipo( $id_equipo, $porcentaje_equipo ) {
+      $componentes_necesarios = [];
+      $porcentajes_componentes = $this->administrador_equipo->obtener_porcentajes_componentes( $id_equipo );
+      foreach( $porcentajes_componentes as $id_componente=>$porcentaje_componente ) {
+        $componentes_necesarios[] = $this->recrear_componente( $id_componente, $porcentaje_componente );
       }
-      $datos_equipo = $this->administrador_equipo->obtener_datos( $id_equipo );
-      $equipo = new Equipo( $datos_equipo, $componentes_necesarios );
+      $id_e = array(
+        'id' => $id_equipo
+      );
+      $datos_equipo = $this->administrador_equipo->obtener_datos( $id_e )[0];
+      $equipo = new Equipo( $datos_equipo, $componentes_necesarios, $porcentaje_equipo );
 
       return $equipo;
     }
 
-    private function recrear_componente( $id_componente ) {
-      $datos_componente = $this->administrador_componente->obtener_datos( $id_componente );
-      $componente = new Componente( $datos_componente );
+    private function recrear_componente( $id_componente, $porcentaje_componente ) {
+      $id_c = array(
+        'id' => $id_componente
+      );
+      $datos_componente = $this->administrador_componente->obtener_datos( $id_c )[0];
+      $componente = new Componente( $datos_componente, $porcentaje_componente );
 
       return $componente;
     }
 
   }
-
 ?>

@@ -110,4 +110,18 @@
       templateUrl : "componentes-disponibles.html"
     }
   } );
+
+  app.directive( 'activacionProcesos', function () {
+    return{
+      restrict : "A",
+      templateUrl : "activacion-procesos.html"
+    }
+  } );
+
+  app.directive( 'procesosActivos', function () {
+    return{
+      restrict : "A",
+      templateUrl : "procesos-activos.html"
+    }
+  } );
 } )();

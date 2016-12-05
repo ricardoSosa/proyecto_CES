@@ -31,17 +31,17 @@
       $this->conector_bd->eliminar( self::NOMBRE_TABLA_PORCENTAJES, $datos );
     }
 
-    public function obtener_porcentajes_equipos() {
-      $this->conector_bd->obtener_informacion( self::NOMBRE_TABLA_PORCENTAJES, null );
-    }
 
-    public function obtener_ids_equipos() {
+    public function obtener_porcentajes_equipos( $id_proceso ) {
       $ids_equipos = array();
-      $porcentajes_equipos = $this->obtener_porcentajes_equipos();
-      foreach( $porcentajes_equipos as $porcentaje_equipo ) {
-        $ids_equipos[] = $porcentaje_equipo[ 'id_equipo' ];
+      $this->x=true;
+      $porcentajes_equipos = $this->conector_bd->obtener_informacion( self::NOMBRE_TABLA_PORCENTAJES, null, $this->x );
+      for( $indice = 0; $indice < count($porcentajes_equipos); $indice++ ) {
+        if( $porcentajes_equipos[ $indice ][ 'id_proceso' ] == $id_proceso) {
+          $ids_equipos[$porcentajes_equipos[ $indice ][ 'id_equipo' ]] = $porcentajes_equipos[ $indice ][ 'porcentaje_uso' ];
+        }
       }
-
+      
       return $ids_equipos;
     }
 

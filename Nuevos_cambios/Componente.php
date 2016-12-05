@@ -8,14 +8,13 @@
     private $tiempo_vida_actual;
     private $porcentaje_uso;
 
-    function __construct( $datos_componente ) {
+    function __construct( $datos_componente, $porcentaje_uso ) {
       $this->id = $datos_componente[ 'id' ];
       $this->nombre = $datos_componente[ 'nombre' ];
       $this->descripcion = $datos_componente[ 'descripcion' ];
       $this->tiempo_vida_max = $datos_componente[ 'tiempo_vida_max' ];
       $this->tiempo_vida_actual = $datos_componente[ 'tiempo_vida_actual' ];
-      $this->porcentaje_uso = $datos_componente[ 'porcentaje_uso' ];
-
+      $this->porcentaje_uso = $porcentaje_uso;
     }
 
     public function obtener_id() {
