@@ -4,20 +4,18 @@
 ( function () {
   var app = angular.module( 'Componentes', [ 'elementos-vista' ] );
 
-  app.controller( 'ControladorVentanaComponentes', [ '$http', function ( $http, $scope ) {
-    $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
+ app.service('Pra', function () {
+   this.res = function (a) {
+     console.log(a);
+   };
+ });
 
-    var componentesSolicitud = [];
-    this.listaComponentes = componentesSolicitud;
-    this.componenteSeleccionado = {};
+  app.factory( 'Secretaria', ['$http', function ($http) {
+    function Secretaria() {
+      console.log("Holi");
+    };
 
-    //--------------------------------------
-    var panel_componentes = "panel_lista_componentes";
-    this.panel_actual = panel_componentes;
-
-
-
-    this.validarDatos = function ( datos_componente ) {
+    Secretaria.prototype.verificar_datos_componente = function ( datos_componente ) {
       var datos_componente_correctos = false;
       var datos_existen = !( datos_componente === undefined );
 
@@ -42,7 +40,61 @@
       }
 
       return datos_componente_correctos;
+    }
+
+    Secretaria.prototype.generar_solicitud = function ( datos_solicitud ) {
+      var tarea = datos_solicitud.tarea;
+      var tipo_elemento = datos_solicitud.elemento;
+      var datos = datos_solicitud.datos;
+
+      var solicitud = {tarea : {nombre_tarea : tarea, tipo_elemento: tipo_elemento},
+        datos : datos};
+
+      return solicitud;
+    }
+
+    Secretaria.prototype.enviar_solicitud = function ( solicitud ) {
+      console.log(solicitud); // BORAR DESPUES
+      var direccionDestino = 'Nuevos_cambios/Asignador_tareas.php';
+      $http( {
+        url : direccionDestino,
+        method : "POST",
+        data : solicitud,
+
+      } ).success( function ( componentes ) {
+        console.log(componentes); //BORAR DESPUES
+      }  );
+    }
+
+    return Secretaria;
+  }]);
+  
+  app.factory( 'Jefe_Planta', function () {
+    function Jefe_Planta() {
+      
+    }
+  } );
+
+
+  app.controller( 'ControladorVentanaComponentes', [ 'Secretaria','Pra', '$http' ,function ( Secretaria, Pra, $http ) {
+    //$http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
+    var secretaria = new Secretaria();
+
+    this.obtener_secretaria = function (  ) {
+      return secretaria;
     };
+
+
+
+
+    var componentesSolicitud = [];
+    this.listaComponentes = componentesSolicitud;
+    this.componenteSeleccionado = {};
+
+    //--------------------------------------
+    var panel_componentes = "panel_lista_componentes";
+    this.panel_actual = panel_componentes;
+
 
     this.enviarDatos = function( datosComponente ) {
       var nombreComponente = datosComponente.nombre;
@@ -58,12 +110,12 @@
                              elemento: "componentes",
                              datos : componente};
 
-      var solicitud = generar_solicitud( datos_solicitud );
+      var solicitud = secretaria.generar_solicitud( datos_solicitud );
 
 
       this.listaComponentes.push( componente ); //DEBE IR UN NIVEL MAS ARRIBA
 
-      enviar_solicitud( solicitud );
+      secretaria.enviar_solicitud( solicitud );
     };
 
     this.buscar_posicion_componente = function ( componente ) {
@@ -86,16 +138,18 @@
       this.listaComponentes.splice(posicion_componente, 1);
 
 
-      var componente = {nombre_id : componente};
+      var componente = {id : {id : componente},
+                        nombre_id : "id" //PENDIENTE
+                       };
 
       var datos_solicitud = {tarea : "eliminar",
                              elemento : "componentes",
                              datos : componente};
 
-      var solicitud = generar_solicitud( datos_solicitud );
+      var solicitud = secretaria.generar_solicitud( datos_solicitud );
 
 
-      enviar_solicitud( solicitud );
+      secretaria.enviar_solicitud( solicitud );
 
 
     };
@@ -106,7 +160,7 @@
     };
 
     this.mandarSolicitudCambio = function( componente ) { //REFACTORIZAR DESPUES
-      this.datosCorrectos = this.validarDatos( componente );
+      this.datosCorrectos = secretaria.verificar_datos_componente( componente );
 
       if( this.datosCorrectos ) {
         var id_componente = componente.id;
@@ -119,33 +173,16 @@
                                    "tiempo_vida_max" : tiempo_vida,
                                    "descripcion" : descripcion};
 
-        var solicitud = {"tarea" : {nombre_tarea : "modificar", tipo_elemento : "componentes"},
-                         "datos" : datos_modificacion};
+        var datos_solicitud = {tarea : "modificar",
+                               elemento : "componentes",
+                               datos : datos_modificacion};
 
-        var direccionDestino = 'Nuevos_cambios/Asignador_tareas.php';
-        $http( {
-          url: direccionDestino,
-          method: "POST",
-          data: solicitud
-        } ).then( function ( response ) {
-          console.log( response );
-        }, function ( response ) {
-          console.log( response )
-        } );
+        var solicitud = secretaria.generar_solicitud( datos_solicitud );
+
+        secretaria.enviar_solicitud( solicitud );
 
       }
     }
-
-    var generar_solicitud = function ( datos_consulta ) {
-      var tarea = datos_consulta.tarea;
-      var tipo_elemento = datos_consulta.elemento;
-      var datos = datos_consulta.datos;
-
-      var solicitud = {tarea : {nombre_tarea : tarea, tipo_elemento: tipo_elemento},
-                       datos : datos};
-
-      return solicitud;
-    };
 
 
     this.solicitarListaComponentes = function() {
@@ -154,7 +191,7 @@
                              elemento : "componentes",
                              datos : "consulta"};
 
-      var solicitud = generar_solicitud( datos_solicitud );
+      var solicitud = secretaria.generar_solicitud( datos_solicitud );
 
       var direccionDestino = 'Nuevos_cambios/Asignador_tareas.php';
       $http( {
@@ -173,18 +210,6 @@
       } );
     };
 
-    var enviar_solicitud = function ( solicitud ) {
-      console.log(solicitud); // BORAR DESPUES
-      var direccionDestino = 'Nuevos_cambios/Asignador_tareas.php';
-      $http( {
-        url : direccionDestino,
-        method : "POST",
-        data : solicitud,
-
-      } ).success( function ( componentes ) {
-          console.log(componentes); //BORAR DESPUES
-      }  );
-    };
 
     this.solicitarListaComponentes();
 
@@ -196,6 +221,7 @@
       var panel_activo = this.panel_actual == panel;
       return panel_activo;
     };
+
 
     
   } ] );
