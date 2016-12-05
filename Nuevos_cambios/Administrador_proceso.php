@@ -52,19 +52,23 @@
     }
 
     /*
-     *@param String[ASSOC] $datos - Recibe los ids del equipo a quitar.
+     *@param String[ASSOC] $ids - Recibe los ids del equipo a quitar.
      *@return void
     */
     public function quitar_equipo( $ids ) {
-      $this->conector_bd->eliminar( self::NOMBRE_TABLA_PORCENTAJES, $datos );
+      $this->conector_bd->eliminar( self::NOMBRE_TABLA_PORCENTAJES, $ids );
     }
 
+    /*
+    *Método que obtiene la lista de porcentajes totales de los procesos mediante
+    * un json.
+    */
     public function obtener_porcentajes_totales(  ) {
       $this->conector_bd->obtener_informacion( self::NOMBRE_TABLA_PORCENTAJES, null, true );
     }
 
     /*
-     *@param String $datos - Recibe el id del proceso del que se quiere
+     *@param String $id_proceso - Recibe el id del proceso del que se quiere
      *obtener sus componentes y respectivos porcentajes.
      *@return String[ASSOC] $porcentajes_componentes - Retorna un arreglo asociativo
      *con los ids de los equipos como llaves y sus respectivos porcentajes.false

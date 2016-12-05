@@ -5,7 +5,7 @@
   /*Clase administradora de una base de datos general*/
   abstract class Administrador {
     const NUM_IDS_PRINCIPAL = 1;
-    public $conector_bd;
+    private $conector_bd;
     private $nombre_tabla_principal;
 
     /*
@@ -19,28 +19,28 @@
     }
 
     /*
-     *@param String $datos - Recibe los datos del elemento a agregar.
+     *@param String[ASSOC] $datos - Recibe los datos del elemento a agregar.
     */
     public function agregar_nuevo( $datos ) {
       $this->conector_bd->insertar( $this->nombre_tabla_principal, $datos );
     }
 
     /*
-     *@param String $datos - Recibe los datos del elemento a modificar.
+     *@param String[ASSOC] $datos - Recibe los datos del elemento a modificar.
     */
     public function modificar( $datos ) {
       $this->conector_bd->modificar( $this->nombre_tabla_principal, $datos, self::NUM_IDS_PRINCIPAL );
     }
 
     /*
-     *@param String $datos - Recibe los ids del elemento a eliminar.
+     *@param String[] $ids - Recibe los ids del elemento a eliminar.
     */
     public function eliminar( $ids ) {
       $this->conector_bd->eliminar( $this->nombre_tabla_principal, $ids );
     }
 
     /*
-     *@param String $datos - Recibe los ids del elemento al cual se quiere
+     *@param String[] $ids - Recibe los ids del elemento al cual se quiere
      *obtener sus datos.
      *@param boolean $bandera_retorno_inmediato - Si es true, se retorna el
      *resultado de forma directa mediante un jason, si es false, se retorna de

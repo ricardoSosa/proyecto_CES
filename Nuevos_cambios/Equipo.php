@@ -59,7 +59,7 @@
     }
 
     /*
-     *@return Integer $porcentaje_uso - Retorna el porcentaje de uso del equipo.
+     *@return Double $porcentaje_uso - Retorna el porcentaje de uso del equipo.
     */
     public function obtener_porcentaje_uso() {
         return $this->porcentaje_uso;

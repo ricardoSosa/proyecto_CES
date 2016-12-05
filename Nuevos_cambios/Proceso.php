@@ -50,7 +50,7 @@
     }
 
     /*
-     *@return Integer $duracion_estimada - Retorna la duracion estimada del
+     *@return Double $duracion_estimada - Retorna la duracion estimada del
      *proceso.
     */
     public function obtener_duracion_estimada() {
