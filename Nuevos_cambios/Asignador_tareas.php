@@ -72,10 +72,6 @@
           $this->encargado_tarea->eliminar( $this->datos_elemento );
         break;
 
-        case 'generar historial':
-          $this->encargado_tarea->generar_historial();
-        break;
-
         case 'consultar lista':
           $this->encargado_tarea->obtener_datos( null, true );
         break;
