@@ -2,7 +2,7 @@
 
   include_once "Administrador.php";
 
-  /*Clase administradora de los datos de los componentes de la empresa*/
+  /*Clase administradora de los datos de los componentes de la empresa.*/
   class Administrador_componente extends Administrador {
 
     /*

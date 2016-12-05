@@ -21,7 +21,7 @@
 
 		}
 
-		/* Método que separa los process que le pidieron simular */
+		/* Método que separa los procesos que le pidieron simular */
 		private function separar_por_procesos($procesos){
 
 			foreach ($procesos as $proceso) {
@@ -62,9 +62,9 @@
 
 			foreach ($componentes as $componente) {
 
-				$mecanico = new Calculador_desgaste();
+				$calculador_desgaste = new Calculador_desgaste();
 
-				$mecanico->calcular_desgaste( $componente , $tiempo_uso_equipo );
+				$calculador_desgaste->calcular_desgaste( $componente , $tiempo_uso_equipo );
 
 			}
 
