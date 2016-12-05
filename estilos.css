@@ -1,0 +1,300 @@
+*, body{
+	padding: 0;
+	margin: 0;
+	box-sizing:border-box;
+}
+
+body{
+	background: #f1f7ed;
+	font-family: 'Arimo', sans-serif;
+	height: 100%;
+}
+
+.header{
+	width: 100%;
+	height: 100px;
+	background: #ffffff;
+
+}
+
+.header .logo{
+	display: inline-block;
+	margin-left: 70px;
+}
+
+
+.header .nombre-aplicacion{
+	display: inline-block;
+	float: right;
+	font-size: 30px;
+	margin-top: 33px;
+	margin-right: 70px;
+	background: white;
+}
+
+.opciones{
+	width: 100%;
+	height: 550px;
+	background: #f1f7ed;
+	list-style: none;
+
+	display: -webkit-box;
+  	display: -moz-box;
+  	display: -ms-flexbox;
+  	display: -webkit-flex;
+  	display: flex;
+  
+  	-webkit-flex-flow: row wrap;
+  	justify-content: space-around;
+  	padding-left: 45px;
+  	padding-right: 38px;
+  	padding-top: 35px;
+
+
+}
+
+.opcion{
+	background: black;
+	width: 375px;
+	height: 220px;
+	color: white;
+}
+
+.simulaciones{
+	background: #2274a5;
+	-webkit-transition: 0.1s;
+}
+
+.simulaciones:hover{
+	border-bottom: 10px solid #113b54;
+ }
+
+.procesos{
+	background: #e2b947;
+	padding-top: 20px;
+	-webkit-transition: 0.1s;
+}
+
+.procesos:hover{
+	border-bottom: 10px solid #9e8232;
+}
+
+.equipos{
+	background: #335c67;
+	-webkit-transition: 0.1s;
+}
+
+.equipos:hover{
+	border-bottom: 10px solid #192c31;
+}
+
+.componentes{
+	padding-top: 20px;
+	background: #fc7753;
+	-webkit-transition: 0.1s;
+
+}
+
+.componentes:hover{
+	border-bottom: 10px solid #944530;
+}
+
+.historial{
+	padding-top: 22px;
+	background: #706c61;
+	-webkit-transition: 0.1s;
+}
+
+.historial:hover{
+	border-bottom: 10px solid #31302b;
+}
+
+.reportes{
+	padding-top: 25px;
+	background: #355834;
+	-webkit-transition: 0.1s;
+}
+
+.reportes:hover{
+	border-bottom: 10px solid #1d2f1c;
+}
+
+.icono{
+	display: block;
+	margin: auto;
+	width: 160px;
+	height: 160px;
+}
+
+.icono-proceso{
+	display: block;
+	margin: auto;
+	width: 130px;
+	height: 130px;
+	margin-bottom: 10px;
+}
+
+.tipo-opcion{
+	display: block;
+	text-align: center;
+	font-size: 25px;
+	margin-bottom: 10px;
+	letter-spacing: 0.5px;
+}
+
+.equipos-icono{
+	width: 175px;
+	height: 160px;
+	margin-bottom: 0px;
+}
+
+a{
+	text-decoration: none;
+}
+
+.footer{
+	display: -webkit-box;
+  	display: -moz-box;
+  	display: -ms-flexbox;
+  	display: -webkit-flex;
+  	display: flex;
+  
+  	-webkit-flex-flow: row wrap;
+  	justify-content: space-around;
+	width: 100%;
+	background: #f1f7ed;
+	height: 50px;
+	padding-top: 16px;
+}
+
+.texto-footer{
+	font-size: 13px;
+	text-align: center;
+}
+
+.opcion-componentes{
+	background: #fc7753;
+	width: 100%;
+	height: 50px;
+	padding-top: 2px;
+	color: white;
+}
+
+.opcion-componentes .nombre{
+	font-size: 40px;
+	margin-left: 25px;
+}
+
+.barra-izquierda{
+	width: 20%;
+	height: 550px;
+	background: #e8eae6;
+	display: inline-block;
+}
+
+.barra-izquierda .lista-opciones{
+	width: 100%;
+	height: 100%;
+	padding-top: 20px;
+}
+
+.operacion{
+	color: black;
+	height: 50px;
+	letter-spacing: 0.3px;
+	font-size: 20px;
+	
+}
+
+.operacion:hover{
+	background: #e1e2e0;
+	border-left: 10px solid #fc7753;
+}
+
+.icono{
+	display: inline-block;
+	width: 25px;
+	height: 25px;
+	margin-top: 13px;
+}
+
+.titulo-opc{
+	display: inline-block;
+	margin-left: 25px;
+	margin-top: 15px;
+}
+
+.titulo-form{
+	margin-top: 25px;
+}
+
+.form, .listado-componentes{
+	width: 75%;
+	height: 550px;
+	display: inline-block;
+	float: right;
+}
+
+.info-componentes{
+	display: block;
+}
+
+.nombre-componente, .tiempo-vida-maximo, .tiempo-vida-actual{
+	background: #f1f7ed;
+	border: none;
+  	border-bottom: 2px solid #a9a2a2;
+  	color: black;
+  	font-size: 1em;
+  	height: 30px;
+  	transition: border-color 0.3s;
+  	width: 50%;
+  	margin-left: 10px;
+}
+
+.tiempo-vida-maximo, .tiempo-vida-actual{
+	width: 15%;
+}
+
+input[type="text"]:focus{
+	border-bottom: 2px solid #fc7753;
+ 	outline: none;
+}
+
+.input-nombre, .input-vida-maximo, .input-vida-actual, .textarea-info{
+	margin-top: 30px;
+}
+
+textarea{
+	margin-top: 10px;
+	resize: vertical;
+	width: 70%;
+	height: 150px;
+	max-height: 200px;
+}
+
+textarea:focus{
+	border-right: 2px solid #fc7753;
+	border-left: 2px solid #fc7753;
+	border-top: 2px solid #fc7753;
+	border-bottom: 2px solid #fc7753;
+	outline: none;
+}
+
+input[type="submit"]{
+	width: 250px;
+	height: 50px;
+	margin-bottom: 0;
+	color: #fff;
+	border: none;
+	font-size: 20px;
+	margin-top: 15px;
+}
+
+.añadir-comp{
+	background: #fc7753;
+}
+
+.añadir-comp:hover{
+	background: #fd6238;
+}
+

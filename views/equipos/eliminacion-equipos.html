@@ -1,0 +1,11 @@
+<div>
+  <h2 class="page-header">Eliminación de Equipos</h2>
+
+  <div ng-repeat="equipo in controlador.listaEquipos" class="well well-lg">
+    <h4>{{equipo.nombre}}</h4>
+    <p><strong>ID Equipo: </strong>{{equipo.id}}</p>
+    <p><strong>Ubicación Equipo: </strong>{{equipo.ubicacion}}</p>
+    <p><strong>Descripción: </strong>{{equipo.descripcion}}</p>
+    <button class="btn btn-primary" type="button" ng-click="controlador.eliminarEquipo( equipo.id )">Eliminar Equipo</button>
+  </div>
+</div>

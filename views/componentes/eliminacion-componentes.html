@@ -1,0 +1,12 @@
+<div>
+  <h2 class="page-header">Eliminación de Componentes</h2>
+
+  <div ng-repeat="componente in controlador.obtener_jefe().lista_componentes" class="well well-lg">
+    <h4>{{componente.nombre}}</h4>
+    <p><strong>ID Componente: </strong>{{componente.id}}</p>
+    <p><strong>Tiempo Vida Max: </strong>{{componente.tiempo_vida_max}}</p>
+    <p><strong>Descripción: </strong>{{componente.descripcion}}</p>
+
+    <button class="btn btn-primary" type="button" ng-click="controlador.click_eliminar_componente( componente.id )">Eliminar Componente</button>
+  </div>
+</div>

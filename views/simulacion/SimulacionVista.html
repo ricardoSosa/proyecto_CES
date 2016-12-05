@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<html lang="en" ng-app="Procesos">
+<head>
+	<meta charset="UTF-8">
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <script src="../js/jquery-3.1.1.min.js"></script>
+	<title>Document</title>
+</head>
+<body>
+
+	<div class="container" ng-controller="ControladorVentanaProcesos as controlador">
+		<div class="row">
+
+			<div class="col-md-4">
+				<div>
+					<h3>ProcesosExistentes</h3>
+				</div>
+				<div ng-repeat="proceso in controlador.listaProcesos">
+					<div class="row">
+						<div class="col-md-12">
+							<button type="button" class="btn btn-primary btn-lg btn-block" ng-click="controlador.anadirProcesoSelecionado( proceso )">
+								{{ proceso.nombre }}
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+
+			<div class="col-md-8">
+				<div>
+					<h3>Procesos seleccionados</h3>
+				</div>
+
+				<div >
+					<div class="row">
+						<div ng-repeat="proceso_select in controlador.listaProcesosSeleccionados track by $index">
+							<div class="col-md-8">
+								<button type="button" class="btn btn-secondary btn-lg btn-block" ng-click="controlador.quitarProcesoSimulacion( proceso_select )">
+									{{ proceso_select.nombre }}
+								</button>
+							</div>
+							<div class="col-md-4">
+					            <div class="form-group">
+					                <div class='input-group date' id='datetimepicker3'>
+					                    <input type='text' id='duracion' class="form-control" ng-model="proceso_select.duracion" />
+					                    <span class="input-group-addon">
+					                        <span class="glyphicon glyphicon-time" >
+					                        </span>
+					                    </span>
+					                </div>
+					            </div>
+							</div>
+						</div>
+					</div>
+				</div><div>
+					 <button type="button" class="btn btn-success btn-lg btn-block" ng-click="controlador.simularProcesos(); controlador.simular()">
+					 	Simular
+					 </button>
+				</div>
+			</div>
+		</div>
+
+		<div ng-show='controlador.simulado'>
+
+			<div class="row">
+			  	<div class="col-md-4">
+					<div ng-repeat="procesoSim in controlador.procesosSim">
+						<h3> {{ procesoSim.nombre_proceso }} </h3>
+						<h4> {{ procesoSim.id_proceso }} </h4>
+						<h6> {{ procesoSim.descripcion_proceso }} </h6>
+						<h6> {{ procesoSim.duracion_proceso }} </h6>
+					</div>
+			  	</div>
+			  	<div class="col-md-4">
+			  		<div ng-repeat="equiposSim in controlador.equiposSim">
+			  			<div class="container-fluid">
+			  				<h3> {{ equiposSim.nombre_equipo }} </h3>
+							<h4> {{ equiposSim.id_equipo }} </h4>
+							<h4> {{ equiposSim.ubicacion_equipo }} </h4>
+							<p> {{ equiposSim.descripcion_equipo }} </p>
+			  			</div>
+			  		</div>
+			  	</div>
+			  	<div class="col-md-4">
+			  		<div ng-repeat="composSim in controlador.composSim">
+			  			<div ng-if="composSim.tiempo_vida_actual_compo < composSim.tiempo_vida_max_compo">
+			  				<div class="alert alert-success" role="alert">
+			  					<h4> {{ composSim.nombre_compo }} </h4>
+			  					<p>porcentaje uso : {{ composSim.porcentaje_uso_compo }} % </hp> <br>
+				  				tiempo vida actual: {{ composSim.tiempo_vida_actual_compo }} horas <br>
+				  				tiempo vida max: {{ composSim.tiempo_vida_max_compo }} horas
+			  				</div>
+			  			</div>
+			  			<div ng-if="composSim.tiempo_vida_actual_compo >= composSim.tiempo_vida_max_compo">
+			  				<div class="alert alert-danger" role="alert">
+				  				<h4> {{ composSim.nombre_compo }} </h4>
+			  					<p>porcentaje uso : {{ composSim.porcentaje_uso_compo }} % </hp> <br>
+				  				tiempo vida actual: {{ composSim.tiempo_vida_actual_compo }} horas <br>
+				  				tiempo vida max: {{ composSim.tiempo_vida_max_compo }} horas
+			  				</div>
+			  			</div>
+			  		</div>
+			  	</div>
+			</div>
+
+		</div>
+	</div>
+
+
+
+
+
+
+  <script src="../js/angular.min.js"></script>
+  <script src="../js/ControladorVentanaProcesos.js"></script>
+  <script src="../js/ElementosVista.js"></script>
+</body>
+</html>
