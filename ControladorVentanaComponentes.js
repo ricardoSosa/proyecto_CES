@@ -4,13 +4,7 @@
 ( function () {
   var app = angular.module( 'Componentes', [ 'elementos-vista' ] );
 
- app.service('Pra', function () {
-   this.res = function (a) {
-     console.log(a);
-   };
- });
-
-  app.factory( 'Secretaria', ['$http', function ($http) {
+  app.factory( 'Secretaria', ['$http', function ( $http ) {
     function Secretaria() {
       console.log("Holi");
     };
@@ -167,7 +161,7 @@
   } ]);
 
 
-  app.controller( 'ControladorVentanaComponentes', [  'Secretaria','Jefe_Planta','Pra', '$http' ,function (  Secretaria, Jefe_Planta, Pra, $http ) {
+  app.controller( 'ControladorVentanaComponentes', [  'Secretaria','Jefe_Planta', '$http' ,function (  Secretaria, Jefe_Planta, $http ) {
     //$http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
     var secretaria = new Secretaria();
     var jefe_planta = new Jefe_Planta();
@@ -188,15 +182,15 @@
     this.componenteSeleccionado = {};
 
     //--------------------------------------
-    var panel_componentes = "panel_lista_componentes";
-    this.panel_actual = panel_componentes;
+    var panel_principal = "panel_lista_componentes";
+    this.panel_actual = panel_principal;
 
 
     this.click_agregar_componente = function( datosComponente ) {
 
 
       var nuevo_componente = jefe_planta.solicitar_creacion_componente( datosComponente );
-      this.listaComponentes.push( nuevo_componente ); //DEBE IR UN NIVEL MAS ARRIBA
+      this.listaComponentes.push( nuevo_componente );
 
 
     };
@@ -230,7 +224,7 @@
       this.componenteSeleccionado = componente;
     };
 
-    this.click_modificar_componente = function( componente ) { //REFACTORIZAR DESPUES
+    this.click_modificar_componente = function( componente ) {
       jefe_planta.solicitar_modificacion_componente( componente );
     }
 
