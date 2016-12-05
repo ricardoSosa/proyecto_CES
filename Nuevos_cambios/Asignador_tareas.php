@@ -5,7 +5,6 @@
   include_once 'Administrador_componente.php';
   include_once 'Encargado_simulacion.php';
 
-  // include_once 'Simulador_procesos.php';
   /*Clase que sirve como delegador de lo que el usuario quiere hacer*/
   class Asignador_tareas {
 
@@ -15,8 +14,8 @@
 
     /*
      *Construct
-     *@param String $tarea - contiene la tarea que el usuario quiere hacer
-     *@param Array $datos_tarea - contiene todos los datos para realizar la tarea
+     *@param String $datos_tarea - Contiene los datos de la tarea a realizar.
+     *@param Array $datos_elemento - Contiene los datos sobre el elemento a trabajar.
      */
     function __construct( $datos_tarea, $datos_elemento ) {
       $this->tarea = $datos_tarea[ 'nombre_tarea' ];
@@ -28,7 +27,7 @@
 
 
     /*
-     *Encuentra quien deberia hacer la tarea segun el elemento sobre quien es la tarea
+     *Encuentra quien debería hacer la tarea segun el elemento sobre quien es la tarea
      *@param String $tipo_elemento - Contiene el nombre del elemento sobre quien se va a hacer la tarea
      *@return void
      */
@@ -78,11 +77,11 @@
         break;
 
         case 'consultar lista':
-          $this->encargado_tarea->obtener_datos( null );
+          $this->encargado_tarea->obtener_datos( null, true );
         break;
 
         case 'consulta especifica':
-          $this->encargado_tarea->obtener_datos( $this->datos_elemento );
+          $this->encargado_tarea->obtener_datos( $this->datos_elemento, true );
         break;
 
         case 'simular':
@@ -111,7 +110,7 @@
         break;
 
         case 'consultar porcentajes de equipos':
-          $this->encargado_tarea->obtener_porcentajes_equipos( null );
+          $this->encargado_tarea->obtener_porcentajes_totales();
         break;
 
         //Tareas del administrador de equipo------------------------------------
@@ -128,7 +127,7 @@
         break;
 
         case 'consultar porcentajes de componentes':
-          $this->encargado_tarea->obtener_porcentajes_componentes( null );
+          $this->encargado_tarea->obtener_porcentajes_totales();
         break;
 
         default:
@@ -140,9 +139,7 @@
 
   }
 
-/**
- *
- */
+/*Método que maneja la entrega de tareas entre el asignador y el cliente.*/
 function Main() {
     $_POST = json_decode(file_get_contents('php://input'),true);
     $tarea_usuario = $_POST[ 'tarea' ];

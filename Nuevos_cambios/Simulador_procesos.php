@@ -11,8 +11,6 @@
 		function __construct(){
 		}
 
-
-
 		public function iniciar_simulacion($procesos){
 
 			$componentes_equipo = [];
@@ -34,7 +32,7 @@
 					$componentes = $equipo->obtener_componentes();
 
 					foreach ($componentes as $componente) {
-						
+
 						$datos_componente = array(
 							'id_compo' => $componente->obtener_id(),
 							'nombre_compo' => $componente->obtener_nombre(),
@@ -47,7 +45,7 @@
 						$componentes_equipo[] = $datos_componente;
 					}
 
-					$datos_equipo = array(  
+					$datos_equipo = array(
 						'id_equipo' => $equipo->obtener_id(),
 						'nombre_equipo' => $equipo->obtener_nombre(),
 						'descripcion_equipo' => $equipo->obtener_descripcion(),
@@ -76,11 +74,11 @@
 			}
 
 			print_r(json_encode($procesos_simulados));
-			
+
 
 		}
 
-		private function obtener_equipos_proceso($proceso){
+		private function obtener_equipos_proceso( $proceso ) {
 
 			$duracion_proceso = $proceso->obtener_duracion_estimada();
 
@@ -96,7 +94,7 @@
 
 		}
 
-		private function activar_equipo($equipo, $duracion_proceso){
+		private function activar_equipo( $equipo, $duracion_proceso ) {
 
 			$porcentaje_uso_equipo = $equipo->obtener_porcentaje_uso();
 
@@ -110,7 +108,7 @@
 
 				$mecanico = new Mecanico();
 
-				$mecanico->calcular_desgaste($componente , $tiempo_uso_equipo);
+				$mecanico->calcular_desgaste( $componente , $tiempo_uso_equipo );
 
 			}
 
