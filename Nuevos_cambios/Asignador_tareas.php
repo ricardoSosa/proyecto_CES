@@ -139,9 +139,7 @@
 
   }
 
-/**
- *
- */
+/*Método que maneja la entrega de tareas entre el asignador y el cliente.*/
 function Main() {
     $_POST = json_decode(file_get_contents('php://input'),true);
     $tarea_usuario = $_POST[ 'tarea' ];
