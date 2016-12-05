@@ -16,14 +16,12 @@
 				<div>
 					<h3>ProcesosExistentes</h3>
 				</div>
-				<div ng-repeat="proceso in controlador.listaProcesos">
-					<div class="btn-group" data-toggle="buttons">						
-						<div class="row">
-							<label class="btn btn-primary">
-								<button type="button" class="btn btn-primary" ng-click="controlador.anadirProcesoSelecionado( proceso )">
-									{{ proceso.nombre }}
-								</button>
-	  						</label>
+				<div ng-repeat="proceso in controlador.listaProcesos">						
+					<div class="row">
+						<div class="col-md-12">
+							<button type="button" class="btn btn-primary btn-lg btn-block" ng-click="controlador.anadirProcesoSelecionado( proceso )">
+								{{ proceso.nombre }}
+							</button>
 						</div>
 					</div>
 				</div>
@@ -40,7 +38,7 @@
 					<div class="row">
 						<div ng-repeat="proceso_select in controlador.listaProcesosSeleccionados track by $index">
 							<div class="col-md-8">
-								<button type="button" class="btn btn-default btn-lg btn-block" ng-click="controlador.quitarProcesoSimulacion( proceso_select )">
+								<button type="button" class="btn btn-secondary btn-lg btn-block" ng-click="controlador.quitarProcesoSimulacion( proceso_select )">
 									{{ proceso_select.nombre }}
 								</button>
 							</div>
