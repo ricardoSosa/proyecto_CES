@@ -67,21 +67,48 @@
 
 		<div ng-show='controlador.simulado'>
 			
-			<div clas="row" ng-repeat="procesoSim in controlador.procesosSim">
-				
-					<div class=".col-md-8">
+			<div class="row">
+			  	<div class="col-md-4">
+					<div ng-repeat="procesoSim in controlador.procesosSim">
 						<h3> {{ procesoSim.nombre_proceso }} </h3>
 						<h4> {{ procesoSim.id_proceso }} </h4>
 						<h6> {{ procesoSim.descripcion_proceso }} </h6>
+						<h6> {{ procesoSim.duracion_proceso }} </h6>
 					</div>
-					<div class=".col-md-8" ng-repeat="equiposSim in controlador.equiposSim">
-						{{ equiposSim.nombre_equipo }}
-					</div>
-				
+			  	</div>
+			  	<div class="col-md-4">
+			  		<div ng-repeat="equiposSim in controlador.equiposSim">
+			  			<div class="container-fluid">
+			  				<h3> {{ equiposSim.nombre_equipo }} </h3>
+							<h4> {{ equiposSim.id_equipo }} </h4>
+							<h4> {{ equiposSim.ubicacion_equipo }} </h4>
+							<p> {{ equiposSim.descripcion_equipo }} </p>
+			  			</div>
+			  		</div>
+			  	</div>
+			  	<div class="col-md-4">
+			  		<div ng-repeat="composSim in controlador.composSim">
+			  			<div ng-if="composSim.tiempo_vida_actual_compo < composSim.tiempo_vida_max_compo">
+			  				<div class="alert alert-success" role="alert">
+			  					<h4> {{ composSim.nombre_compo }} </h4>
+			  					<p>porcentaje uso : {{ composSim.porcentaje_uso_compo }} % </hp> <br>
+				  				tiempo vida actual: {{ composSim.tiempo_vida_actual_compo }} horas <br>
+				  				tiempo vida max: {{ composSim.tiempo_vida_max_compo }} horas
+			  				</div>
+			  			</div>
+			  			<div ng-if="composSim.tiempo_vida_actual_compo >= composSim.tiempo_vida_max_compo">
+			  				<div class="alert alert-danger" role="alert">
+				  				<h4> {{ composSim.nombre_compo }} </h4>
+			  					<p>porcentaje uso : {{ composSim.porcentaje_uso_compo }} % </hp> <br>
+				  				tiempo vida actual: {{ composSim.tiempo_vida_actual_compo }} horas <br>
+				  				tiempo vida max: {{ composSim.tiempo_vida_max_compo }} horas
+			  				</div>
+			  			</div>
+			  		</div>
+			  	</div>
 			</div>
 
 		</div>
-
 	</div>
 
 

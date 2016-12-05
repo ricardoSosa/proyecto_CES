@@ -91,17 +91,30 @@
       for(i=0; i<this.listaComponentes.length; i++) {
         var componente = this.listaComponentes[ i ];
         console.log(componente); //BORAR DESPUES
-        var componente = {id_equipo : idEquipo,
-                          id_componente : componente.id,
-                          porcentaje_uso : componente.porcentaje_usado};
+        var componente_seleccionado = {id_equipo : idEquipo,
+                                       id_componente : componente.id,
+                                       porcentaje_uso : componente.porcentaje_usado};
 
         var solicitud = {tarea : {nombre_tarea : "agregar componente a equipo", tipo_elemento : "equipos"},
-                         datos : componente};
+                         datos : componente_seleccionado};
 
         $http( {
           url: direccionDestino,
           method: "POST",
           data: solicitud
+        } ).then( function (response) {
+          console.log(response);
+        }, function (response) {
+
+        } );
+
+        var solicitudC = {tarea:{nombre_tarea : "modificar", tipo_elemento : "componentes"},
+                         datos : {id :componente.id, enUso : true}};
+
+        $http( {
+          url: direccionDestino,
+          method: "POST",
+          data: solicitudC
         } ).then( function (response) {
           console.log(response);
         }, function (response) {

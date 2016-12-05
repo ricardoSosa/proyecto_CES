@@ -30,6 +30,8 @@
     this.listaProcesosSeleccionados = [];
     var procesosSimulados = [];
     var equiposProcesosSimulados = [];
+    var componentesEquiposSimulados = [];
+    var arrayInterno = [];
 
 
     this.anadirProcesoSelecionado = function( proceso ){
@@ -47,6 +49,8 @@
 
     this.procesosSim = procesosSimulados;//procesosSimulados;
     this.equiposSim = equiposProcesosSimulados;
+    this.composSim = componentesEquiposSimulados;
+    this.arrayExterno = arrayInterno;
 
     this.simularProcesos = function(){
       console.log("simularProcesos");
@@ -75,9 +79,23 @@
         data: solicitud
       } ).success( function ( procesos ) {
 
-          console.log("gigantote:");
-          console.log(procesos);
-          
+        // var datos = {};
+        // for (var i = 0; i < procesos.length; i++) {
+        //   datos ['proceso'] = procesos[i];
+        //   for (var j = 0; j < procesos.equipos_proceso[i].length; j++) {
+        //     datos ['equipo'+j] = procesos.equipos_proceso[j];
+        //     for(k = 0; k < procesos.equipos_proceso[j].componentes_equipo.length; k++){
+        //       datos [componente+k] = procesos.equipos_proceso[j].componentes_equipo[k];
+        //     };
+        //     arrayInterno.push(datos);
+        //     datos = {};
+        //   };
+        // };
+
+          console.log("Veamos si chambea");
+          console.log(arrayInterno);
+          // console.log("gigantote:");
+          // console.log(procesos);
         angular.forEach( procesos, function ( procesoSim, key ) {
 
 
@@ -89,6 +107,12 @@
             // console.log("equipos procesos son:");
             // console.log(procesoSim.equipos_proceso);
             equiposProcesosSimulados.push(equiposSimulados);
+
+            angular.forEach(equiposSimulados.componentes_equipo, function(componentesSimulados, key){
+              componentesEquiposSimulados.push(componentesSimulados);
+              console.log(componentesSimulados);
+            });
+
           } );
 
         } );

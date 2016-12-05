@@ -2,7 +2,7 @@
 
   <div class="col-md-6">
     <h3 class="page-header">Componentes Disponibles</h3>
-    <div ng-repeat="componente in controlador.componentes" class="well well-sm">
+    <div ng-repeat="componente in controlador.componentes" ng-show="componente.enUso == 0" class="well well-sm">
       <h4>{{componente.nombre}}</h4>
       <p><strong>ID Componente: </strong>{{componente.id}}</p>
       <p><strong>Tiempo Vida Max: </strong>{{componente.tiempo_vida_max}} hrs.</p>

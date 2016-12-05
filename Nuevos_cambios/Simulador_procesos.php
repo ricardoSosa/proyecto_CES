@@ -6,20 +6,9 @@
 
 	include_once "Mecanico.php";
 
-	//include_once "Administrador_proceso.php";
-	// include "Administrador_equipo.php";
-
 	class Simulador_procesos{
 
-		// private $id_procesos;
-		// private $procesos;
-
-		//rivate $administrador_proceso;
-//
-// $id_procesos
 		function __construct(){
-			// $this->id_procesos = $id_procesos;
-			// $this->crear_procesos();
 		}
 
 
@@ -32,8 +21,6 @@
 
 			$procesos_simulados = [];
 
-
-			// print_r($procesos);
 
 			foreach ($procesos as $proceso) {
 
@@ -131,6 +118,5 @@
 
 	}
 
-	// $obj = new Simulador_procesos();
 
 ?>

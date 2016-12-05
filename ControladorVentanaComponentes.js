@@ -4,8 +4,154 @@
 ( function () {
   var app = angular.module( 'Componentes', [ 'elementos-vista' ] );
 
-  app.controller( 'ControladorVentanaComponentes', [ '$http', function ( $http, $scope ) {
-    $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
+ app.service('Pra', function () {
+   this.res = function (a) {
+     console.log(a);
+   };
+ });
+
+  app.factory( 'Secretaria', ['$http', function ($http) {
+    function Secretaria() {
+      console.log("Holi");
+    };
+
+    Secretaria.prototype.verificar_datos_componente = function ( datos_componente ) {
+      var datos_componente_correctos = false;
+      var datos_existen = !( datos_componente === undefined );
+
+      if( datos_existen ) {
+        var nombre_componente = datos_componente.nombre;
+        var tiempo_vida_componente = datos_componente.tiempo_vida_max;
+        var descripcion_componente = datos_componente.descripcion;
+
+        var nombre_componente_correcto = nombre_componente.length != 0;
+        var tiempo_vida_componente_correcto = ( tiempo_vida_componente.length != 0 ) && ( parseInt( tiempo_vida_componente ) > 0 );
+        var descripcion_componente_correcto = descripcion_componente.length != 0;
+
+        var datos_correctos = nombre_componente_correcto && tiempo_vida_componente_correcto && descripcion_componente_correcto;
+
+        if( datos_correctos ) {
+          datos_componente_correctos = true;
+        } else {
+          datos_componente_correctos = false;
+        }
+      } else {
+        datos_componente_correctos = false;
+      }
+
+      return datos_componente_correctos;
+    }
+
+    Secretaria.prototype.generar_solicitud = function ( datos_solicitud ) {
+      var tarea = datos_solicitud.tarea;
+      var tipo_elemento = datos_solicitud.elemento;
+      var datos = datos_solicitud.datos;
+
+      var solicitud = {tarea : {nombre_tarea : tarea, tipo_elemento: tipo_elemento},
+        datos : datos};
+
+      return solicitud;
+    }
+
+    Secretaria.prototype.enviar_solicitud = function ( solicitud ) {
+      console.log(solicitud); // BORAR DESPUES
+      var direccionDestino = 'Nuevos_cambios/Asignador_tareas.php';
+      $http( {
+        url : direccionDestino,
+        method : "POST",
+        data : solicitud,
+
+      } ).success( function ( componentes ) {
+        console.log(componentes); //BORAR DESPUES
+      }  );
+    }
+
+    return Secretaria;
+  }]);
+  
+  app.factory( 'Jefe_Planta', ['Secretaria', function ( Secretaria ) {
+    function Jefe_Planta() {
+      this.secretaria = new Secretaria();
+    }
+
+    Jefe_Planta.prototype.solicitar_creacion_componente = function ( datos_componente ) {
+      var datos_validos = this.secretaria.verificar_datos_componente( datos_componente );
+
+      if( datos_validos ) {
+        var nombreComponente = datos_componente.nombre;
+        var tiempoVidaMax = datos_componente.tiempo_vida_max;
+        var descripcionComponente = datos_componente.descripcion;
+
+        var componente = {"id" : "id_componente_" + (Math.floor((Math.random() * 1000) + 1)),
+                          "nombre" : nombreComponente,
+                          "tiempo_vida_max" : tiempoVidaMax,
+                           "descripcion" : descripcionComponente};
+
+        var datos_solicitud = {tarea : "agregar",
+                               elemento: "componentes",
+                               datos : componente};
+
+        var solicitud = this.secretaria.generar_solicitud( datos_solicitud );
+        this.secretaria.enviar_solicitud( solicitud );
+
+        return componente;
+      }
+    }
+
+    Jefe_Planta.prototype.solicitar_modificacion_componente = function ( nuevos_datos_componente ) {
+      var datos_validos = this.secretaria.verificar_datos_componente( nuevos_datos_componente );
+
+      if( datos_validos ) {
+        var id_componente = nuevos_datos_componente.id;
+        var nombre_componente = nuevos_datos_componente.nombre;
+        var tiempo_vida = nuevos_datos_componente.tiempo_vida_max;
+        var descripcion = nuevos_datos_componente.descripcion;
+
+        var datos_modificacion = { id : id_componente,
+                                   nombre : nombre_componente,
+                                   tiempo_vida_max : tiempo_vida,
+                                   descripcion : descripcion};
+
+        var datos_solicitud = {tarea : "modificar",
+                               elemento : "componentes",
+                               datos : datos_modificacion};
+
+        var solicitud = this.secretaria.generar_solicitud( datos_solicitud );
+
+        this.secretaria.enviar_solicitud( solicitud );
+      }
+    }
+
+    Jefe_Planta.prototype.solicitar_eliminacion_componente = function( id_componente ) {
+      var componente = {id : {id : id_componente},
+                        nombre_id : "id" //PENDIENTE
+                       };
+
+      var datos_solicitud = {tarea : "eliminar",
+                             elemento : "componentes",
+                             datos : componente};
+
+      var solicitud = this.secretaria.generar_solicitud( datos_solicitud );
+
+
+      this.secretaria.enviar_solicitud( solicitud );
+    }
+
+    return Jefe_Planta;
+  } ]);
+
+
+  app.controller( 'ControladorVentanaComponentes', [  'Secretaria','Jefe_Planta','Pra', '$http' ,function (  Secretaria, Jefe_Planta, Pra, $http ) {
+    //$http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
+    var secretaria = new Secretaria();
+    var jefe_planta = new Jefe_Planta();
+
+    this.obtener_secretaria = function (  ) {
+      return secretaria;
+    };
+
+
+
 
     var componentesSolicitud = [];
     this.listaComponentes = componentesSolicitud;
@@ -15,171 +161,57 @@
     var panel_componentes = "panel_lista_componentes";
     this.panel_actual = panel_componentes;
 
-    this.agregarComponente = function( idComponente ){
-      var componenteNoRepetido = this.verificarComponenteNoRepetido( idComponente );
-
-      if( componenteNoRepetido ) {
-        this.listaComponentes.push( idComponente );
-      }
-    };
-
-    this.validarDatos = function ( datosComponente ) {
-      var datosExisten = false;
-      var datosComponenteCorrectos = false;
-
-      datosExisten = !( datosComponente === undefined );
-      if( datosExisten ) {
-        var nombreComponenteCorrecto = datosComponente.nombre.length != 0;
-        var tiempoVidaComponenteCorrect = datosComponente.tiempo_vida_max.length != 0;
-        var descripcionComponenteCorrecto = datosComponente.descripcion.length != 0;
-
-        if( nombreComponenteCorrecto && tiempoVidaComponenteCorrect && descripcionComponenteCorrecto ) {
-          datosComponenteCorrectos = true;
-        } else {
-          datosComponenteCorrectos = false;
-        }
-      } else {
-        datosComponenteCorrectos = false;
-      }
-
-      return datosComponenteCorrectos;
-    };
 
     this.enviarDatos = function( datosComponente ) {
-      var nombreComponente = datosComponente.nombre;
-      var tiempoVidaMax = datosComponente.tiempoVida;
-      var descripcionComponente = datosComponente.descripcion;
 
-      var componente = {"id" : "id_componente_" + (this.listaComponentes.length+1),
-                        "nombre" : nombreComponente,
-                        "tiempo_vida_max" : tiempoVidaMax,
-                        "descripcion" : descripcionComponente};
 
-      var datos_componente = {tarea : {nombre_tarea : "agregar", tipo_elemento : "componentes"},
-                              datos : componente};
+      var nuevo_componente = jefe_planta.solicitar_creacion_componente( datosComponente );
+      this.listaComponentes.push( nuevo_componente ); //DEBE IR UN NIVEL MAS ARRIBA
 
-      this.listaComponentes.push( componente ); //BORRAR DESPUES
 
-      var direccionDestino = 'Nuevos_cambios/Asignador_tareas.php';
-      $http( {
-        url: direccionDestino,
-        method: "POST",
-        data: datos_componente
-      } ).then( function ( response ) {
-        console.log( response );
-      }, function ( response ) {
-        console.log( response )
-      } );
+    };
+
+    this.buscar_posicion_componente = function ( componente ) {
+      var posicion_componente = -1;
+
+      for (i=0; i<this.listaComponentes.length; i++) {
+        if(componente == this.listaComponentes[i].id) {
+          posicion_componente = i;
+        }
+
+      }
+
+      return posicion_componente;
     };
 
     this.eliminarComponente = function ( componente ) {
 
-      var indiceComponente = -1;
-      for (i=0; i<this.listaComponentes.length; i++) {
-        if(componente == this.listaComponentes[i].id) {
-          indiceComponente = i;
-        }
+      var posicion_componente = this.buscar_posicion_componente( componente );
 
-      }
+      this.listaComponentes.splice(posicion_componente, 1);
 
-      this.listaComponentes.splice(indiceComponente, 1);
-
-      console.log(indiceComponente);
-
-      var datos_componente = {"id" : {id : componente},
-                              "nombre_id" : "id" //PENDIENTE
-                             };
-
-      var datos_eliminacion = {tarea : {nombre_tarea : "eliminar", tipo_elemento : "componentes"},
-                               datos : datos_componente};
-
-      var direccionDestino = 'Nuevos_cambios/Asignador_tareas.php';
-      $http( {
-        url: direccionDestino,
-        method: "POST",
-        data: datos_eliminacion
-      } ).then( function ( response ) {
-        console.log( response ); //BORRAR DESPUESS
-      }, function ( response ) {
-        console.log( response ); //BORRAR DESPUES
-      } );
+      jefe_planta.solicitar_eliminacion_componente( componente );
 
 
     };
 
-    this.verificarComponenteNoRepetido = function ( componente ) {
-      var componenteNoRepetido = false;
-      var existeIndiceComponente = this.listaComponentes.indexOf( componente );
-
-      if( existeIndiceComponente != 1 ) {
-        componenteNoRepetido = false;
-      } else {
-        componenteNoRepetido = true;
-      }
-
-      return componenteNoRepetido;
-    };
 
     this.seleccionarComponente = function( componente ) {
       this.componenteSeleccionado = componente;
     };
 
     this.mandarSolicitudCambio = function( componente ) { //REFACTORIZAR DESPUES
-      this.datosCorrectos = this.validarDatos( componente );
-
-      if( this.datosCorrectos ) {
-        var id_componente = componente.id;
-        var nombre_componente = componente.nombre;
-        var tiempo_vida = componente.tiempo_vida_max;
-        var descripcion = componente.descripcion;
-
-        var datos_modificacion = { "id" : id_componente,
-                                   "nombre" : nombre_componente,
-                                   "tiempo_vida_max" : tiempo_vida,
-                                   "descripcion" : descripcion};
-
-        var solicitud = {"tarea" : {nombre_tarea : "modificar", tipo_elemento : "componentes"},
-                         "datos" : datos_modificacion};
-
-        var direccionDestino = 'Nuevos_cambios/Asignador_tareas.php';
-        $http( {
-          url: direccionDestino,
-          method: "POST",
-          data: solicitud
-        } ).then( function ( response ) {
-          console.log( response );
-        }, function ( response ) {
-          console.log( response )
-        } );
-
-        /*var camposComponente = [ 'nombre', 'tiempo_vida_max','descripcion' ];
-        var atributosComponente = [componente.nombre, componente.tiempo_vida_max, componente.descripcion];
-        for( i=0; i<camposComponente.length; i++ ) {
-          var modificacion = { "tipo_elemento" : "componentes",
-                               "atrib_modificar" : camposComponente[ i ],
-                               "dato_nuevo" : atributosComponente[ i ],
-                               "id" : componente.id};
-          var solicitud = { "tarea" : "modificar", "datos" : modificacion };
-          var direccionDestino = 'Nuevos_cambios/Asignador_tareas.php';
-          $http( {
-            url: direccionDestino,
-            method: "POST",
-            data: solicitud
-          } ).then( function ( response ) {
-            console.log( response );
-          }, function ( response ) {
-            console.log( response )
-          } );
-        } */
-      }
+      jefe_planta.solicitar_modificacion_componente( componente );
     }
 
-    this.solicitarListaComponentes = function() {
-      /*var datos_solicitud = {"tipo_elemento" : "componentes",
-                             "tipo_consulta" : "lista"};*/
 
-      var solicitud = {tarea : {nombre_tarea : "consultar lista", tipo_elemento : "componentes"},
-                       datos : "consulta"};
+    this.solicitarListaComponentes = function() {
+
+      var datos_solicitud = {tarea : "consultar lista",
+                             elemento : "componentes",
+                             datos : "consulta"};
+
+      var solicitud = secretaria.generar_solicitud( datos_solicitud );
 
       var direccionDestino = 'Nuevos_cambios/Asignador_tareas.php';
       $http( {
@@ -188,13 +220,16 @@
         data : solicitud,
 
       } ).success( function ( componentes ) {
-        angular.forEach( componentes, function ( componente, key ) {
-          componentesSolicitud.push( componente );
-        } );
-        console.log(componentes);
-
+        acomodar_componentes_solicitados( componentes );
       }  );
     };
+
+    var acomodar_componentes_solicitados = function ( componentes ) {
+      angular.forEach( componentes, function ( componente, key ) {
+        componentesSolicitud.push( componente );
+      } );
+    };
+
 
     this.solicitarListaComponentes();
 
@@ -206,6 +241,7 @@
       var panel_activo = this.panel_actual == panel;
       return panel_activo;
     };
+
 
     
   } ] );

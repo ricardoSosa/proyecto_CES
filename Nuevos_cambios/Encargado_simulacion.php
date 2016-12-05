@@ -50,7 +50,7 @@
         'id' => $id_proceso
       );
       $datos_proceso = $this->administrador_proceso->obtener_datos( $id_p )[0];
-      $proceso = new Proceso( $datos_proceso, $equipos_necesarios, $duracion_estimada );
+      $proceso = new Proceso( $datos_proceso, $equipos_necesarios, $duracion_estimada/100 );
 
       return $proceso;
     }
@@ -65,7 +65,7 @@
         'id' => $id_equipo
       );
       $datos_equipo = $this->administrador_equipo->obtener_datos( $id_e )[0];
-      $equipo = new Equipo( $datos_equipo, $componentes_necesarios, $porcentaje_equipo );
+      $equipo = new Equipo( $datos_equipo, $componentes_necesarios, $porcentaje_equipo/100 );
 
       return $equipo;
     }
